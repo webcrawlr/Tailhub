@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Base Page</title>
+        <style>
+            /*Navbar*/
+            #nav{
+                overflow: hidden;
+                background-color: #d9d9d9;
+            }
+            /*Navbar Links*/
+            #nav a{
+                float: right;
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px;
+                text-decoration: none;
+            }
+            body{
+                background-color: #fbe5ce;
+            }
+            .stickyTop{
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+            .stickyBottom{
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Top Bar -->
+        <!-- Links modified as created when demonstrating -->
+        <div id = "nav" class="stickyTop">
+            <a href="petpics.com/home" style = "float:left;">Home</a>
+            <a href="petpics.com/friends">Friends</a>
+            <a href="petpics.com/messages">Messages</a>
+            <a href="petpics.com/settings">Settings</a>
+        </div>
+        
+        
+        <!-- Bottom Bar -->
+        <div id = "nav" class="stickyBottom" style = "padding:3px">
+            Copyright © Acme Inc.  All rights reser- okay, we didn't actually copyright anything.  Pls don't steal.
+        </div>
+
+    </body>
+</html>
