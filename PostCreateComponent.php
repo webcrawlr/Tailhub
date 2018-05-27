@@ -78,11 +78,3 @@ if(isset($_POST['submitPost'])){
              'ssl_verify_host'   => FALSE
         ));
 ?>
-<br />
-<?php
-    try{
-        $response=$request->send(); //SENDING request
-        if(200==$response->getStatus()) {//GETTING RESPONSE
-             //if response is successful, print success message
-             echo $response->getBody();
-?>
