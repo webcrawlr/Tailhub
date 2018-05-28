@@ -57,8 +57,7 @@ if(isset($_POST['submitPost'])){
 <!-- Sending off the data, code adapted from Bryce Baker's by Raymond Muller --> 
 <?php
         //add the user's data to the http2 post request
-        $request=new HTTP_Request2('https://proj2app.herokuapp.com/storeData', HTTP_Request2::METHOD_POST); //NEED CONTROLLER LINK
-        $request->addPostParameter('type',  "post");
+        $request=new HTTP_Request2('https://tailhub.herokuapp.com/post', HTTP_Request2::METHOD_POST);
         $request->addPostParameter('username',  $username);
 
         //Post info

@@ -125,8 +125,7 @@
 <?php
 if(isset($_POST['submitSearch'])){
     $username = $_POST['search'];
-    $request=new HTTP_Request2('https://proj2app.herokuapp.com/storeData', HTTP_Request2::METHOD_POST); //NEED CONTROLLER LINK
-    $request->addPostParameter('type',  "getProfile");
+    $request=new HTTP_Request2('https://tailhub.herokuapp.com/getProfile', HTTP_Request2::METHOD_POST);
     $request->addPostParameter('username',  $username);
 
     //fix the SSL issue
