@@ -2,4 +2,16 @@ extends layout
 
 block content
   h1 Members Area
-  p Welcome to the members area
+    p Welcome to the members area
+  if errors
+    each error, i in errors
+      div.alert.alert-danger #{error.msg}
+  form(method='post', action='/users/contentpost', enctype='multipart/form-data')
+    input(type='hidden', name= 'username', value = user.username)
+    .form-group
+      label Post Text
+      input.form-control(name='postText', type='text', placeholder='say something...')
+    .form-group
+      label Post Image
+      input.form-control(name='media', type='file')
+    input.btn.btn-primary(type='submit', name='submit',value='Post')

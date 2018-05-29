@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var multer = require('multer');
+var upload = multer({dest: './uploads'});
 
 var User = require('../models/user');
+var Post = require('../models/post');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -17,6 +20,13 @@ router.get('/register', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('login', {title:'Login'});
 });
+
+
+router.get('/contentpost', function(req, res, next) {
+    res.render('contentpost', {title:'ContentPost'});
+
+});
+
 
 router.post('/login',
   passport.authenticate('local',{failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
@@ -93,6 +103,54 @@ router.post('/register', function(req, res, next) {
     res.location('/');
     res.redirect('/');
   }
+});
+
+router.post('/contentpost', upload.single('media') ,function(req, res, next) {
+
+  var postText = req.body.postText;
+  var username = req.body.username;
+
+    if(req.file){
+        console.log('Uploading File...');
+        var path = req.file.path;
+        var fileName = req.file.filename;
+
+    } else {
+        console.log('No File Uploaded...');
+        var fileName = 'noimage.jpg';
+        var path = 'n/a';
+    };
+
+    console.log(req.file);
+
+    // Form Validator
+    req.checkBody('postText','text for post is required').notEmpty();
+
+
+    // Check Errors
+    var errors = req.validationErrors();
+
+    if(errors){
+        res.render('index', {
+            errors: errors
+        });
+    } else{
+
+        var newPost = new Post({
+            username: username,
+            postText: postText,
+            date: (new Date).getTime()
+
+        });
+
+        Post.createPost(newPost, path, function(err, post){
+            if(err) throw err;
+            console.log(post);
+        });
+
+        //res.location('/users/contentpost');
+        res.redirect('/users/contentpost');
+    }
 });
 
 router.get('/logout', function(req, res){
