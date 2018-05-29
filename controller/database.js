@@ -1,9 +1,24 @@
 /*Updates:
 Bryce Baker:
-wrote version 0.1
+5/27
+wrote:
+    createProfile
+    editProfile
+    deleteProfile
+    sendMessage
+5/29
+    added module connection, mongodb connection, & mongodb connection termination to all functions
+wrote:
+    friendRequest
+    friendAccept
+    friendDecline
+    unfriend
+    post
+    getProfile
+    getPosts (needs updating)
 */
 
-//Version: 0.1
+//Version: 0.2
 
 var mongodb;
 mongodb = require('mongodb');
@@ -43,7 +58,10 @@ module.exports.createProfile = function(req,res){
         //insert new database entry for the user
         db
             .collection('profiles')
-            .insertOne(profile,function(err){if(err)throw err;});
+            .insertOne(
+                profile,
+                function(err){if(err)throw err;}
+            );
 
         //close connection
         db
@@ -217,7 +235,7 @@ module.exports.deleteProfile=function(req,res) {
             }
 
 
-                //update database entry
+            //update database entry
             db
                 .collection('followers')
                 .updateOne(
@@ -228,7 +246,6 @@ module.exports.deleteProfile=function(req,res) {
                     }
                 );
         }
-
 
         //search following database & delete entry from other user's lists
         //get users that are following
@@ -253,16 +270,16 @@ module.exports.deleteProfile=function(req,res) {
                 }
             }
 
-                //update database entry
-                db
-                    .collection('following')
-                    .updateOne(
-                        {username: user.username},
-                        {
-                            $set:
-                                {list: newList}
-                        }
-                    );
+            //update database entry
+            db
+                .collection('following')
+                .updateOne(
+                    {username: user.username},
+                    {
+                        $set:
+                            {list: newList}
+                    }
+                );
         }
     })
 };
@@ -287,7 +304,7 @@ module.exports.sendMessage=function(req,res) {
             });
 
         //increment sender message count
-        count++;
+        count.messageCount++;
 
         //update sender message count
         db
@@ -295,7 +312,7 @@ module.exports.sendMessage=function(req,res) {
             .updateOne(
                 { username: username },
                 { $set:
-                    { messageCount: count }
+                    { messageCount: count.messageCount }
                 }
             );
 
@@ -316,7 +333,7 @@ module.exports.sendMessage=function(req,res) {
         //insert new database entry into messages database
         db
             .collection('messages')
-            .insertOne(message, function(err){if(err)throw err;});
+            .insertOne(message,function(err){if(err)throw err;});
 
         //close connection
         db
@@ -326,46 +343,526 @@ module.exports.sendMessage=function(req,res) {
 
 
 //readMessage
+/*
+module.exports.readMessage=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //deleteMessage
+/*
+module.exports.deleteMessage=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //friendRequest
+module.exports.friendRequest=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+        //get the other user's friend requests
+        var requests = db
+            .collection('profiles')
+            .find(
+                { username: req.body.otheruser }
+            )
+            .project(
+                { friendRequests: 1, id_: 0 }
+            );
+
+        //append the user's name
+        requests.friendRequests.push(req.body.username);
+
+        //update otheruser's profiles database entry
+        db
+            .collection('profiles')
+            .updateOne(
+                { username: req.body.otheruser },
+                { friendRequests: requests.friendRequests }
+            );
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};
 
 
 //friendAccept
+module.exports.friendAccept=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+        //get the user's friend requests
+        var requests = db
+            .collection('profiles')
+            .find(
+                { username: req.body.otheruser }
+            )
+            .project(
+                { friendRequests: 1, id_: 0 }
+            );
+
+        //remove otherUser from user's friendRequests list
+        var index = requests.friendRequests.indexOf(req.body.username);
+        if(index > -1){
+            requests.friendRequests.splice(index, 1);
+        }
+
+        //update user's profiles database entry
+        db
+            .collection('profiles')
+            .updateOne(
+                { username: req.body.username },
+                { friendRequests: requests.friendRequests }
+            );
+
+        //get user's friends list
+        var newList = db
+            .collection('friends')
+            .find(
+                { username: req.body.username }
+            )
+            .project(
+                { list: 1 }
+            );
+
+        //append otherUser's username
+        newList.list.push(req.body.otherUser);
+
+        //update user's friends database entry
+        db
+            .collection('friends')
+            .updateOne(
+                { username: req.body.username },
+                { list: newList }
+            );
+
+        //get otherUser's friends list
+        newList = db
+            .collection('friends')
+            .find(
+                { username: req.body.otherUser }
+            )
+            .project(
+                { list: 1 }
+            );
+
+        //append the user's username
+        newList.list.push(req.body.username);
+
+        //update the otherUser's friends database entry
+        db
+            .collection('friends')
+            .updateOne(
+                { username: req.body.otherUser },
+                { list: newList }
+            );
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};
 
 
 //friendDecline
+module.exports.friendDecline=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+        //get the user's friend requests
+        var requests = db
+            .collection('profiles')
+            .find(
+                { username: req.body.otheruser }
+            )
+            .project(
+                { friendRequests: 1, id_: 0 }
+            );
+
+        //remove otherUser from user's friendRequests list
+        var index = requests.friendRequests.indexOf(req.body.username);
+        if(index > -1){
+            requests.friendRequests.splice(index, 1);
+        }
+
+        //update user's profiles database entry
+        db
+            .collection('profiles')
+            .updateOne(
+                { username: req.body.username },
+                { friendRequests: requests.friendRequests }
+            );
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};
 
 
-//unFriend
+//unfriend
+module.exports.unfriend=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+        //get user's friends list
+        var newList = db
+            .collection('friends')
+            .find(
+                { username: req.body.username }
+            )
+            .project(
+                { list: 1 }
+            );
+
+        //remove otherUser from user's friends list
+        var index = newList.list.indexOf(req.body.otherUser);
+        if(index > -1){
+            requests.list.splice(index, 1);
+        }
+
+        //update user's friends database entry
+        db
+            .collection('friends')
+            .updateOne(
+                { username: req.body.username },
+                { list: newList }
+            );
+
+        //get otherUser's friends list
+        newList = db
+            .collection('friends')
+            .find(
+                { username: req.body.otherUser }
+            )
+            .project(
+                { list: 1 }
+            );
+
+        //remove user from otherUser's friends list
+        var index = requests.list.indexOf(req.body.username);
+        if(index > -1){
+            requests.list.splice(index, 1);
+        }
+
+        //update the otherUser's friends database entry
+        db
+            .collection('friends')
+            .updateOne(
+                { username: req.body.otherUser },
+                { list: newList }
+            );
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};
 
 
 //block
+/*
+module.exports.block=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //unblock
+/*
+module.exports.unblock=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //paw5
+/*
+module.exports.paw5=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //follow
+/*
+module.exports.follow=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //unfollow
+/*
+module.exports.unfollow=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //post
+module.exports.post=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+        //generate current date
+        var date = new Date();
+        var now = date.toUTCString();
+
+        //create profile object for database submission
+        var newPost = {
+            username:   req.body.username,
+            postId:     req.body.postId,
+            rePost:     req.body.rePost,
+            oPoster:    req.body.oPoster,
+            text:       req.body.text,
+            media:      req.body.media,
+
+            paw5Counter:    0,
+            paw5List:       {},
+            emailFlag:      false,
+            location:       req.body.location,
+            creationDate:   now,
+            groomFeedFlag:  req.body.groomFeedFlag,
+            shareCount:     0
+        };
+
+        //insert new database entry for the user
+        db
+            .collection('posts')
+            .insertOne(
+                newPost,
+                function(err){if(err)throw err;}
+            );
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};
 
 
 //comment
+/*
+module.exports.comment=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //share
+/*
+module.exports.share=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
 
 
 //getProfile
+module.exports.getProfile=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
 
+        //search the profiles database to the specified profile
+        var ret = db
+            .collection('profiles')
+            .find(
+                { username: req.body.username }
+            );
+
+        res.render(ret);
+    })
+};
+
+
+//getPosts
+module.exports.getPosts=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+        //search the posts database for the user's posts
+        var allPosts = db
+            .collection('posts')
+            .find(
+                { username: req.body.username }
+            )
+            .project(
+                { _id: 0 }
+            );
+/*
+        var tenPosts;
+        var post;
+        var count = 0;
+        for(post in allPosts){
+            if(post.creationDate   ?????????   ){
+                tenPosts.push(post);
+            }
+        }
+        res.render(tenPosts);
+*/
+        res.render(allPosts);
+    })
+};
+
+
+//getFriends
+/*
+module.exports.getFriends=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
+
+
+//getFollowers
+/*
+module.exports.getFollowers=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
+
+
+//getFollowing
+/*
+module.exports.getFollowing=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
+
+//getMessages
+/*
+module.exports.getMessages=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/
+
+
+//getComments
+/*
+module.exports.getComments=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
+
+
+
+        //close connection
+        db
+            .close(function(err){if(err)throw err;});
+    })
+};*/

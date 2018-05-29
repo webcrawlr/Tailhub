@@ -1,7 +1,11 @@
 /*Updates:
 Bryce Baker:
+5/27
+wrote:
 	controller variable
 	control structure for routing post data
+5/29
+    added 6 more entries to the control structure
  */
 var express = require('express');
 var router = express.Router();
@@ -48,8 +52,8 @@ else if(req.url==="/friendAccept") {
 else if(req.url==="/friendDecline") {
     router.post("/friendDecline", controller.friendDecline);
 }
-else if(req.url==="/unFriend") {
-    router.post("/unFriend", controller.unFriend);
+else if(req.url==="/unfriend") {
+    router.post("/unfriend", controller.unFriend);
 }
 else if(req.url==="/block") {
     router.post("/block", controller.block);
@@ -77,6 +81,24 @@ else if(req.url==="/share") {
 }
 else if(req.url==="/getProfile") {
     router.post("/getProfile", controller.getProfile);
+}
+else if(req.url==="/getPosts") {
+    router.post("/getPosts", controller.getProfile);
+}
+else if(req.url==="/getFriends") {
+    router.post("/get", controller.getProfile);
+}
+else if(req.url==="/getFollowers") {
+    router.post("/getFollowers", controller.getProfile);
+}
+else if(req.url==="/getFollowing") {
+    router.post("/getFollowing", controller.getProfile);
+}
+else if(req.url==="/getMessages") {
+    router.post("/getMessages", controller.getProfile);
+}
+else if(req.url==="/getComments") {
+    router.post("/getComments", controller.getProfile);
 }
 
 module.exports = router;
