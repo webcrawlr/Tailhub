@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca12ea44-f879-4b11-866b-e3584612b021" name="Default" comment="Various controller functions added.&#10;&#10;added:&#10;friendRequest, friendAccept, friendDecline, unfriend, post, getProfile, &amp; getPosts">
+    <list default="true" id="ca12ea44-f879-4b11-866b-e3584612b021" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/database.js" afterPath="$PROJECT_DIR$/controller/database.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/user.js" afterPath="$PROJECT_DIR$/models/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/users.js" afterPath="$PROJECT_DIR$/routes/users.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -1089,11 +1086,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527471537293</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Various controller functions added.&#10;&#10;added:&#10;friendRequest, friendAccept, friendDecline, unfriend, post, getProfile, &amp; getPosts">
+      <created>1527643028117</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1527643028117</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40005000" />
+    <option name="totallyTimeSpent" value="40039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="23" width="1440" height="819" extended-state="6" />
@@ -1140,7 +1144,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Login &amp; Register initial push - Steven" />
     <MESSAGE value="First commit.&#10;&#10;Updated index to post the request object to the controller, accessing the proper function.&#10;&#10;Created controller (database.js).&#10;&#10;Wrote createProfile, editProfile, deleteProfile, &amp; sendMessage." />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit.&#10;&#10;Updated index to post the request object to the controller, accessing the proper function.&#10;&#10;Created controller (database.js).&#10;&#10;Wrote createProfile, editProfile, deleteProfile, &amp; sendMessage." />
+    <MESSAGE value="Various controller functions added.&#10;&#10;added:&#10;friendRequest, friendAccept, friendDecline, unfriend, post, getProfile, &amp; getPosts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Various controller functions added.&#10;&#10;added:&#10;friendRequest, friendAccept, friendDecline, unfriend, post, getProfile, &amp; getPosts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
