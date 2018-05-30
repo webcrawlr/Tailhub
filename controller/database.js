@@ -25,6 +25,8 @@ mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI||'mongodb://CSUEB_PETPICS:cs4310_SE@ds231070.mlab.com:31070/tailhub_db';
 var User = require('../models/user');
 
+
+
 //createProfile
 module.exports.createProfile = function(req,res){
 

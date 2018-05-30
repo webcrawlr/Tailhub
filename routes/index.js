@@ -7,6 +7,8 @@ wrote:
 5/29
     added 6 more entries to the control structure
  */
+
+
 var express = require('express');
 var router = express.Router();
 
@@ -23,6 +25,7 @@ function ensureAuthenticated(req, res, next){
 	}
 	res.redirect('/users/login');
 }
+/*
 
 //post data routed to controller for processing
 if(req.url==="/createProfile") {
@@ -100,5 +103,5 @@ else if(req.url==="/getMessages") {
 else if(req.url==="/getComments") {
     router.post("/getComments", controller.getProfile);
 }
-
+*/
 module.exports = router;

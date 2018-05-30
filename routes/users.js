@@ -143,15 +143,36 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
 
         });
 
+        /*
         Post.createPost(newPost, path, function(err, post){
             if(err) throw err;
             console.log(post);
         });
+        */
 
         //res.location('/users/contentpost');
-        res.redirect('/users/contentpost');
+
+        //var callback;
+
+        Post.getPostByUsername(username, function(err, callback) {
+
+            if(err) throw err;
+
+               // res.render('image', {
+                  //  results: callback
+                //});
+
+            res.contentType(callback.img.contentType);
+            res.send(callback.img.data);
+        });
+
+
     }
+
+
 });
+
+
 
 router.get('/logout', function(req, res){
   req.logout();
@@ -160,3 +181,4 @@ router.get('/logout', function(req, res){
 });
 
 module.exports = router;
+
