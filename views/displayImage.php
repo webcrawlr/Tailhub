@@ -20,7 +20,7 @@ require_once 'HTTP/Request2.php';
 
 validCheck();
 
-$request = new HTTP_Request2('https://project2-node-js.herokuapp.com/storeData');
+$request = new HTTP_Request2('https://tailhub.herokuapp.com/users/contentpost');
 $request->setMethod(HTTP_Request2::METHOD_POST)
 
     // Sending all post Variables to node js
