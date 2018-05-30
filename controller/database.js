@@ -23,10 +23,16 @@ wrote:
 var mongodb;
 mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI||'mongodb://CSUEB_PETPICS:cs4310_SE@ds231070.mlab.com:31070/tailhub_db';
-
+var User = require('../models/user');
 
 //createProfile
 module.exports.createProfile = function(req,res){
+
+    /********************************************************************************************************
+     //                  createProfile has been seized by Steven Phan
+     //
+     //*******************************************************************************************************/
+    /*
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function(err,db){
         if(err)throw err;
@@ -67,6 +73,39 @@ module.exports.createProfile = function(req,res){
         db
             .close(function(err){if(err)throw err;});
     })
+    */
+
+    var date = new Date();
+    var now = date.toUTCString();
+
+    //(new Date).getTime()
+
+    var newUser = new User({
+
+        username:   req.body.username,
+        password:   req.body.password,
+        species:    req.body.species,
+        breed:      req.body.breed,
+        age:        req.body.age,
+        location:   req.body.location,
+        email:      req.body.email,
+
+        paw5Counter:    0,
+        paw5List:       'n/a',
+        emailFlag:      false,
+        creationDate:   now,
+        postCount:      0,
+        messageCount:   0,
+        friendRequests: 'n/a',
+        blockList:      'n/a'
+    });
+
+    //Uses class function to write to mongoDB
+    User.createUser(newUser, function(err, user){
+        if(err) throw err;
+        console.log(user);
+    });
+
 };
 
 

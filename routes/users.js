@@ -21,7 +21,6 @@ router.get('/login', function(req, res, next) {
   res.render('login', {title:'Login'});
 });
 
-
 router.get('/contentpost', function(req, res, next) {
     res.render('contentpost', {title:'ContentPost'});
 
@@ -64,11 +63,12 @@ passport.use(new LocalStrategy(function(username, password, done){
 }));
 
 router.post('/register', function(req, res, next) {
-  var name = req.body.name;
-  var email = req.body.email;
-  var username = req.body.username;
-  var password = req.body.password;
-  var password2 = req.body.password2;
+
+    var name = req.body.name;
+    var email = req.body.email;
+    var username = req.body.username;
+    var password = req.body.password;
+    var password2 = req.body.password2;
 
   // Form Validator
   req.checkBody('name','Name field is required').notEmpty();
