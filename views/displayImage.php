@@ -6,7 +6,8 @@
  * Time: 2:56 PM
  */
 
-
+// Start the session
+session_start();
 
 
 //Stores post values in session
@@ -14,17 +15,22 @@
 //This method is used to store payment.php data
 if($_POST['Desired_Action'] == "Order")
     $_SESSION['username'] = $_POST['username'];
+    $_SESSION['password'] = $_POST['password'];
+
+    //echo $_SESSION['username'];
 
 
 require_once 'HTTP/Request2.php';
 
 validCheck();
 
-$request = new HTTP_Request2('https://tailhub.herokuapp.com/users/contentpost');
+$request = new HTTP_Request2('https://tailhub.herokuapp.com/users/login');
 $request->setMethod(HTTP_Request2::METHOD_POST)
 
     // Sending all post Variables to node js
+    //->addPostParameter('postText', 'test1')
     ->addPostParameter('username', $_SESSION['username'])
+    ->addPostParameter('password', $_SESSION['password'])
 ;
 
 // ######### To Fix the SSL issue ###########
@@ -40,9 +46,12 @@ $request->setConfig(array(
 try {
 
     $response = $request->send(); //SENDING request
+    $data = json_decode($response, true);
+    echo $data;
 
     if (200 == $response->getStatus()) {//GETTING RESPONSE
-        echo $response->getBody();
+
+        //echo $response->getBody();
 
     } else {
 
@@ -58,10 +67,10 @@ try {
 }
 
 
-$data = json_decode($response, true);
 
 
-echo $data;
+
+//echo $data['something'];
 
 
 ?>

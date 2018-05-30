@@ -1,4 +1,8 @@
 <?php
+
+?>
+
+<?php
 /**
  * Created by PhpStorm.
  * User: Steven
@@ -9,7 +13,7 @@
 
 <?php
 // Start the session
-session_start();
+//session_start();
 ?>
 
 <!doctype html>
@@ -24,12 +28,21 @@ session_start();
 
 <body>
 
+
+
+
+
 <form action = "displayImage.php" method="post">
 
 
-                <label>Name <input name="username" id="username" value="" size = "25" /></label><br><br>
+    <label>Name <input name="username" id="username" value="" size = "25" /></label><br>
+    <label>Password <input name="password" id="password" value="" size = "25" /></label><br>
+    <input type="hidden" name="Desired_Action" value="Order">
+    <input type="submit" name="order" id="order" value="SEND"/>
 </form>
 
 
 </body>
 </html>
+
+
