@@ -110,13 +110,13 @@ router.post("/newPost", function (req, res) {
             text: req.body.text,
             date: (new Date).getTime()
         }, function(err,res){if(err) throw err;});
-/*
+
         //close connection
         db
             .close(function (err) {
                 if (err) throw err;
             });
-*/
+
         var name = req.body.username;
 
         //respond
