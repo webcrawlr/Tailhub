@@ -748,7 +748,7 @@ module.exports.newPost=function(req,res) {
         });
 
         var text = req.body.text;
-        var name = re1.body.name;
+        var name = req.body.name;
         //respond
         res.write(name + "<br><br>" + text);
         res.end();
