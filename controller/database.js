@@ -803,14 +803,14 @@ module.exports.getProfile=function(req,res) {
             { username: req.body.username }
         ),function (err, result) {
             if(err)throw err;
-            name = result.name;
+            name = result.username;
         };
 
         //close connection
         client.close(function (err) {
             if (err) throw err;
         });
-        
+
         res.write(name);
         res.end();
     })
