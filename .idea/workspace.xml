@@ -52,8 +52,8 @@
       <file leaf-file-name="users.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="125" column="24" lean-forward="true" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
+            <state relative-caret-position="-1445">
+              <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -352,7 +352,7 @@
       <workItem from="1527703828883" duration="1198000" />
       <workItem from="1527722342699" duration="1443000" />
       <workItem from="1527738917651" duration="19552000" />
-      <workItem from="1527782048452" duration="13280000" />
+      <workItem from="1527782048452" duration="13675000" />
     </task>
     <task id="LOCAL-00001" summary="Login &amp; Register initial push - Steven">
       <created>1527198129090</created>
@@ -669,11 +669,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527797131280</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="debugging index and route 38">
+      <created>1527797346234</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1527797346234</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70485000" />
+    <option name="totallyTimeSpent" value="70880000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -708,7 +715,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debugging index and route 13" />
     <MESSAGE value="debugging index and route 14" />
     <MESSAGE value="debugging index and route 15" />
     <MESSAGE value="debugging index and route 16" />
@@ -733,7 +739,8 @@
     <MESSAGE value="debugging index and route 35" />
     <MESSAGE value="debugging index and route 36" />
     <MESSAGE value="debugging index and route 37" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 37" />
+    <MESSAGE value="debugging index and route 38" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 38" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1136,8 +1143,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="125" column="24" lean-forward="true" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
+        <state relative-caret-position="-1445">
+          <caret line="8" column="68" lean-forward="false" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
           <folding />
         </state>
       </provider>

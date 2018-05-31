@@ -6,7 +6,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var multer = require('multer');
 var upload = multer({dest: './uploads'});
 var mongodb = require('mongodb');
-var mongoDBURI = process.env.MONGODB_URI||'mongodb://CSUEB_PETPICS:cs4310_SE@ds231070.mlab.com:31070/tailhub_db';
+var mongoDBURI = process.env.MONGODB_URI||'mongodb://Bryce:1lavalamp@ds231070.mlab.com:31070/tailhub_db';
 
 var User = require('../models/user');
 var Post = require('../models/post');
@@ -69,9 +69,9 @@ router.post("/newPost", function (req, res) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
-        db = client.db('tailhub_db');
+/*        db = client.db('tailhub_db');
         posts = db.collection('posts');
-/*
+
         //generate current date
         //var date = (new Date()).getTime();
         //var now = date.toUTCString();
