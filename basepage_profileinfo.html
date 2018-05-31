@@ -110,6 +110,8 @@
   				left: 50%;
                 transform: translate(-50%, -50%);
 			}
+			
+          /* style for profile info component */
             .container{
             	display: table;
             	width: 100%;
@@ -138,6 +140,11 @@
             	background-color: #ffffff;
             }
 
+	/* style for post component */
+	.post {
+		top: 100px;
+	}
+		
         </style>
     </head>
     <body>
@@ -182,8 +189,66 @@
 	  <a href="petpics.com/followers">Followers</a>
 	  <br>
       <a href="petpics.com/followings">Followings</a>
-    </box>
+   </box>
   </div>
+</section>
+
+    
+<section class = "post">
+	<div class = "center">
+		<form action="postProcess.php" method="post">
+    <textarea name="text" rows="8" cols="80"></textarea>
+    <br />
+    <input type="submit" name="submitPost" value="Post">
+	</form>
+	<form action="upload.php" method="post" enctype="multipart/form-data">
+    Select media to upload:
+    <br>
+    <input type="file" name="file" id="file" /> 
+    <input type="submit" value="Upload Image" name="submitPic">
+
+	</form>
+
+	<div id = "username">
+ 	 <p> username </p> 
+	</div>
+
+	<div id = "text">
+ 	 <p> text </p> 
+	</div>
+
+	<div id = "location">
+  	<p> location </p> 
+	</div>
+
+	<!-- image component -->
+	<img src="pet.jpg" alt="Pet Face" width="500" height="377">
+
+	<!-- video component -->
+	<video width="320" height="240" controls>
+ 	 <source src="movie.mp4" type="video/mp4">
+  	<source src="movie.ogg" type="video/ogg">
+  	Your browser does not support the video tag.
+	</video>
+
+	<div id = "paw5">
+  	<p> paw5 </p> 
+	</div>
+
+	<div id = "shareCount">
+  	<p> shareCount </p> 
+	</div>
+
+	<div id = "commentBox">
+  	<form action="postComment.php" method="post">
+    <textarea name="text" rows="8" cols="80"></textarea>
+    <br />
+    <input type="submit" name="comment" value="Comment">
+	</form>
+	</div>
+
+	</div>
+
 </section>
         
         <!-- Ads Sidebar -->
@@ -191,7 +256,7 @@
             <p>Ads</p>
         </div>
         <div class= "sideBar">
-            random ads
+            <center> random ads <center>
         </div>
         
         <!-- Friends Sidebar -->
@@ -223,5 +288,6 @@
             Copyright © Acme Inc.  All rights reser- okay, we didn't actually copyright anything.  Pls don't steal.
         </div>
         
+      
     </body>
 </html>
