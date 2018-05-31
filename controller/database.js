@@ -806,7 +806,9 @@ module.exports.getProfile=function(req,res) {
                 { username: req.body.username }
             );
 
-        res.render(ret);
+        res.write(ret.username);
+        res.write("GG");
+        res.end();
     })
 };
 
