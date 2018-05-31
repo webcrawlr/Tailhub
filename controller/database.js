@@ -801,10 +801,10 @@ module.exports.getProfile=function(req,res) {
         //search the profiles database to the specified profile
         profiles.findOne(
             { username: req.body.username }
-        ),function (err, result) {
+        ,function (err, result) {
             if(err)throw err;
             name = result.username;
-        };
+        });
 
         //close connection
         client.close(function (err) {
