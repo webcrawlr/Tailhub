@@ -724,24 +724,6 @@ module.exports.newPost=function(req,res) {
         var date = new Date();
         var now = date.toUTCString();
 
-/*        //create profile object for database submission
-        var newPost = {
-            username:   req.body.username,
-            postId:     req.body.postId,
-            rePost:     req.body.rePost,
-            oPoster:    req.body.oPoster,
-            text:       req.body.text,
-            media:      req.body.media,
-
-            paw5Counter:    0,
-            paw5List:       {},
-            emailFlag:      false,
-            location:       req.body.location,
-            creationDate:   now,
-            groomFeedFlag:  req.body.groomFeedFlag,
-            shareCount:     0
-        };
-*/
         //insert new database entry for the user
         posts.insertOne({
             username: req.body.username,
@@ -766,9 +748,10 @@ module.exports.newPost=function(req,res) {
         });
 
         var text = req.body.text;
-
+        var name = re1.body.name;
         //respond
         res.write(text);
+        res.write(name);
         res.end();
     })
 };

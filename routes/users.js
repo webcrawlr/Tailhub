@@ -65,6 +65,12 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
+
+
+/*
+=======================================================
+users/newPost written by Bryce Baker, for testing
+=======================================================
 router.post("/newPost", function (req, res) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
@@ -75,35 +81,35 @@ router.post("/newPost", function (req, res) {
         //generate current date
         var date = new Date();
         var now = date.toUTCString();
-/*
-        //create profile object for database submission
-        var newPost = {
-            username: req.body.username,
-            postId: req.body.postId,
-            rePost: req.body.rePost,
-            oPoster: req.body.oPoster,
-            text: req.body.text,
-            media: req.body.media,
 
-            paw5Counter: 0,
-            paw5List: {},
-            emailFlag: false,
-            location: req.body.location,
-            creationDate: now,
-            groomFeedFlag: req.body.groomFeedFlag,
-            shareCount: 0
-        };
+        //create profile object for database submission
+//        var newPost = {
+//            username: req.body.username,
+//            postId: req.body.postId,
+//            rePost: req.body.rePost,
+//            oPoster: req.body.oPoster,
+//            text: req.body.text,
+//            media: req.body.media,
+
+//            paw5Counter: 0,
+//            paw5List: {},
+//            emailFlag: false,
+//            location: req.body.location,
+//            creationDate: now,
+//            groomFeedFlag: req.body.groomFeedFlag,
+//            shareCount: 0
+//        };
 
         //insert new database entry for the user
-          db
-            .collection('posts')
-            .insertOne(
-                newPost,
-                function (err) {
-                    if (err) throw err;
-                }
-            );
-*/
+ //         db
+//            .collection('posts')
+//            .insertOne(
+//                newPost,
+//                function (err) {
+//                    if (err) throw err;
+//                }
+//            );
+
     //insert new database entry for the user
         posts.insertOne({
             username: req.body.username,
@@ -135,6 +141,9 @@ router.post("/newPost", function (req, res) {
 
     });
 });
+*/
+
+
 
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
 
