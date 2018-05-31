@@ -73,7 +73,7 @@ router.post("/post", function (err, res, next) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
         if (err) throw err;
-
+/*
         //generate current date
         var date = new Date();
         var now = date.toUTCString();
@@ -111,7 +111,7 @@ router.post("/post", function (err, res, next) {
             .close(function (err) {
                 if (err) throw err;
             });
-
+*/
         var response = "this is a response";
 
         //respond
