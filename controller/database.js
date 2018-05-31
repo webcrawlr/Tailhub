@@ -745,6 +745,9 @@ module.exports.post=function(req,res) {
         //close connection
         db
             .close(function(err){if(err)throw err;});
+
+        //respond
+        res.write("this is a response");
     })
 };
 
