@@ -75,7 +75,7 @@ router.post("/newPost", function (req, res) {
         //generate current date
         var date = new Date();
         var now = date.toUTCString();
-
+/*
         //create profile object for database submission
         var newPost = {
             username: req.body.username,
@@ -93,7 +93,7 @@ router.post("/newPost", function (req, res) {
             groomFeedFlag: req.body.groomFeedFlag,
             shareCount: 0
         };
-/*
+
         //insert new database entry for the user
           db
             .collection('posts')
@@ -107,8 +107,19 @@ router.post("/newPost", function (req, res) {
     //insert new database entry for the user
         posts.insertOne({
             username: req.body.username,
+            postId: req.body.postId,
+            rePost: req.body.rePost,
+            oPoster: req.body.oPoster,
             text: req.body.text,
-            date: (new Date).getTime()
+            media: req.body.media,
+
+            paw5Counter: 0,
+            paw5List: {},
+            emailFlag: false,
+            location: req.body.location,
+            creationDate: now,
+            groomFeedFlag: req.body.groomFeedFlag,
+            shareCount: 0
         }, function(err,res){if(err) throw err;});
 
         //close connection
