@@ -799,11 +799,10 @@ module.exports.getProfile=function(req,res) {
         var name = "Failsauce";
 
         //search the profiles database to the specified profile
-        profiles.findOne(
-            { username: req.body.username }
-        ,function (err, result) {
-            if(err)throw err;
-            name = result.username;
+        name = profiles.find(
+            { 'username': req.body.username }
+        ).toArray(function (err, result) {
+                if(err)throw err;
         });
 
         //close connection
