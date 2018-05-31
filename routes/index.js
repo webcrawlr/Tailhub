@@ -64,7 +64,7 @@ router.post("/newPost", controller.newPost);
 
 //router.post("/share", controller.share);
 
-//router.post("/getProfile", controller.getProfile);
+router.post("/getProfile", controller.getProfile);
 
 //router.post("/getPosts", controller.getPosts);
 
