@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 /*
 Detection for post button hit
 PRECONDITIONS:
