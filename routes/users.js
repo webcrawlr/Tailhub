@@ -66,7 +66,7 @@ passport.use(new LocalStrategy(function(username, password, done){
 }));
 
 router.post("/newPost", function (req, res) {
-    //connect MongoDB
+ /*   //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
         db = client.db('tailhub_db');
@@ -109,7 +109,7 @@ router.post("/newPost", function (req, res) {
             .close(function (err) {
                 if (err) throw err;
             });
-*/
+
 
 
     //insert new database entry for the user
@@ -118,14 +118,14 @@ router.post("/newPost", function (req, res) {
             text: req.body.text,
             date: (new Date).getTime()
         }, function(err,res){if(err) throw err;});
-
+*/
         var name = req.body.username;
 
         //respond
         res.write(name);
         res.end();
 
-    });
+ //   });
 });
 
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
