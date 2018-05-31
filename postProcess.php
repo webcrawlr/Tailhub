@@ -50,12 +50,12 @@ if(isset($_POST['submitPost'])){
         $request=new HTTP_Request2('https://tailhub.herokuapp.com/users/contentPost', HTTP_Request2::METHOD_POST);
         echo "3\n";
 
-        $request->addPostParameter('username',  "username");
+        $request->addPostParameter('username',  "obiWanKenobi");
 
         //Post info
         //$request->addPostParameter('postId',  $postId);
         //$request->addPostParameter('rePost',  $rePost);
-        $request->addPostParameter('text',  "hello there");
+        $request->addPostParameter('text', $text);
 
         //$request->addPostParameter('paw5Counter',  $paw5Counter);
         //$request->addPostParameter('paw5List',  $paw5List);
