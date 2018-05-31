@@ -224,7 +224,7 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
         });
 
 
-        Post.createPost(newPost, path, function(err, post){
+        Post.createPost(newPost, function(err, post){
             if(err) throw err;
             console.log(post);
         });

@@ -45,7 +45,7 @@ var PostSchema = mongoose.Schema({
 var Post = module.exports = mongoose.model('Post', PostSchema);
 
 //stores
-module.exports.createPost = function(newPost, path, callback) {
+module.exports.createPost = function(newPost, callback) {
 
     //newPost.img.data = fs.readFileSync(path);
     //newPost.img.contentType = 'image/png';
