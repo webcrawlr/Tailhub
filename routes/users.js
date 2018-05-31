@@ -34,7 +34,7 @@ router.get('/post', function(req, res, next) {
 });
 
 router.post('/login',
-  passport.authenticate('local', {failureRedirect:'http://csweb01.csueastbay.edu/~jb4522/TailHub/login.php'}),
+  passport.authenticate('local' ),
     function(req, res) {
    //req.flash('success', 'You are now logged in');
    //res.redirect('/');
