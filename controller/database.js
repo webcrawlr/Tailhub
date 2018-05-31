@@ -713,7 +713,7 @@ module.exports.unfollow=function(req,res) {
 
 
 //post
-module.exports.post=function(req,res) {
+module.exports.newPost=function(req,res) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
         if (err) throw err;

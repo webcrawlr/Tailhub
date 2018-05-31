@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca12ea44-f879-4b11-866b-e3584612b021" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/database.js" afterPath="$PROJECT_DIR$/controller/database.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="727" column="12" lean-forward="false" selection-start-line="727" selection-start-column="12" selection-end-line="727" selection-end-column="12" />
+            <state relative-caret-position="192">
+              <caret line="721" column="30" lean-forward="true" selection-start-line="721" selection-start-column="30" selection-end-line="721" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -37,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="937">
-              <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="376">
+              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -342,7 +343,7 @@
       <workItem from="1527703828883" duration="1198000" />
       <workItem from="1527722342699" duration="1443000" />
       <workItem from="1527738917651" duration="19552000" />
-      <workItem from="1527782048452" duration="7583000" />
+      <workItem from="1527782048452" duration="7813000" />
     </task>
     <task id="LOCAL-00001" summary="Login &amp; Register initial push - Steven">
       <created>1527198129090</created>
@@ -519,11 +520,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527790914194</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="debugging index and route 19">
+      <created>1527791643874</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1527791643874</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64788000" />
+    <option name="totallyTimeSpent" value="65018000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="960" height="1047" extended-state="0" />
@@ -580,7 +588,8 @@
     <MESSAGE value="debugging index and route 16" />
     <MESSAGE value="debugging index and route 17" />
     <MESSAGE value="debugging index and route 18" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 18" />
+    <MESSAGE value="debugging index and route 19" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 19" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -970,21 +979,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
+    <entry file="file://$PROJECT_DIR$/controller/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="937">
-          <caret line="60" column="0" lean-forward="true" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="192">
+          <caret line="721" column="30" lean-forward="true" selection-start-line="721" selection-start-column="30" selection-end-line="721" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/database.js">
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="727" column="12" lean-forward="false" selection-start-line="727" selection-start-column="12" selection-end-line="727" selection-end-column="12" />
-          <folding />
+        <state relative-caret-position="376">
+          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
