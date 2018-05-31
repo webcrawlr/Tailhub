@@ -58,13 +58,13 @@ function ensureAuthenticated(req, res, next){
 
 //router.post("/unfollow", controller.unfollow);
 
-router.post("/newPost", controller.newPost);
+//router.post("/newPost", controller.newPost);
 
 //router.post("/comment", controller.comment);
 
 //router.post("/share", controller.share);
 
-router.post("/getProfile", controller.getProfile);
+//router.post("/getProfile", controller.getProfile);
 
 //router.post("/getPosts", controller.getPosts);
 
