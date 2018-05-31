@@ -29,11 +29,11 @@ router.get('/contentpost', function(req, res, next) {
 
 });
 
-router.post('/login',
+router.post('/login', req,
   passport.authenticate('local', {failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
   function(req, res) {
-   req.flash('success', 'You are now logged in');
-   res.redirect('/');
+      //req.flash('success', 'You are now logged in');
+   //res.redirect('/');
    res.send(req.user.username);
 });
 
