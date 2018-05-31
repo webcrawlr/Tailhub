@@ -111,16 +111,18 @@ router.post("/newPost", function (req, res) {
 
 
     //insert new database entry for the user
-    db.collection('posts').insertOne({
-        username: req.body.username,
-        text: req.body.text,
-        date: (new Date).getTime()
-    });
-
+    try {
+        db.collection('posts').insertOne({
+            username: req.body.username,
+            text: req.body.text,
+            date: (new Date).getTime()
+        });
+    } catch (e){print(e)};
         var name = req.body.username;
 
         //respond
         res.write(name);
+        res.write(e);
         res.end();
 
     });
