@@ -1,4 +1,4 @@
-<?p\\hp
+<?php
 
 session_start();
 
@@ -47,7 +47,7 @@ if(isset($_POST['submitPost'])){
         echo "2\n";
 
         //add the user's data to the http2 post request
-        $request=new HTTP_Request2('https://tailhub.herokuapp.com/users/post', HTTP_Request2::METHOD_POST);
+        $request=new HTTP_Request2('https://tailhub.herokuapp.com/users/contentPost', HTTP_Request2::METHOD_POST);
         echo "3\n";
 
         $request->addPostParameter('username',  "username");
@@ -73,12 +73,12 @@ if(isset($_POST['submitPost'])){
         $response=$request->send(); //SENDING request
         echo "GETTING RESPONSE\n";
         $data = json_decode($response, true);
-        echo $data['response'];
+        echo $data['text'];
         echo "RESPONSE ABOVE\n";
 
 
 
-
+    echo $response->getStatus();
     if(200==$response->getStatus()) {//GETTING RESPONSE
         //if response is successful, print success message
         echo $response->getBody();
