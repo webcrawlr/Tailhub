@@ -32,7 +32,7 @@ if(isset($_POST['submitPost'])){
     $city = $geo["geoplugin_city"];
 
     $text = $_POST['text'];
-    $postId = $username.$postCount;
+    //$postId = $username.$postCount;
     $rePost = FALSE;
     //media here
     $paw5Counter = 1;
