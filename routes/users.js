@@ -72,13 +72,13 @@ router.post("/newPost", function (req, res) {
         if (err) throw err;
 
         //generate current date
-        var date = (new Date()).getTime();
-        var now = date.toUTCString();
+        //var date = (new Date()).getTime();
+        //var now = date.toUTCString();
 
         //create profile object for database submission
         var newPost = {
             username: req.body.username,
-            postId: req.body.postId,
+         /*   postId: req.body.postId,
             rePost: req.body.rePost,
             oPoster: req.body.oPoster,
             text: req.body.text,
@@ -90,7 +90,7 @@ router.post("/newPost", function (req, res) {
             location: req.body.location,
             creationDate: now,
             groomFeedFlag: req.body.groomFeedFlag,
-            shareCount: 0
+            shareCount: 0*/
         };
 
         //insert new database entry for the user
