@@ -110,27 +110,14 @@ router.post("/newPost", function (req, res) {
             });
 */
 
-        var newPost = new Post({
-            username: req.body.username,
-            text: req.body.text,
-            date: (new Date).getTime()
-
-        });
-
 
     //insert new database entry for the user
-    db.collection('posts')
-        .insertOne(
-            newPost,
-            function (err) {
-                if (err) throw err;
-            }
-        );
-
-
-
-
-
+    db.collection('posts').insertOne({
+        username: req.body.username,
+        text: req.body.text,
+        date: (new Date).getTime()
+    });
+        
         var name = req.body.username;
 
         //respond
