@@ -58,7 +58,7 @@ function ensureAuthenticated(req, res, next){
 
 //router.post("/unfollow", controller.unfollow);
 
-router.post("/post", controller.post);
+//router.post("/post", controller.post);
 
 //router.post("/comment", controller.comment);
 

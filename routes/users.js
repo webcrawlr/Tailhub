@@ -63,6 +63,7 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
+router.post("/post", controller.post);
 
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
 
