@@ -103,9 +103,6 @@ router.post("/newPost", function (req, res) {
                     if (err) throw err;
                 }
             );
-*/
-
-
 
     //insert new database entry for the user
         posts.insertOne({
@@ -119,7 +116,7 @@ router.post("/newPost", function (req, res) {
             .close(function (err) {
                 if (err) throw err;
             });
-
+*/
         var name = req.body.username;
 
         //respond
