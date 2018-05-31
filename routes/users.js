@@ -63,7 +63,49 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
-router.post("/post", controller.post);
+router.post("/post", controller.post) //connect MongoDB
+mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    if (err) throw err;
+
+    //generate current date
+    var date = new Date();
+    var now = date.toUTCString();
+
+    //create profile object for database submission
+    var newPost = {
+        username:   req.body.username,
+        postId:     req.body.postId,
+        rePost:     req.body.rePost,
+        oPoster:    req.body.oPoster,
+        text:       req.body.text,
+        media:      req.body.media,
+
+        paw5Counter:    0,
+        paw5List:       {},
+        emailFlag:      false,
+        location:       req.body.location,
+        creationDate:   now,
+        groomFeedFlag:  req.body.groomFeedFlag,
+        shareCount:     0
+    };
+
+    //insert new database entry for the user
+    db
+        .collection('posts')
+        .insertOne(
+            newPost,
+            function(err){if(err)throw err;}
+        );
+
+    //close connection
+    db
+        .close(function(err){if(err)throw err;});
+
+    var response = "this is a response";
+
+    //respond
+    res.write(response);
+});
 
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
 
