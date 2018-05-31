@@ -93,7 +93,7 @@ try {
 
 <body>
     <li>
-        <?php echo $data['name'] ?>
+        <?php// echo $data['name'] ?>
     </li>
 
 </body>

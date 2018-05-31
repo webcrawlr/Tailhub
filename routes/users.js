@@ -115,8 +115,10 @@ router.post('/register', upload.single('profileImg'), function(req, res, next) {
 
     //res.location('/');
     //res.redirect('/');
-
-    res.send(name);
+    res.write(name);
+    res.write(username);
+    res.write(email);
+    res.end();
  // }
 
 });
