@@ -35,7 +35,8 @@
     <label>Password <input name="password" id="password" value="" size = "25" /></label><br>
     <label>Password <input name="password2" id="password2" value="" size = "25" /></label><br>
     <label>Email <input name="email" id="email" value="" size = "25" /></label><br>
-    <label><input type="file" name="profileImg" id="profileImg" /></label>
+
+    <!--<label><input type="file" name="profileImg" id="profileImg" /></label>-->
 
 
     <input type="hidden" name="Desired_Action" value="Order">

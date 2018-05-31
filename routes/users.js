@@ -131,6 +131,7 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
   var text = req.body.text;
   var username = req.body.username;
 
+  /*
     if(req.file){
         console.log('Uploading File...');
         var path = req.file.path;
@@ -155,8 +156,10 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
         res.render('index', {
             errors: errors
         });
+
     } else{
 
+*/
         var newPost = new Post({
             username: username,
             text: text,
@@ -189,7 +192,7 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
         });
 */
 
-    }
+    //}
 
 
 });

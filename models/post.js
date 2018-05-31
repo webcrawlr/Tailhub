@@ -49,7 +49,7 @@ module.exports.createPost = function(newPost, path, callback) {
 
     //newPost.img.data = fs.readFileSync(path);
     //newPost.img.contentType = 'image/png';
-    
+
     newPost.save(callback);
 
     //fs.unlinkSync(path)
