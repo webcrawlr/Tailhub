@@ -137,7 +137,7 @@ router.post('/register', upload.single('profileImg'), function(req, res, next) {
   // Check Errors
   //var errors = req.validationErrors();
 
-
+    /*
     if(req.file){
         console.log('Uploading File...');
         var path = req.file.path;
@@ -148,6 +148,8 @@ router.post('/register', upload.single('profileImg'), function(req, res, next) {
         var fileName = 'noimage.jpg';
         var path = 'n/a';
     };
+
+    */
 
   //if(errors){
   	//res.render('register', {
