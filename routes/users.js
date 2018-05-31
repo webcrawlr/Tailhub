@@ -7,7 +7,7 @@ var multer = require('multer');
 var upload = multer({dest: './uploads'});
 var mongodb;
 mongodb = require('mongodb');
-var mongoDBURI = process.env.MONGODB_URI||'mongodb://steven:1234567890@ds231070.mlab.com:31070/tailhub_db';
+var mongoDBURI = process.env.MONGODB_URI||'mongodb://CSUEB_PETPICS:cs4310_SE@ds231070.mlab.com:31070/tailhub_db';
 
 var User = require('../models/user');
 var Post = require('../models/post');
@@ -77,7 +77,7 @@ router.post("/newPost", function (req, res) {
 
         //create profile object for database submission
         var newPost = {
-            username: req.body.username,
+            username: req.body.username
          /*   postId: req.body.postId,
             rePost: req.body.rePost,
             oPoster: req.body.oPoster,
@@ -109,10 +109,10 @@ router.post("/newPost", function (req, res) {
                 if (err) throw err;
             });
 
-        var response = "this is a response";
+        var name = req.body.username;
 
         //respond
-        res.write(response);
+        res.write(name);
         res.end();
 
     });
