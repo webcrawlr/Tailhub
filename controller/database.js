@@ -715,8 +715,10 @@ module.exports.unfollow=function(req,res) {
 //post
 module.exports.newPost=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
+
+        db = client.db('tailhub_db');
 
         //generate current date
         var date = new Date();
