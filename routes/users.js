@@ -68,8 +68,8 @@ passport.use(new LocalStrategy(function(username, password, done){
 
 router.post("/newPost", function (req, res) {
     //connect MongoDB
-    //mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
-      //  if (err) throw err;
+    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        if (err) throw err;
 
         //generate current date
         //var date = (new Date()).getTime();
@@ -119,8 +119,7 @@ router.post("/newPost", function (req, res) {
 
 
     //insert new database entry for the user
-    db
-        .collection('posts')
+    db.collection('posts')
         .insertOne(
             newPost,
             function (err) {
