@@ -71,10 +71,10 @@ if(isset($_POST['submitPost'])){
         ));
         echo "4\n";
         $response=$request->send(); //SENDING request
-        echo "WHERE IS CHARLES LEE?\n";
+        echo "GETTING RESPONSE\n";
         $data = json_decode($response, true);
         echo $data['response'];
-        echo "CHARLES LEE DETECTED\n";
+        echo "RESPONSE ABOVE\n";
 
 
 
