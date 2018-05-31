@@ -79,4 +79,27 @@ if(isset($_POST['submitPost'])){
              'ssl_verify_peer'   => FALSE,
              'ssl_verify_host'   => FALSE
         ));
+
+try {
+
+    $response = $request->send(); //SENDING request
+
+    if (200 == $response->getStatus()) {//GETTING RESPONSE
+
+        echo $response->getBody();
+
+    } else {
+
+        echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+
+            $response->getReasonPhrase();
+
+    }
+
+} catch (HTTP_Request2_Exception $e) {
+    echo 'Error: ' . $e->getMessage();
+
+}
+
+
 ?>
