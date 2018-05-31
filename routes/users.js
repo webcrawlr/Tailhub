@@ -63,6 +63,7 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
+
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
 
     var name = req.body.name;
@@ -122,6 +123,8 @@ router.post('/register', upload.single('profileImg'), function(req, res, next) {
  // }
 
 });
+
+
 
 router.post('/contentpost', upload.single('media') ,function(req, res, next) {
 

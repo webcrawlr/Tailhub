@@ -28,10 +28,6 @@
 
 <body>
 
-
-
-
-
 <form action = "displayImage.php" method="post" enctype="multipart/form-data">
 
     <label>Name <input name="name" id="name" value="" size = "25" /></label><br>

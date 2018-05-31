@@ -13,8 +13,6 @@ var conn = mongoose.connection;
 
 var PostSchema = mongoose.Schema({
 
-
-
     text: {
         type: String
     },
@@ -41,7 +39,6 @@ var PostSchema = mongoose.Schema({
         paw5Count: Number
     }
 
-
 });
 
 
@@ -50,11 +47,12 @@ var Post = module.exports = mongoose.model('Post', PostSchema);
 //stores
 module.exports.createPost = function(newPost, path, callback) {
 
-    newPost.img.data = fs.readFileSync(path);
-    newPost.img.contentType = 'image/png';
-    newPost.save();
+    //newPost.img.data = fs.readFileSync(path);
+    //newPost.img.contentType = 'image/png';
+    
+    newPost.save(callback);
 
-    fs.unlinkSync(path)
+    //fs.unlinkSync(path)
 
     //GRIDFS Portion to store files larger than 16GB
     /*

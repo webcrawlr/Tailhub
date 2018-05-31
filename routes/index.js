@@ -25,6 +25,7 @@ function ensureAuthenticated(req, res, next){
 	}
 	res.redirect('/users/login');
 }
+
 /*
 
 //post data routed to controller for processing
