@@ -795,19 +795,19 @@ module.exports.getProfile=function(req,res) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
-        var profiles = db.collection('profiles');
-/*
+        var profiles = db.collection('users');
+
         //search the profiles database to the specified profile
         var profile = profiles.find(
                 { username: req.body.username }
             );
-*/
+
         //close connection
         client.close(function (err) {
             if (err) throw err;
         });
 
-        var name = 'FAKEFAKEFAKEFAKEFAKE';
+        var name = profile.username;
         res.write(name);
         res.end();
     })
