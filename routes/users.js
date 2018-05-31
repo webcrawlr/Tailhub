@@ -7,7 +7,7 @@ var multer = require('multer');
 var upload = multer({dest: './uploads'});
 var mongodb;
 mongodb = require('mongodb');
-var mongoDBURI = process.env.MONGODB_URI||'mongodb://CSUEB_PETPICS:cs4310_SE@ds231070.mlab.com:31070/tailhub_db';
+var mongoDBURI = process.env.MONGODB_URI||'mongodb://steven:1234567890@ds231070.mlab.com:31070/tailhub_db';
 
 var User = require('../models/user');
 var Post = require('../models/post');
