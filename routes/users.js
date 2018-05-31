@@ -34,12 +34,17 @@ router.get('/post', function(req, res, next) {
 });
 
 router.post('/login',
-  passport.authenticate('local', {failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
-  function(req, res) {
-   req.flash('success', 'You are now logged in');
-   res.redirect('/');
-   res.send(req.user.username);
-});
+  passport.authenticate('local', {failureRedirect:'http://csweb01.csueastbay.edu/~jb4522/TailHub/login.php'}),
+    function(req, res) {
+   //req.flash('success', 'You are now logged in');
+   //res.redirect('/');
+        var username = req.user.username;
+   res.send(username);
+})
+
+
+
+;
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
