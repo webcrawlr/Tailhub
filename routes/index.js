@@ -64,7 +64,7 @@ function ensureAuthenticated(req, res, next){
 
 //router.post("/share", controller.share);
 
-//router.post("/getProfile", controller.getProfile);
+router.post("/getProfile", controller.getProfile);
 
 //router.post("/getPosts", controller.getPosts);
 
