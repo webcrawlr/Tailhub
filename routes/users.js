@@ -69,15 +69,15 @@ router.post("/newPost", function (req, res) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
-/*        db = client.db('tailhub_db');
-        posts = db.collection('posts');
+        var db = client.db('tailhub_db');
+        var posts = db.collection('posts');
 
         //generate current date
-        //var date = (new Date()).getTime();
-        //var now = date.toUTCString();
+        var date = (new Date()).getTime();
+        var now = date.toUTCString();
 
         //create profile object for database submission
-        /*var newPost = {
+/*        var newPost = {
             username: req.body.username
             postId: req.body.postId,
             rePost: req.body.rePost,
@@ -103,12 +103,7 @@ router.post("/newPost", function (req, res) {
                     if (err) throw err;
                 }
             );
-
-        //close connection
-        db
-            .close(function (err) {
-                if (err) throw err;
-            });
+*/
 
 
 
@@ -118,7 +113,12 @@ router.post("/newPost", function (req, res) {
             text: req.body.text,
             date: (new Date).getTime()
         }, function(err,res){if(err) throw err;});
-*/
+
+        //close connection
+        db
+            .close(function (err) {
+                if (err) throw err;
+            });
 
         var name = req.body.username;
 
