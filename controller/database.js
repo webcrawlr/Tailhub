@@ -765,8 +765,10 @@ module.exports.newPost=function(req,res) {
             if (err) throw err;
         });
 
+        var text = req.body.text;
+
         //respond
-        res.write(req.body.text);
+        res.write(text);
         res.end();
     })
 };
