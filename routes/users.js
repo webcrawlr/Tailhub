@@ -73,7 +73,7 @@ router.post("/newPost", function (req, res) {
         var posts = db.collection('posts');
 
         //generate current date
-        var date = (new Date()).getTime();
+        var date = new Date();
         var now = date.toUTCString();
 
         //create profile object for database submission
