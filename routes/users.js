@@ -66,7 +66,7 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
-router.post("/newPost", function (err, res) {
+router.post("/newPost", function (req, res) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
         if (err) throw err;
