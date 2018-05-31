@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca12ea44-f879-4b11-866b-e3584612b021" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/database.js" afterPath="$PROJECT_DIR$/controller/database.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/users.js" afterPath="$PROJECT_DIR$/routes/users.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,7 +37,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="376">
@@ -50,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="users.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="923">
-              <caret line="120" column="27" lean-forward="true" selection-start-line="120" selection-start-column="27" selection-end-line="120" selection-end-column="27" />
+            <state relative-caret-position="-97">
+              <caret line="69" column="21" lean-forward="true" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -102,11 +101,11 @@
         <option value="$PROJECT_DIR$/PostCreateComponent.php" />
         <option value="$PROJECT_DIR$/views/createPost.php" />
         <option value="$PROJECT_DIR$/views/newPost.jade" />
-        <option value="$PROJECT_DIR$/routes/users.js" />
         <option value="$PROJECT_DIR$/postProcess.php" />
         <option value="$PROJECT_DIR$/search.php" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/controller/database.js" />
+        <option value="$PROJECT_DIR$/routes/users.js" />
       </list>
     </option>
   </component>
@@ -343,7 +342,7 @@
       <workItem from="1527703828883" duration="1198000" />
       <workItem from="1527722342699" duration="1443000" />
       <workItem from="1527738917651" duration="19552000" />
-      <workItem from="1527782048452" duration="7813000" />
+      <workItem from="1527782048452" duration="8010000" />
     </task>
     <task id="LOCAL-00001" summary="Login &amp; Register initial push - Steven">
       <created>1527198129090</created>
@@ -527,11 +526,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527791643874</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="debugging index and route 20">
+      <created>1527791872053</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1527791872053</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65018000" />
+    <option name="totallyTimeSpent" value="65215000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="960" height="1047" extended-state="0" />
@@ -589,7 +595,8 @@
     <MESSAGE value="debugging index and route 17" />
     <MESSAGE value="debugging index and route 18" />
     <MESSAGE value="debugging index and route 19" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 19" />
+    <MESSAGE value="debugging index and route 20" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 20" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -963,14 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="923">
-          <caret line="120" column="27" lean-forward="true" selection-start-line="120" selection-start-column="27" selection-end-line="120" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/search.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -994,6 +993,14 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-97">
+          <caret line="69" column="21" lean-forward="true" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
