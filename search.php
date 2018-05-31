@@ -111,9 +111,9 @@
             </div>
             <!-- Search Results would Go Here, need more info on how that would go -->
             <!-- Rough variable names based off what I think would be returned -->
-            <?php ?foreach($userArr as $i){?>
-            <li><a href="<?php $i.profLink?>"><?php $i.name?></a></li>
-            <?php } ?>
+            <?php// ?foreach($userArr as $i){?>
+            <li><a href="<?php //$i.profLink?>"><?php //$i.name?></a></li>
+            <?php //} ?>
         </div>
         <!-- Bottom Bar -->
         <div id = "nav" class="stickyBottom" style = "padding:3px">
@@ -125,8 +125,12 @@
 <?php
 if(isset($_POST['submitSearch'])){
     $username = $_POST['search'];
+}
+    require_once 'HTTP/Request2.php';
+
+    //Get request URL
     $request=new HTTP_Request2('https://tailhub.herokuapp.com/getProfile', HTTP_Request2::METHOD_POST);
-    $request->addPostParameter('username',  $username);
+    $request->addPostParameter('username',  "markwatney");
 
     //fix the SSL issue
     $request->setConfig(array(
@@ -139,4 +143,5 @@ if(isset($_POST['submitSearch'])){
         //if response is successful, print success message
         echo $response->getBody();
     }
-}
+
+?>
