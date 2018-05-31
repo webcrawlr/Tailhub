@@ -17,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="804">
-              <caret line="749" column="40" lean-forward="false" selection-start-line="749" selection-start-column="40" selection-end-line="749" selection-end-column="40" />
+            <state relative-caret-position="770">
+              <caret line="747" column="0" lean-forward="true" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -39,10 +39,30 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="PostCreateComponent.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PostCreateComponent.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-750">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="displayImage.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/displayImage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="59" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1440">
+            <state relative-caret-position="-1338">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -286,7 +306,7 @@
       <workItem from="1527619066172" duration="12085000" />
       <workItem from="1527703828883" duration="1198000" />
       <workItem from="1527722342699" duration="1443000" />
-      <workItem from="1527738917651" duration="3390000" />
+      <workItem from="1527738917651" duration="3724000" />
     </task>
     <task id="LOCAL-00001" summary="Login &amp; Register initial push - Steven">
       <created>1527198129090</created>
@@ -337,11 +357,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527741700403</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="debugging index">
+      <created>1527742327975</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1527742327975</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41043000" />
+    <option name="totallyTimeSpent" value="41377000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -380,7 +407,8 @@
     <MESSAGE value="First commit.&#10;&#10;Updated index to post the request object to the controller, accessing the proper function.&#10;&#10;Created controller (database.js).&#10;&#10;Wrote createProfile, editProfile, deleteProfile, &amp; sendMessage." />
     <MESSAGE value="Various controller functions added.&#10;&#10;added:&#10;friendRequest, friendAccept, friendDecline, unfriend, post, getProfile, &amp; getPosts" />
     <MESSAGE value="Fixed? index" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed? index" />
+    <MESSAGE value="debugging index" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging index" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -638,14 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/retrieveImage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -664,17 +684,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PostCreateComponent.php">
+    <entry file="file://$PROJECT_DIR$/views/retrieveImage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-714">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/displayImage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -682,7 +694,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1440">
+        <state relative-caret-position="-1338">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -690,8 +702,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
-          <caret line="749" column="40" lean-forward="false" selection-start-line="749" selection-start-column="40" selection-end-line="749" selection-end-column="40" />
+        <state relative-caret-position="770">
+          <caret line="747" column="0" lean-forward="true" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PostCreateComponent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-750">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/displayImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="59" selection-end-column="24" />
           <folding />
         </state>
       </provider>
