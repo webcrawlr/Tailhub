@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var app = express();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var multer = require('multer');
@@ -100,8 +101,10 @@ router.post('/register', function(req, res, next) {
 
     //req.flash('success', 'You are now registered and can login');
 
-    res.location('/');
-    res.redirect('/');
+    //res.location('/');
+    //res.redirect('/');
+
+    res.send(name);
  // }
 
 });

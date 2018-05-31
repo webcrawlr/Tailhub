@@ -25,8 +25,6 @@ if($_POST['Desired_Action'] == "Order")
 
 require_once 'HTTP/Request2.php';
 
-validCheck();
-
 $request = new HTTP_Request2('https://tailhub.herokuapp.com/users/register');
 $request->setMethod(HTTP_Request2::METHOD_POST)
 
@@ -39,6 +37,9 @@ $request->setMethod(HTTP_Request2::METHOD_POST)
     ->addPostParameter('password2', $_SESSION['password2'])
 
 ;
+
+
+//'https://tailhub.herokuapp.com/users/register'
 
 // ######### To Fix the SSL issue ###########
 
@@ -76,7 +77,7 @@ try {
 
 
 ?>
-
+<!--
 
 <!doctype html>
 <html>
@@ -90,8 +91,9 @@ try {
 
 <body>
     <li>
-        <?php echo"Hello World!"?>
+        <?php echo $data ?>
     </li>
 
 </body>
 </html>
+-->
