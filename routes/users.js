@@ -67,8 +67,10 @@ passport.use(new LocalStrategy(function(username, password, done){
 
 router.post("/newPost", function (req, res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
+        db = client.db('tailhub_db');
+        posts = db.collection('posts');
 
         //generate current date
         //var date = (new Date()).getTime();
@@ -111,18 +113,16 @@ router.post("/newPost", function (req, res) {
 
 
     //insert new database entry for the user
-    try {
-        db.collection('posts').insertOne({
+        posts.insertOne({
             username: req.body.username,
             text: req.body.text,
             date: (new Date).getTime()
-        });
-    } catch (e){print(e)};
+        }, function(err,res){if err throw err;};
+
         var name = req.body.username;
 
         //respond
         res.write(name);
-        res.write(e);
         res.end();
 
     });
