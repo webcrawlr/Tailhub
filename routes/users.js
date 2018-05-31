@@ -121,13 +121,12 @@ router.post("/newPost", function (req, res) {
             groomFeedFlag: req.body.groomFeedFlag,
             shareCount: 0
         }, function(err,res){if(err) throw err;});
-/*
+
         //close connection
-        db
-            .close(function (err) {
-                if (err) throw err;
-            });
-*/
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
         var name = req.body.username;
 
         //respond
