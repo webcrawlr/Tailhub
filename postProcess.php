@@ -41,44 +41,39 @@ if(isset($_POST['submitPost'])){
     $location = array($city, $region, $country);
     $groomFeedFlag = FALSE; //For now
 }
-        echo "$text\n";
-        echo "1\n";
         require_once 'HTTP/Request2.php';
-        echo "2\n";
 
         //add the user's data to the http2 post request
-        $request=new HTTP_Request2('https://tailhub.herokuapp.com/users/contentPost', HTTP_Request2::METHOD_POST);
-        echo "3\n";
+        $request=new HTTP_Request2('https://tailhub.herokuapp.com/users/post', HTTP_Request2::METHOD_POST);
 
-        $request->addPostParameter('username',  "obiWanKenobi");
+        $request->addPostParameter('username',  "obiWanKenobi");  //Add username post-creation
 
         //Post info
-        //$request->addPostParameter('postId',  $postId);
-        //$request->addPostParameter('rePost',  $rePost);
+        $request->addPostParameter('postId',  $postId);
+        $request->addPostParameter('rePost',  $rePost);
         $request->addPostParameter('text', $text);
-
+        $request->addPostParameter('oPoster', "Agamotto");
+        $request->addPostParameter('media', "Madea");
         //$request->addPostParameter('paw5Counter',  $paw5Counter);
         //$request->addPostParameter('paw5List',  $paw5List);
-        //$request->addPostParameter('location',   $location);
+        $request->addPostParameter('location',   $location);
         //$request->addPostParameter('creationDate',   $creationDate);
-        //$request->addPostParameter('groomFeedFlag',   $groomFeedFlag);
+        $request->addPostParameter('groomFeedFlag',   $groomFeedFlag);
         //$request->addPostParameter('shareCount',   $shareCount);
+
         //fix the SSL issue
-        
         $request->setConfig(array(
              'ssl_verify_peer'   => FALSE,
              'ssl_verify_host'   => FALSE
         ));
-        echo "4\n";
+
         $response=$request->send(); //SENDING request
-        echo "GETTING RESPONSE\n";
+        echo "You posted the following message: \n";
         $data = json_decode($response, true);
-        echo $data['text'];
-        echo "RESPONSE ABOVE\n";
-
-
-
+        echo $data['text'] . "\n";
+    echo "(Status: ";
     echo $response->getStatus();
+    echo ")\n";
     if(200==$response->getStatus()) {//GETTING RESPONSE
         //if response is successful, print success message
         echo $response->getBody();
