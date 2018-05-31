@@ -748,9 +748,9 @@ module.exports.newPost=function(req,res) {
         });
 
         var text = req.body.text;
-        var name = req.body.name;
+        var name = req.body.username;
         //respond
-        res.write(name);
+        res.write(name + "<br><br>" + text);
         res.end();
     })
 };
