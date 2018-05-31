@@ -49,13 +49,13 @@ if(isset($_POST['submitPost'])){
         //add the user's data to the http2 post request
         $request=new HTTP_Request2('https://httpstailhub.herokuapp.com/post', HTTP_Request2::METHOD_POST);
         echo "3\n";
-/*
+
         $request->addPostParameter('username',  "username");
 
         //Post info
         //$request->addPostParameter('postId',  $postId);
         //$request->addPostParameter('rePost',  $rePost);
-        $request->addPostParameter('text',  $text);
+        $request->addPostParameter('text',  "hello there");
 
         //$request->addPostParameter('paw5Counter',  $paw5Counter);
         //$request->addPostParameter('paw5List',  $paw5List);
@@ -63,8 +63,8 @@ if(isset($_POST['submitPost'])){
         //$request->addPostParameter('creationDate',   $creationDate);
         //$request->addPostParameter('groomFeedFlag',   $groomFeedFlag);
         //$request->addPostParameter('shareCount',   $shareCount);
-*/
         //fix the SSL issue
+
         $request->setConfig(array(
              'ssl_verify_peer'   => FALSE,
              'ssl_verify_host'   => FALSE
