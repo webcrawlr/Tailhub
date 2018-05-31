@@ -71,8 +71,8 @@ passport.use(new LocalStrategy(function(username, password, done){
 
 router.post("/post", function (req, res, next) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
-        if (err) throw err;
+    //mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        //if (err) throw err;
 
         var name = req.body.name;
 
@@ -120,7 +120,7 @@ router.post("/post", function (req, res, next) {
         res.write(name);
         res.end();
 
-    });
+//    });
 });
 
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
