@@ -26,83 +26,56 @@ function ensureAuthenticated(req, res, next){
 	res.redirect('/users/login');
 }
 
-/*
 
 //post data routed to controller for processing
-if(req.url==="/createProfile") {
-    router.post("/createProfile", controller.createProfile);
-}
-else if(req.url==="/editProfile") {
-    router.post("/editProfile", controller.editProfile);
-}
-else if(req.url==="/deleteProfile") {
-    router.post("/deleteProfile", controller.deleteProfile);
-}
-else if(req.url==="/sendMessage") {
-    router.post("/sendMessage", controller.sendMessage);
-}
-else if(req.url==="/readMessage") {
-    router.post("/readMessage", controller.readMessage);
-}
-else if(req.url==="/deleteMessage") {
-    router.post("/deleteMessage", controller.deleteMessage);
-}
-else if(req.url==="/friendRequest") {
-    router.post("/friendRequest", controller.friendRequest);
-}
-else if(req.url==="/friendAccept") {
-    router.post("/friendAccept", controller.friendAccept);
-}
-else if(req.url==="/friendDecline") {
-    router.post("/friendDecline", controller.friendDecline);
-}
-else if(req.url==="/unfriend") {
-    router.post("/unfriend", controller.unFriend);
-}
-else if(req.url==="/block") {
-    router.post("/block", controller.block);
-}
-else if(req.url==="/unblock") {
-    router.post("/unblock", controller.unblock);
-}
-else if(req.url==="/paw5") {
-    router.post("/paw5", controller.paw5);
-}
-else if(req.url==="/follow") {
-    router.post("/follow", controller.follow);
-}
-else if(req.url==="/unfollow") {
-    router.post("/unfollow", controller.unfollow);
-}
-else if(req.url==="/post") {
-    router.post("/post", controller.post);
-}
-else if(req.url==="/comment") {
-    router.post("/comment", controller.comment);
-}
-else if(req.url==="/share") {
-    router.post("/share", controller.share);
-}
-else if(req.url==="/getProfile") {
-    router.post("/getProfile", controller.getProfile);
-}
-else if(req.url==="/getPosts") {
-    router.post("/getPosts", controller.getProfile);
-}
-else if(req.url==="/getFriends") {
-    router.post("/get", controller.getProfile);
-}
-else if(req.url==="/getFollowers") {
-    router.post("/getFollowers", controller.getProfile);
-}
-else if(req.url==="/getFollowing") {
-    router.post("/getFollowing", controller.getProfile);
-}
-else if(req.url==="/getMessages") {
-    router.post("/getMessages", controller.getProfile);
-}
-else if(req.url==="/getComments") {
-    router.post("/getComments", controller.getProfile);
-}
-*/
+router.post("/createProfile", controller.createProfile);
+
+router.post("/editProfile", controller.editProfile);
+
+router.post("/deleteProfile", controller.deleteProfile);
+
+router.post("/sendMessage", controller.sendMessage);
+
+//router.post("/readMessage", controller.readMessage);
+
+//router.post("/deleteMessage", controller.deleteMessage);
+
+router.post("/friendRequest", controller.friendRequest);
+
+router.post("/friendAccept", controller.friendAccept);
+
+router.post("/friendDecline", controller.friendDecline);
+
+//router.post("/unfriend", controller.unFriend);
+
+//router.post("/block", controller.block);
+
+//router.post("/unblock", controller.unblock);
+
+//router.post("/paw5", controller.paw5);
+
+//router.post("/follow", controller.follow);
+
+//router.post("/unfollow", controller.unfollow);
+
+router.post("/post", controller.post);
+
+//router.post("/comment", controller.comment);
+
+//router.post("/share", controller.share);
+
+router.post("/getProfile", controller.getProfile);
+
+router.post("/getPosts", controller.getPosts);
+
+//router.post("/getFriends", controller.getFriends);
+
+//router.post("/getFollowers", controller.getFollowers);
+
+//router.post("/getFollowing", controller.getFollowing);
+
+//router.post("/getMessages", controller.getMessages);
+
+//router.post("/getComments", controller.getComments);
+
 module.exports = router;
