@@ -69,10 +69,13 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
-router.post("/post", function (err, res, next) {
+router.post("/post", function (req, res, next) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
         if (err) throw err;
+
+        var name = req.body.name;
+
 /*
         //generate current date
         var date = new Date();
@@ -112,10 +115,9 @@ router.post("/post", function (err, res, next) {
                 if (err) throw err;
             });
 */
-        var response = "this is a response";
 
         //respond
-        res.write(response);
+        res.write(name);
         res.end();
 
     });
