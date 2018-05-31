@@ -803,7 +803,7 @@ module.exports.getProfile=function(req,res) {
             { username: req.body.username }
         ).toArray(function (err, results) {
                 if(err)throw err;
-                res.write(results);
+                res.send(results);
         });
 
         //close connection
