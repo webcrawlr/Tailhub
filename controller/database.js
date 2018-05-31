@@ -791,16 +791,22 @@ module.exports.share=function(req,res) {
 //getProfile
 module.exports.getProfile=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
+        var db = client.db('tailhub_db');
+        var profiles = db.collection('profiles');
+
         //search the profiles database to the specified profile
-        var ret = db
-            .collection('profiles')
-            .find(
+        var profile = profiles.find(
                 { username: req.body.username }
             );
-        var name ="GG";
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
         res.write(name);
         res.end();
     })

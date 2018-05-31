@@ -4,6 +4,7 @@
     <list default="true" id="ca12ea44-f879-4b11-866b-e3584612b021" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/database.js" afterPath="$PROJECT_DIR$/controller/database.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/index.js" afterPath="$PROJECT_DIR$/routes/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,24 +18,54 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="633">
-              <caret line="748" column="0" lean-forward="true" selection-start-line="748" selection-start-column="0" selection-end-line="748" selection-end-column="0" />
+            <state relative-caret-position="1653">
+              <caret line="808" column="0" lean-forward="true" selection-start-line="808" selection-start-column="0" selection-end-line="808" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1039">
-              <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+            <state relative-caret-position="816">
+              <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/users.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1726">
+              <caret line="70" column="55" lean-forward="false" selection-start-line="70" selection-start-column="55" selection-end-line="70" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/index.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="retrieveImage.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/retrieveImage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -63,9 +94,9 @@
         <option value="$PROJECT_DIR$/views/newPost.jade" />
         <option value="$PROJECT_DIR$/postProcess.php" />
         <option value="$PROJECT_DIR$/search.php" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/routes/users.js" />
         <option value="$PROJECT_DIR$/controller/database.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
       </list>
     </option>
   </component>
@@ -302,14 +333,7 @@
       <workItem from="1527703828883" duration="1198000" />
       <workItem from="1527722342699" duration="1443000" />
       <workItem from="1527738917651" duration="19552000" />
-      <workItem from="1527782048452" duration="19220000" />
-    </task>
-    <task id="LOCAL-00022" summary="debugging index and route 15">
-      <created>1527756061075</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1527756061075</updated>
+      <workItem from="1527782048452" duration="20308000" />
     </task>
     <task id="LOCAL-00023" summary="debugging index and route 16">
       <created>1527785963657</created>
@@ -647,11 +671,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527803225956</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="debugging index and route 63">
+      <created>1527803293369</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1527803293369</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76425000" />
+    <option name="totallyTimeSpent" value="77513000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -686,7 +717,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debugging index and route 38" />
     <MESSAGE value="debugging index and route 39" />
     <MESSAGE value="debugging index and route 40" />
     <MESSAGE value="debugging index and route 41" />
@@ -711,21 +741,14 @@
     <MESSAGE value="debugging index and route 60" />
     <MESSAGE value="debugging index and route 61" />
     <MESSAGE value="debugging index and route 62" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 62" />
+    <MESSAGE value="debugging index and route 63" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 63" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/newPost.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -922,13 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/petPicsTemplatePage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -985,13 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/retrieveImage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/upload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1010,14 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="73" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="11" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/displayImage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1094,29 +1095,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/retrieveImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
+        <state relative-caret-position="-1726">
           <caret line="70" column="55" lean-forward="false" selection-start-line="70" selection-start-column="55" selection-end-line="70" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/displayImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/image.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1653">
+          <caret line="808" column="0" lean-forward="true" selection-start-line="808" selection-start-column="0" selection-end-line="808" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1039">
-          <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+        <state relative-caret-position="816">
+          <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="748" column="0" lean-forward="true" selection-start-line="748" selection-start-column="0" selection-end-line="748" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
