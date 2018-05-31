@@ -30,7 +30,7 @@ router.get('/contentpost', function(req, res, next) {
 });
 
 router.get('/post', function(req, res, next) {
-    res.render('createPost', {title:'Create Post'});
+    res.render('newPost', {title:'Create Post'});
 });
 
 router.post('/login',
