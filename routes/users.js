@@ -237,6 +237,9 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
 
     //}
 
+    res.write(text);
+    res.end();
+
 
 });
 

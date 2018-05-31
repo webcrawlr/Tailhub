@@ -39,7 +39,7 @@
     <!--<label><input type="file" name="profileImg" id="profileImg" /></label>-->
 
 
-    <input type="hidden" name="Desired_Action" value="Order">
+    <input type="hidden" name="Desired_Action" value="data">
     <input type="submit" name="order" id="order" value="SEND"/>
 </form>
 
