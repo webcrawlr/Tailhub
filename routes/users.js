@@ -117,7 +117,7 @@ router.post("/newPost", function (req, res) {
             username: req.body.username,
             text: req.body.text,
             date: (new Date).getTime()
-        }, function(err,res){if err throw err;};
+        }, function(err,res){if(err) throw err;});
 
         var name = req.body.username;
 
