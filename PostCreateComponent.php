@@ -57,14 +57,11 @@ if(isset($_POST['submitPost'])){
     $location = array($city, $region, $country);
     $groomFeedFlag = FALSE; //For now
 }
-?>
-<!-- Sending off the data, code adapted from Bryce Baker's by Raymond Muller --> 
-<?php
         require_once 'HTTP/Request2.php';
 
         //add the user's data to the http2 post request
         $request=new HTTP_Request2('tailhub.herokuapp.com/index/post', HTTP_Request2::METHOD_POST);
-        //$request->addPostParameter('username',  "username");
+        $request->addPostParameter('username',  "username");
 
         //Post info
         //$request->addPostParameter('postId',  $postId);
