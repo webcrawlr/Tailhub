@@ -77,7 +77,7 @@ router.post("/newPost", function (req, res) {
         var now = date.toUTCString();
 
         //create profile object for database submission
-/*        var newPost = {
+        var newPost = {
             username: req.body.username
             postId: req.body.postId,
             rePost: req.body.rePost,
@@ -93,7 +93,7 @@ router.post("/newPost", function (req, res) {
             groomFeedFlag: req.body.groomFeedFlag,
             shareCount: 0
         };
-
+/*
         //insert new database entry for the user
           db
             .collection('posts')
