@@ -63,7 +63,7 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
-router.post('/register', function(req, res, next) {
+router.post('/register', upload.single('profileImg'), function(req, res, next) {
 
     var name = req.body.name;
     var email = req.body.email;
@@ -82,6 +82,18 @@ router.post('/register', function(req, res, next) {
   // Check Errors
   //var errors = req.validationErrors();
 
+
+    if(req.file){
+        console.log('Uploading File...');
+        var path = req.file.path;
+        var fileName = req.file.filename;
+
+    } else {
+        console.log('No File Uploaded...');
+        var fileName = 'noimage.jpg';
+        var path = 'n/a';
+    };
+
   //if(errors){
   	//res.render('register', {
   		//errors: errors
@@ -94,7 +106,7 @@ router.post('/register', function(req, res, next) {
       password: password
     });
 
-    User.createUser(newUser, function(err, user){
+    User.createUser(newUser, path, function(err, user){
       if(err) throw err;
       console.log(user);
     });

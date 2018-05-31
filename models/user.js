@@ -5,6 +5,10 @@ mongoose.connect('mongodb://steven:1234567890@ds231070.mlab.com:31070/tailhub_db
 
 var db = mongoose.connection;
 
+var path = require('path');
+
+var fs = require('fs');
+
 
 // User Schema
 var UserSchema = mongoose.Schema({
@@ -31,6 +35,10 @@ var UserSchema = mongoose.Schema({
     email: {
         type: String
     },
+	profileImg: {
+        data: Buffer,
+        contentType: String
+    },
 
 
 	paw5Counter: {
@@ -43,7 +51,7 @@ var UserSchema = mongoose.Schema({
         type: Boolean
     },
     creationDate: {
-        type: Number
+        type: String
     },
     postCount: {
         type: Number
@@ -81,10 +89,18 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 };
 
 //stores data to mongoDB and also encrypts password
-module.exports.createUser = function(newUser, callback){
+module.exports.createUser = function(newUser, path, callback){
 	bcrypt.genSalt(10, function(err, salt) {
     	bcrypt.hash(newUser.password, salt, function(err, hash) {
    			newUser.password = hash;
+
+            newUser.img.data = fs.readFileSync(path);
+            newUser.img.contentType = 'image/png';
+            newUser.save();
+
+            fs.unlinkSync(path);
+
+
    			newUser.save(callback);
     	});
 	});

@@ -55,11 +55,12 @@ try {
 
     $response = $request->send(); //SENDING request
     $data = json_decode($response, true);
-    //echo $data;
+    echo $data['name'];
+
 
     if (200 == $response->getStatus()) {//GETTING RESPONSE
 
-        //echo $response->getBody();
+        echo $response->getBody();
 
     } else {
 
@@ -77,8 +78,9 @@ try {
 
 
 ?>
-<!--
 
+
+<!--
 <!doctype html>
 <html>
 <head>
@@ -91,7 +93,7 @@ try {
 
 <body>
     <li>
-        <?php echo $data ?>
+        <?php echo $data['name'] ?>
     </li>
 
 </body>

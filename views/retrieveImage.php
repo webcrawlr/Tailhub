@@ -32,13 +32,14 @@
 
 
 
-<form action = "displayImage.php" method="post">
+<form action = "displayImage.php" method="post" enctype="multipart/form-data">
 
     <label>Name <input name="name" id="name" value="" size = "25" /></label><br>
     <label>username <input name="username" id="username" value="" size = "25" /></label><br>
     <label>Password <input name="password" id="password" value="" size = "25" /></label><br>
     <label>Password <input name="password2" id="password2" value="" size = "25" /></label><br>
     <label>Email <input name="email" id="email" value="" size = "25" /></label><br>
+    <label><input type="file" name="profileImg" id="profileImg" /></label>
 
 
     <input type="hidden" name="Desired_Action" value="Order">
