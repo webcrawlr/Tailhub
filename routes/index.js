@@ -28,7 +28,7 @@ function ensureAuthenticated(req, res, next){
 
 
 //post data routed to controller for processing
-router.post("/createProfile", controller.createProfile);
+//router.post("/createProfile", controller.createProfile);
 
 //router.post("/editProfile", controller.editProfile);
 
