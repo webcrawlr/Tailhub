@@ -796,18 +796,22 @@ module.exports.getProfile=function(req,res) {
 
         var db = client.db('tailhub_db');
         var profiles = db.collection('users');
+        var profile;
 
         //search the profiles database to the specified profile
-        var profile = profiles.find(
-                { username: req.body.username }
-            );
+        profiles.find(
+            { username: req.body.username }
+        ).toArray(function (err, result){
+            if(err)throw err;
+            profile = result;
+        });
 
         //close connection
         client.close(function (err) {
             if (err) throw err;
         });
 
-        var name = profile.username;
+        var name = profile;
         res.write(name);
         res.end();
     })
