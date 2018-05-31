@@ -27,7 +27,10 @@ router.get('/login', function(req, res, next) {
 
 router.get('/contentpost', function(req, res, next) {
     res.render('contentpost', {title:'ContentPost'});
+});
 
+router.get('/post', function(req, res, next) {
+    res.render('createPost', {title:'Create Post'});
 });
 
 router.post('/login',
@@ -66,7 +69,7 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
-router.post("/post", function (err, res) {
+router.post("/post", function (err, res, next) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
         if (err) throw err;
