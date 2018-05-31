@@ -5,7 +5,7 @@
 <?php 
     session_start();
 ?>
-<form action="" method="post">
+<form action="<?php echo $_SERVER['PHP_Self']; ?>" method="post">
     <textarea name="text" rows="8" cols="80"></textarea>
     <br />
     <input type="submit" name="submitPost" value="Post">
@@ -60,46 +60,30 @@ if(isset($_POST['submitPost'])){
 <!-- Sending off the data, code adapted from Bryce Baker's by Raymond Muller --> 
 <?php
         //add the user's data to the http2 post request
-        $request=new HTTP_Request2('https://tailhub.herokuapp.com/post', HTTP_Request2::METHOD_POST);
-        $request->addPostParameter('username',  $username);
+        $request=new HTTP_Request2('tailhub.herokuapp.com/users/contentpost', HTTP_Request2::METHOD_POST);
+        $request->addPostParameter('username',  "username");
 
         //Post info
-        $request->addPostParameter('postId',  $postId);
-        $request->addPostParameter('rePost',  $rePost);
+        //$request->addPostParameter('postId',  $postId);
+        //$request->addPostParameter('rePost',  $rePost);
         $request->addPostParameter('text',  $text);
-        $request->addPostParameter('paw5Counter',  $paw5Counter);
-        $request->addPostParameter('paw5List',  $paw5List);
-        $request->addPostParameter('location',   $location);
-        $request->addPostParameter('creationDate',   $creationDate);
-        $request->addPostParameter('groomFeedFlag',   $groomFeedFlag);
-        $request->addPostParameter('shareCount',   $shareCount);
+        //$request->addPostParameter('paw5Counter',  $paw5Counter);
+        //$request->addPostParameter('paw5List',  $paw5List);
+        //$request->addPostParameter('location',   $location);
+        //$request->addPostParameter('creationDate',   $creationDate);
+        //$request->addPostParameter('groomFeedFlag',   $groomFeedFlag);
+        //$request->addPostParameter('shareCount',   $shareCount);
 
         //fix the SSL issue
         $request->setConfig(array(
              'ssl_verify_peer'   => FALSE,
              'ssl_verify_host'   => FALSE
         ));
+        $response=$request->send(); //SENDING request
 
-try {
-
-    $response = $request->send(); //SENDING request
-
-    if (200 == $response->getStatus()) {//GETTING RESPONSE
-
+    if(200==$response->getStatus()) {//GETTING RESPONSE
+        //if response is successful, print success message
         echo $response->getBody();
-
-    } else {
-
-        echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
-
-            $response->getReasonPhrase();
-
     }
-
-} catch (HTTP_Request2_Exception $e) {
-    echo 'Error: ' . $e->getMessage();
-
-}
-
 
 ?>
