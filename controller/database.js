@@ -752,7 +752,7 @@ module.exports.newPost=function(req,res) {
         db
             .close(function(err){if(err)throw err;});
 
-        var response = "this is a response";
+        var response = "this is a response.";
 
         //respond
         res.write(response);
