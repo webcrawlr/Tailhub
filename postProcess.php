@@ -41,10 +41,12 @@ if(isset($_POST['submitPost'])){
     $location = array($city, $region, $country);
     $groomFeedFlag = FALSE; //For now
 }
+        echo "$text";
         require_once 'HTTP/Request2.php';
 
         //add the user's data to the http2 post request
         $request=new HTTP_Request2('tailhub.herokuapp.com/index/post', HTTP_Request2::METHOD_POST);
+/*
         $request->addPostParameter('username',  "username");
 
         //Post info
@@ -58,15 +60,17 @@ if(isset($_POST['submitPost'])){
         //$request->addPostParameter('creationDate',   $creationDate);
         //$request->addPostParameter('groomFeedFlag',   $groomFeedFlag);
         //$request->addPostParameter('shareCount',   $shareCount);
-
+*/
         //fix the SSL issue
         $request->setConfig(array(
              'ssl_verify_peer'   => FALSE,
              'ssl_verify_host'   => FALSE
         ));
         $response=$request->send(); //SENDING request
+        echo "WHERE IS CHARLES LEE?";
         $data = json_decode($response, true);
-        echo $data ['response'];
+        echo $data['response'];
+        echo "CHARLES LEE DETECTED";
 
 
 
@@ -75,5 +79,6 @@ if(isset($_POST['submitPost'])){
         //if response is successful, print success message
         echo $response->getBody();
     }
+    
 
 ?>
