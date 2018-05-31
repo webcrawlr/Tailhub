@@ -16,6 +16,9 @@ session_start();
 if($_POST['Desired_Action'] == "Order")
     $_SESSION['username'] = $_POST['username'];
     $_SESSION['password'] = $_POST['password'];
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['password2'] = $_POST['password2'];
+    $_SESSION['name'] = $_POST['name'];
 
     //echo $_SESSION['username'];
 
@@ -24,13 +27,17 @@ require_once 'HTTP/Request2.php';
 
 validCheck();
 
-$request = new HTTP_Request2('https://tailhub.herokuapp.com/users/login');
+$request = new HTTP_Request2('https://tailhub.herokuapp.com/users/register');
 $request->setMethod(HTTP_Request2::METHOD_POST)
 
     // Sending all post Variables to node js
     //->addPostParameter('postText', 'test1')
+    ->addPostParameter('name', $_SESSION['name'])
+    ->addPostParameter('email', $_SESSION['email'])
     ->addPostParameter('username', $_SESSION['username'])
     ->addPostParameter('password', $_SESSION['password'])
+    ->addPostParameter('password2', $_SESSION['password2'])
+
 ;
 
 // ######### To Fix the SSL issue ###########

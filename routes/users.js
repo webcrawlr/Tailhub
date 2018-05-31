@@ -27,7 +27,7 @@ router.get('/contentpost', function(req, res, next) {
 });
 
 router.post('/login',
-  passport.authenticate('local',{failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
+  passport.authenticate('local', {failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
   function(req, res) {
    req.flash('success', 'You are now logged in');
    res.redirect('/');
@@ -71,21 +71,21 @@ router.post('/register', function(req, res, next) {
     var password2 = req.body.password2;
 
   // Form Validator
-  req.checkBody('name','Name field is required').notEmpty();
-  req.checkBody('email','Email field is required').notEmpty();
-  req.checkBody('email','Email is not valid').isEmail();
-  req.checkBody('username','Username field is required').notEmpty();
-  req.checkBody('password','Password field is required').notEmpty();
-  req.checkBody('password2','Passwords do not match').equals(req.body.password);
+  //req.checkBody('name','Name field is required').notEmpty();
+  //req.checkBody('email','Email field is required').notEmpty();
+  //req.checkBody('email','Email is not valid').isEmail();
+  //req.checkBody('username','Username field is required').notEmpty();
+  //req.checkBody('password','Password field is required').notEmpty();
+  //req.checkBody('password2','Passwords do not match').equals(req.body.password);
 
   // Check Errors
-  var errors = req.validationErrors();
+  //var errors = req.validationErrors();
 
-  if(errors){
-  	res.render('register', {
-  		errors: errors
-  	});
-  } else{
+  //if(errors){
+  	//res.render('register', {
+  		//errors: errors
+  	//});
+  //} else{
   	var newUser = new User({
       name: name,
       email: email,
@@ -98,11 +98,12 @@ router.post('/register', function(req, res, next) {
       console.log(user);
     });
 
-    req.flash('success', 'You are now registered and can login');
+    //req.flash('success', 'You are now registered and can login');
 
     res.location('/');
     res.redirect('/');
-  }
+ // }
+
 });
 
 router.post('/contentpost', upload.single('media') ,function(req, res, next) {
