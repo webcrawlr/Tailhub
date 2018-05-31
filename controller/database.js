@@ -805,8 +805,10 @@ module.exports.getProfile=function(req,res) {
             .find(
                 { username: req.body.username }
             );
-
-        res.render(ret);
+        var name ="GG";
+        res.write(name);
+        res.body("GGs");
+        res.end();
     })
 };
 
