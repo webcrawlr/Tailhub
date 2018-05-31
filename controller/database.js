@@ -750,8 +750,7 @@ module.exports.newPost=function(req,res) {
         var text = req.body.text;
         var name = re1.body.name;
         //respond
-        res.write(text);
-        res.write(name);
+        res.write(name + "<br><br>" + text);
         res.end();
     })
 };
@@ -803,7 +802,6 @@ module.exports.getProfile=function(req,res) {
             );
         var name ="GG";
         res.write(name);
-        res.body("GGs");
         res.end();
     })
 };
