@@ -103,14 +103,14 @@ router.post("/newPost", function (req, res) {
                     if (err) throw err;
                 }
             );
-
+*/
     //insert new database entry for the user
         posts.insertOne({
             username: req.body.username,
             text: req.body.text,
             date: (new Date).getTime()
         }, function(err,res){if(err) throw err;});
-
+/*
         //close connection
         db
             .close(function (err) {
