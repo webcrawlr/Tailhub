@@ -118,10 +118,15 @@ router.post("/newPost", function (req, res) {
         });
 
 
-        Post.createPost(newPost, function(err, post){
-            if(err) throw err;
-            console.log(post);
-        });
+    //insert new database entry for the user
+    db
+        .collection('posts')
+        .insertOne(
+            newPost,
+            function (err) {
+                if (err) throw err;
+            }
+        );
 
 
 
