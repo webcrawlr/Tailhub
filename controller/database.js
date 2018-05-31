@@ -108,6 +108,12 @@ module.exports.createProfile = function(req,res){
         console.log(user);
     });
 
+    var response = "this is a response";
+
+    //respond
+    res.write(response);
+    res.end();
+
 };
 
 
@@ -750,6 +756,7 @@ module.exports.post=function(req,res) {
 
         //respond
         res.write(response);
+        res.end();
     })
 };
 

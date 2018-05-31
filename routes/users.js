@@ -105,6 +105,7 @@ mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
 
     //respond
     res.write(response);
+    res.end();
 });
 
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
