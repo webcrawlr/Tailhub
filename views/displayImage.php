@@ -47,7 +47,7 @@ try {
 
     $response = $request->send(); //SENDING request
     $data = json_decode($response, true);
-    echo $data;
+    //echo $data;
 
     if (200 == $response->getStatus()) {//GETTING RESPONSE
 
@@ -65,12 +65,26 @@ try {
     echo 'Error: ' . $e->getMessage();
 
 }
-
-
-
-
-
 //echo $data['something'];
 
 
 ?>
+
+
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://csweb01.csueastbay.edu/~jb4522/Project1/ProductStyles.css">
+    <meta charset="UTF-8">
+
+
+    <title>Test</title>
+</head>
+
+<body>
+    <li>
+        <?php echo"Hello World!"?>
+    </li>
+
+</body>
+</html>

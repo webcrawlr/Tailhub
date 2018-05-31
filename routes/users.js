@@ -30,7 +30,7 @@ router.post('/login',
   passport.authenticate('local',{failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
   function(req, res) {
    req.flash('success', 'You are now logged in');
-   //res.redirect('/');
+   res.redirect('/');
    res.send(req.user.username);
 });
 
@@ -121,7 +121,7 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
         var path = 'n/a';
     };
 
-    console.log(req.file);
+    //console.log(req.file);
 
     // Form Validator
     req.checkBody('postText','text for post is required').notEmpty();
