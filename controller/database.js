@@ -34,7 +34,6 @@ module.exports.createProfile = function(req,res){
      //                  createProfile has been seized by Steven Phan
      //
      //*******************************************************************************************************/
-    /*
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function(err,db){
         if(err)throw err;
@@ -74,9 +73,9 @@ module.exports.createProfile = function(req,res){
         //close connection
         db
             .close(function(err){if(err)throw err;});
-    })
-    */
+    });
 
+/*
     var date = new Date();
     var now = date.toUTCString();
 
@@ -107,7 +106,7 @@ module.exports.createProfile = function(req,res){
         if(err) throw err;
         console.log(user);
     });
-
+*/
     var response = "this is a response";
 
     //respond
