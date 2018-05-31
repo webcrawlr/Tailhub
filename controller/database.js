@@ -717,7 +717,7 @@ module.exports.newPost=function(req,res) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
-
+/*
         db = client.db('tailhub_db');
 
         //generate current date
@@ -749,7 +749,7 @@ module.exports.newPost=function(req,res) {
                 newPost,
                 function(err){if(err)throw err;}
             );
-
+*/
         //close connection
         db
             .close(function(err){if(err)throw err;});
