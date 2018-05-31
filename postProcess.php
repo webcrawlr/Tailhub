@@ -72,8 +72,8 @@ if(isset($_POST['submitPost'])){
         echo "4\n";
         $response=$request->send(); //SENDING request
         echo "GETTING RESPONSE\n";
-        $data = json_decode($response, true);
-        echo $data['text'];
+        $data = json_decode($response->getBody());
+        echo $data['text'] . "\n";
         echo "RESPONSE ABOVE\n";
 
 
