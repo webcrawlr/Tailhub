@@ -21,9 +21,9 @@ router.get('/register', function(req, res, next) {
   res.render('register',{title:'Register'});
 });
 
-//router.get('/login', function(req, res, next) {
-  //res.render('login', {title:'Login'});
-//});
+router.get('/login', function(req, res, next) {
+  res.render('login', {title:'Login'});
+});
 
 router.get('/contentpost', function(req, res, next) {
     res.render('contentpost', {title:'ContentPost'});
@@ -163,7 +163,7 @@ router.post('/register', upload.single('profileImg'), function(req, res, next) {
       password: password
     });
 
-    User.createUser(newUser, path, function(err, user){
+    User.createUser(newUser, function(err, user){
       if(err) throw err;
       console.log(user);
     });

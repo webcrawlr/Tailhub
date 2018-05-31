@@ -89,7 +89,7 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
 };
 
 //stores data to mongoDB and also encrypts password
-module.exports.createUser = function(newUser, path, callback){
+module.exports.createUser = function(newUser, callback){
 	bcrypt.genSalt(10, function(err, salt) {
     	bcrypt.hash(newUser.password, salt, function(err, hash) {
 
@@ -98,9 +98,7 @@ module.exports.createUser = function(newUser, path, callback){
             //newUser.img.data = fs.readFileSync(path);
             //newUser.img.contentType = 'image/png';
             //newUser.save();
-
-            //fs.unlinkSync(path);
-
+            // fs.unlinkSync(path);
 
    			newUser.save(callback);
     	});
