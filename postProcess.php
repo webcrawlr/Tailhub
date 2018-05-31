@@ -64,7 +64,7 @@ if(isset($_POST['submitPost'])){
         //$request->addPostParameter('groomFeedFlag',   $groomFeedFlag);
         //$request->addPostParameter('shareCount',   $shareCount);
         //fix the SSL issue
-
+        
         $request->setConfig(array(
              'ssl_verify_peer'   => FALSE,
              'ssl_verify_host'   => FALSE
