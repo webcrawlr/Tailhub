@@ -800,7 +800,7 @@ module.exports.getProfile=function(req,res) {
 
         //search the profiles database to the specified profile
         name = profiles.find(
-            { 'username': req.body.username }
+            { username: req.body.username }
         ).toArray(function (err, result) {
                 if(err)throw err;
         });
