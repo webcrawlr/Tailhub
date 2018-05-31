@@ -717,14 +717,14 @@ module.exports.newPost=function(req,res) {
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
-/*
-        db = client.db('tailhub_db');
+        var db = client.db('tailhub_db');
+        var posts = db.collection('posts');
 
         //generate current date
         var date = new Date();
         var now = date.toUTCString();
 
-        //create profile object for database submission
+/*        //create profile object for database submission
         var newPost = {
             username:   req.body.username,
             postId:     req.body.postId,
@@ -741,23 +741,32 @@ module.exports.newPost=function(req,res) {
             groomFeedFlag:  req.body.groomFeedFlag,
             shareCount:     0
         };
-
-        //insert new database entry for the user
-        db
-            .collection('posts')
-            .insertOne(
-                newPost,
-                function(err){if(err)throw err;}
-            );
 */
-        //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        //insert new database entry for the user
+        posts.insertOne({
+            username: req.body.username,
+            postId: req.body.postId,
+            rePost: req.body.rePost,
+            oPoster: req.body.oPoster,
+            text: req.body.text,
+            media: req.body.media,
 
-        var response = "this is a response.";
+            paw5Counter: 0,
+            paw5List: {},
+            emailFlag: false,
+            location: req.body.location,
+            creationDate: now,
+            groomFeedFlag: req.body.groomFeedFlag,
+            shareCount: 0
+        }, function(err,res){if(err) throw err;});
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
 
         //respond
-        res.write(response);
+        res.write(req.body.text);
         res.end();
     })
 };
