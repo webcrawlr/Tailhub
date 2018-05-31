@@ -49,16 +49,16 @@ if(isset($_POST['submitPost'])){
         $request->addPostParameter('username',  "obiWanKenobi");  //Add username post-creation
 
         //Post info
-        $request->addPostParameter('postId',  $postId);
-        $request->addPostParameter('rePost',  $rePost);
+        $request->addPostParameter('postId',  "1578078");
+        $request->addPostParameter('rePost',  FALSE);
         $request->addPostParameter('text', $text);
         $request->addPostParameter('oPoster', "Agamotto");
         $request->addPostParameter('media', "Madea");
         //$request->addPostParameter('paw5Counter',  $paw5Counter);
         //$request->addPostParameter('paw5List',  $paw5List);
-        $request->addPostParameter('location',   $location);
+        $request->addPostParameter('location',   "Your House");
         //$request->addPostParameter('creationDate',   $creationDate);
-        $request->addPostParameter('groomFeedFlag',   $groomFeedFlag);
+        $request->addPostParameter('groomFeedFlag', 0);
         //$request->addPostParameter('shareCount',   $shareCount);
 
         //fix the SSL issue
