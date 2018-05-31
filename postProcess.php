@@ -45,7 +45,7 @@ if(isset($_POST['submitPost'])){
         require_once 'HTTP/Request2.php';
 
         //add the user's data to the http2 post request
-        $request=new HTTP_Request2('tailhub.herokuapp.com/index/post', HTTP_Request2::METHOD_POST);
+        $request=new HTTP_Request2('tailhub.herokuapp.com/post', HTTP_Request2::METHOD_POST);
 /*
         $request->addPostParameter('username',  "username");
 
