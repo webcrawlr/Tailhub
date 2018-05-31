@@ -56,6 +56,8 @@ try {
     $response = $request->send(); //SENDING request
     $data = json_decode($response, true);
     echo $data['name'];
+    echo $data['username'];
+    echo $data['email'];
 
 
     if (200 == $response->getStatus()) {//GETTING RESPONSE

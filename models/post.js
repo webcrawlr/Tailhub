@@ -13,7 +13,9 @@ var conn = mongoose.connection;
 
 var PostSchema = mongoose.Schema({
 
-    postText: {
+
+
+    text: {
         type: String
     },
 

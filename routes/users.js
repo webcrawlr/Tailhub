@@ -125,7 +125,7 @@ router.post('/register', upload.single('profileImg'), function(req, res, next) {
 
 router.post('/contentpost', upload.single('media') ,function(req, res, next) {
 
-  var postText = req.body.postText;
+  var text = req.body.text;
   var username = req.body.username;
 
     if(req.file){
@@ -156,22 +156,23 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
 
         var newPost = new Post({
             username: username,
-            postText: postText,
+            text: text,
             date: (new Date).getTime()
 
         });
 
-        /*
+
         Post.createPost(newPost, path, function(err, post){
             if(err) throw err;
             console.log(post);
         });
-        */
+
 
         //res.location('/users/contentpost');
 
         //var callback;
 
+        /*
         Post.getPostByUsername(username, function(err, callback) {
 
             if(err) throw err;
@@ -183,7 +184,7 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
             res.contentType(callback.img.contentType);
             res.send(callback.img.data);
         });
-
+*/
 
     }
 
