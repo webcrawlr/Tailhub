@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Profile info component</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 1.0rem;
+  font-family: sans-serif;
+  line-height: 200%;
+}
+
+section {
+  color: black;
+  text-align: center;
+}
+
+div {
+  height: 100%;
+}
+
+box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Pattern styles */
+.container {
+  display: table;
+  width: 100%;
+}
+
+.left-half {
+  background-color: lightgray;
+  position: absolute;
+  left: 0px;
+  width: 25%;
+}
+
+</style>
+
+</head>
+<body>
+<!-- Profile info on left side-->
+<section class="container">
+  <div class="left-half">
+    <box>
+      <!-- image component -->
+	<img src="pet.jpg" alt="MyFace" width="500" height="377">
+      <p> <b>Username<b> <p>
+      
+      <p>Species: </p>
+      <p>Breed: </p>
+      <p>Age: </p>
+      <p>Country: <p>
+      
+      <a href="petpics.com/photos">Photos</a>
+      <br>
+      <a href="petpics.com/videos">Videos</a>
+      <br>
+      <a href="petpics.com/friends">Friends</a>
+      <br>
+	<a href="petpics.com/followers">Followers</a>
+	<br>
+      <a href="petpics.com/Followings">Followings</a>
+    <box>
+  </div>
+</section>
+
+
+
+</body>
+</html>
