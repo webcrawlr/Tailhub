@@ -78,7 +78,7 @@ router.post("/newPost", function (req, res) {
 
         //create profile object for database submission
         var newPost = {
-            username: req.body.username
+            username: req.body.username,
             postId: req.body.postId,
             rePost: req.body.rePost,
             oPoster: req.body.oPoster,
