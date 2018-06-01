@@ -44,7 +44,7 @@ if(isset($_POST['submitPost'])){
         require_once 'HTTP/Request2.php';
 
         //add the user's data to the http2 post request
-        $request=new HTTP_Request2('https://tailhub.herokuapp.com/users/newPost', HTTP_Request2::METHOD_POST);
+        $request=new HTTP_Request2('https://tailhub.herokuapp.com/newPost', HTTP_Request2::METHOD_POST);
 
         $request->addPostParameter('username',  "obiWanKenobi");  //Add username post-creation
 
@@ -71,6 +71,7 @@ if(isset($_POST['submitPost'])){
         echo "You posted the following message: \n";
         $data = json_decode($response, true);
         echo $data['text'] . "\n";
+        echo $data['name'] . "\n";
     echo "(Status: ";
     echo $response->getStatus();
     echo ")\n";
