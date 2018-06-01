@@ -3,7 +3,8 @@
 if(isset($_POST['Register'])){
 	$firstname = $_SESSION['firstname'];
 	$lastname = $_SESSION['lastname']
-    $username = $_SESSION['email'];
+    $email = $_SESSION['email'];
+	$username = $_SESSION['username'];
     $password = $_SESSION['password'];
     $month = $_SESSION['month'];
 	$day = $_SESSION['day'];
@@ -16,6 +17,7 @@ if(isset($_POST['Register'])){
     $request->addPostParameter('fname', $firstname);
     $request->addPostParameter('lname', $lastname);
 	$request->addPostParameter('email', $email);
+	$request->addPostParameter('username', $username);
     $request->addPostParameter('password', $password);
     $request->addPostParameter('month', $month);
     $request->addPostParameter('day', $day);
@@ -26,7 +28,12 @@ if(isset($_POST['Register'])){
          'ssl_verify_peer'   => FALSE,
          'ssl_verify_host'   => FALSE
     ));
+	
+	$response=$request-send();
+	//$data = json_decode($response, true);
+	$baseurl = "www.tailhub.com/";
+	$url = $baseurl . $username
 		
-	header('Location: *'); //replace * with profile.html page
+	header('Location: $url'); //replace * with profile.html page
 	exit();
 ?>

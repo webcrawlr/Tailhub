@@ -14,6 +14,9 @@ if(isset($_POST['Login'])){
          'ssl_verify_host'   => FALSE
     ));
 		
+	$response=$request->send();
+	//$data = json_decode($response, true);
+	
 	header('Location: *'); //replace * with profile.html page 
 	exit();
 ?>
