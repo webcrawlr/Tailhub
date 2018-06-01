@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Base Page</title>
+        <!-- Font used for search button -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            
+            * {
+  box-sizing: border-box;
+}
+body {
+  font-size: 1.0rem;
+  font-family: sans-serif;
+  line-height: 200%;
+}
+
+section {
+  color: black;
+  text-align: center;
+}
+
+div {
+  height: 100%;
+}
+
+box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Pattern styles */
+.container {
+  display: table;
+  width: 100%;
+}
+
+.left-half {
+  background-color: lightgray;
+  position: absolute;
+  left: 0px;
+  width: 25%;
+}
+
+            
+            /*Navbar*/
+            #nav{
+                overflow: hidden;
+                background-color: #d9d9d9;
+            }
+            /*Navbar Links*/
+            #nav a{
+                float: right;
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px;
+                text-decoration: none;
+            }
+            #nav a:hover {
+                background-color: #999999;
+                color: black;
+            }
+            #nav .search-container {
+                float: left;
+            }
+            #nav input[type=text] {
+                float: left;
+                padding: 3px;
+                border: none;
+                margin-top: 14px;
+            }
+            #nav .search-container button {
+              float: right;
+              padding: 1px;
+              margin-top: 14px;
+              margin-right: 16px;
+              font-size: 14px;
+              background: #ffffff;
+              border: none;
+              cursor: pointer;
+            }
+            #nav .search-container button:hover {
+                background: #ccc;
+            }
+            body{
+                background-color: #fbe5ce;
+            }
+            .stickyTop{
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+            .stickyBottom{
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Top Bar -->
+        <!-- Links modified as created when demonstrating -->
+        <div id = "nav" class="stickyTop">
+            <a href="petpics.com/home" style = "float:left;">Home</a>
+            <a href="petpics.com/logout">Logout</a>
+            <a href="petpics.com/settings">Settings</a>
+            <a href="petpics.com/notify">Notify</a>
+            <a href="petpics.com/messages">Messages</a>
+            <a href="petpics.com/profile">Profile</a>
+            <a href="petpics.com/newsfeed">Newsfeed</a>
+
+            <div class="search-container">
+                <form action="">
+                    <input type="text" placeholder="Search..." name="search">   
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Profile info on left side-->
+<section class="container">
+  <div class="left-half">
+    <box>
+      <!-- image component -->
+	<img src="img/ottawa.jpg" alt="My Image" height="170" width="170">
+      <p> <b>My name<b> <p>
+      
+      <p>Species: </p>
+      <p>Breed: </p>
+      <p>Age: </p>
+      <p>Country: <p>
+      
+      <a href="petpics.com/photos">Photos</a>
+      <br>
+      <a href="petpics.com/videos">Videos</a>
+      <br>
+      <a href="petpics.com/friends">Friends</a>
+      <br>
+	<a href="petpics.com/followers">Followers</a>
+	<br>
+      <a href="petpics.com/followings">Followings</a>
+    <box>
+  </div>
+</section>
+        
+        <!-- Bottom Bar -->
+        <div id = "nav" class="stickyBottom" style = "padding:3px">
+            Copyright © Acme Inc.  All rights reser- okay, we didn't actually copyright anything.  Pls don't steal.
+        </div>
+
+    </body>
+</html>

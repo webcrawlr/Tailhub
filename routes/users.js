@@ -5,8 +5,9 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var multer = require('multer');
 var upload = multer({dest: './uploads'});
-var mongodb = require('mongodb');
-var mongoDBURI = process.env.MONGODB_URI||'mongodb://Bryce:1lavalamp@ds231070.mlab.com:31070/tailhub_db';
+var mongodb;
+mongodb = require('mongodb');
+var mongoDBURI = process.env.MONGODB_URI||'mongodb://CSUEB_PETPICS:cs4310_SE@ds231070.mlab.com:31070/tailhub_db';
 
 var User = require('../models/user');
 var Post = require('../models/post');
@@ -26,16 +27,24 @@ router.get('/login', function(req, res, next) {
 
 router.get('/contentpost', function(req, res, next) {
     res.render('contentpost', {title:'ContentPost'});
+});
 
+router.get('/post', function(req, res, next) {
+    res.render('newPost', {title:'Create Post'});
 });
 
 router.post('/login',
-  passport.authenticate('local', {failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
-  function(req, res) {
-   req.flash('success', 'You are now logged in');
-   res.redirect('/');
-   res.send(req.user.username);
-});
+  passport.authenticate('local' ),
+    function(req, res) {
+   //req.flash('success', 'You are now logged in');
+   //res.redirect('/');
+        var username = req.user.username;
+   res.send(username);
+})
+
+
+
+;
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -65,53 +74,20 @@ passport.use(new LocalStrategy(function(username, password, done){
   });
 }));
 
+router.post("/createProfile", function (req, res, next) {
+    //connect MongoDB
+    //mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+        //if (err) throw err;
 
+        var name = req.body.name;
 
 /*
-=======================================================
-users/newPost written by Bryce Baker, for testing
-=======================================================
-router.post("/newPost", function (req, res) {
-    //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
-        if (err) throw err;
-        var db = client.db('tailhub_db');
-        var posts = db.collection('posts');
-
         //generate current date
         var date = new Date();
         var now = date.toUTCString();
 
         //create profile object for database submission
-//        var newPost = {
-//            username: req.body.username,
-//            postId: req.body.postId,
-//            rePost: req.body.rePost,
-//            oPoster: req.body.oPoster,
-//            text: req.body.text,
-//            media: req.body.media,
-
-//            paw5Counter: 0,
-//            paw5List: {},
-//            emailFlag: false,
-//            location: req.body.location,
-//            creationDate: now,
-//            groomFeedFlag: req.body.groomFeedFlag,
-//            shareCount: 0
-//        };
-
-        //insert new database entry for the user
- //         db
-//            .collection('posts')
-//            .insertOne(
-//                newPost,
-//                function (err) {
-//                    if (err) throw err;
-//                }
-//            );
-
-    //insert new database entry for the user
-        posts.insertOne({
+        var newPost = {
             username: req.body.username,
             postId: req.body.postId,
             rePost: req.body.rePost,
@@ -126,24 +102,31 @@ router.post("/newPost", function (req, res) {
             creationDate: now,
             groomFeedFlag: req.body.groomFeedFlag,
             shareCount: 0
-        }, function(err,res){if(err) throw err;});
+        };
+
+        //insert new database entry for the user
+        db
+            .collection('posts')
+            .insertOne(
+                newPost,
+                function (err) {
+                    if (err) throw err;
+                }
+            );
 
         //close connection
-        client.close(function (err) {
-            if (err) throw err;
-        });
-
-        var name = req.body.username;
+        db
+            .close(function (err) {
+                if (err) throw err;
+            });
+*/
 
         //respond
         res.write(name);
         res.end();
 
-    });
+//    });
 });
-*/
-
-
 
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
 

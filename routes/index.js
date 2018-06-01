@@ -28,23 +28,23 @@ function ensureAuthenticated(req, res, next){
 
 
 //post data routed to controller for processing
-router.post("/createProfile", controller.createProfile);
+//router.post("/createProfile", controller.createProfile);
 
-router.post("/editProfile", controller.editProfile);
+//router.post("/editProfile", controller.editProfile);
 
-router.post("/deleteProfile", controller.deleteProfile);
+//router.post("/deleteProfile", controller.deleteProfile);
 
-router.post("/sendMessage", controller.sendMessage);
+//router.post("/sendMessage", controller.sendMessage);
 
 //router.post("/readMessage", controller.readMessage);
 
 //router.post("/deleteMessage", controller.deleteMessage);
 
-router.post("/friendRequest", controller.friendRequest);
+//router.post("/friendRequest", controller.friendRequest);
 
-router.post("/friendAccept", controller.friendAccept);
+//router.post("/friendAccept", controller.friendAccept);
 
-router.post("/friendDecline", controller.friendDecline);
+//router.post("/friendDecline", controller.friendDecline);
 
 //router.post("/unfriend", controller.unFriend);
 
@@ -58,7 +58,7 @@ router.post("/friendDecline", controller.friendDecline);
 
 //router.post("/unfollow", controller.unfollow);
 
-router.post("/newPost", controller.newPost);
+router.post("/post", controller.post);
 
 //router.post("/comment", controller.comment);
 
@@ -66,7 +66,7 @@ router.post("/newPost", controller.newPost);
 
 router.post("/getProfile", controller.getProfile);
 
-router.post("/getPosts", controller.getPosts);
+//router.post("/getPosts", controller.getPosts);
 
 //router.post("/getFriends", controller.getFriends);
 
@@ -76,6 +76,6 @@ router.post("/getPosts", controller.getPosts);
 
 //router.post("/getMessages", controller.getMessages);
 
-//router.post("/getComments", controller.getComments);
+router.post("/getComments", controller.getComments);
 
 module.exports = router;
