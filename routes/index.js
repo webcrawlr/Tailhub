@@ -28,53 +28,53 @@ function ensureAuthenticated(req, res, next){
 
 
 //post data routed to controller for processing
-router.post("/createProfile", controller.createProfile);
+//router.post("/createProfile", controller.createProfile);
 
-router.post("/editProfile", controller.editProfile);
+//router.post("/editProfile", controller.editProfile);
 
-router.post("/deleteProfile", controller.deleteProfile);
+//router.post("/deleteProfile", controller.deleteProfile);
 
-router.post("/sendMessage", controller.sendMessage);
+//router.post("/sendMessage", controller.sendMessage);
 
-router.post("/readMessage", controller.readMessage);
+//router.post("/readMessage", controller.readMessage);
 
-router.post("/deleteMessage", controller.deleteMessage);
+//router.post("/deleteMessage", controller.deleteMessage);
 
-router.post("/friendRequest", controller.friendRequest);
+//router.post("/friendRequest", controller.friendRequest);
 
-router.post("/friendAccept", controller.friendAccept);
+//router.post("/friendAccept", controller.friendAccept);
 
-router.post("/friendDecline", controller.friendDecline);
+//router.post("/friendDecline", controller.friendDecline);
 
-router.post("/unfriend", controller.unFriend);
+//router.post("/unfriend", controller.unFriend);
 
-router.post("/block", controller.block);
+//router.post("/block", controller.block);
 
-router.post("/unblock", controller.unblock);
+//router.post("/unblock", controller.unblock);
 
-router.post("/paw5", controller.paw5);
+//router.post("/paw5", controller.paw5);
 
-router.post("/follow", controller.follow);
+//router.post("/follow", controller.follow);
 
-router.post("/unfollow", controller.unfollow);
+//router.post("/unfollow", controller.unfollow);
 
 router.post("/post", controller.post);
 
-router.post("/comment", controller.comment);
+//router.post("/comment", controller.comment);
 
-router.post("/share", controller.share);
+//router.post("/share", controller.share);
 
 router.post("/getProfile", controller.getProfile);
 
-router.post("/getPosts", controller.getPosts);
+//router.post("/getPosts", controller.getPosts);
 
-router.post("/getFriends", controller.getFriends);
+//router.post("/getFriends", controller.getFriends);
 
-router.post("/getFollowers", controller.getFollowers);
+//router.post("/getFollowers", controller.getFollowers);
 
-router.post("/getFollowing", controller.getFollowing);
+//router.post("/getFollowing", controller.getFollowing);
 
-router.post("/getMessages", controller.getMessages);
+//router.post("/getMessages", controller.getMessages);
 
 router.post("/getComments", controller.getComments);
 
