@@ -16,6 +16,9 @@ wrote:
     post
     getProfile
     getPosts (needs updating)
+RAYMOND MULLER:
+5/31:
+    Bugfixes for getProfile.
 */
 
 //Version: 0.2
@@ -800,6 +803,7 @@ module.exports.getProfile=function(req,res) {
 
         //search the profiles database to the specified profile
         profiles.find(
+            {},
             { username: req.body.username }
         ).toArray(function (err, results) {
                 if(err)throw err;
