@@ -16,6 +16,11 @@ wrote:
     post
     getProfile
     getPosts (needs updating)
+    
+Raymond Muller:
+5/31
+Fixed:
+    GetProfile function, reverted back to findOne; Took over because Bryce was unavailable.
 */
 
 //Version: 0.2
