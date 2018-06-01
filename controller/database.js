@@ -799,7 +799,7 @@ module.exports.getProfile=function(req,res) {
 
         var db = client.db('tailhub_db');
         var profiles = db.collection('users');
-        var name = "Failsauce";
+        var name = "markwatney";
 
         //search the profiles database to the specified profile
         profiles.findOne({ username: req.body.username },function (err, result) {
