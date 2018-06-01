@@ -22,7 +22,7 @@ wrote:
 
 var mongodb;
 mongodb = require('mongodb');
-var mongoDBURI = process.env.MONGODB_URI||'mongodb://CSUEB_PETPICS:cs4310_SE@ds231070.mlab.com:31070/tailhub_db';
+var mongoDBURI = process.env.MONGODB_URI||'mongodb://Bryce:1lavalamp@ds231070.mlab.com:31070/tailhub_db';
 var User = require('../models/user');
 
 
@@ -712,49 +712,44 @@ module.exports.unfollow=function(req,res) {
 
 
 //post
-module.exports.post=function(req,res) {
+module.exports.newPost=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
+        var db = client.db('tailhub_db');
+        var posts = db.collection('posts');
 
         //generate current date
         var date = new Date();
         var now = date.toUTCString();
 
-        //create profile object for database submission
-        var newPost = {
-            username:   req.body.username,
-            postId:     req.body.postId,
-            rePost:     req.body.rePost,
-            oPoster:    req.body.oPoster,
-            text:       req.body.text,
-            media:      req.body.media,
-
-            paw5Counter:    0,
-            paw5List:       {},
-            emailFlag:      false,
-            location:       req.body.location,
-            creationDate:   now,
-            groomFeedFlag:  req.body.groomFeedFlag,
-            shareCount:     0
-        };
-
         //insert new database entry for the user
-        db
-            .collection('posts')
-            .insertOne(
-                newPost,
-                function(err){if(err)throw err;}
-            );
+        posts.insertOne({
+            username: req.body.username,
+            postId: req.body.postId,
+            rePost: req.body.rePost,
+            oPoster: req.body.oPoster,
+            text: req.body.text,
+            media: req.body.media,
+
+            paw5Counter: 0,
+            paw5List: {},
+            emailFlag: false,
+            location: req.body.location,
+            creationDate: now,
+            groomFeedFlag: req.body.groomFeedFlag,
+            shareCount: 0
+        }, function(err,res){if(err) throw err;});
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function (err) {
+            if (err) throw err;
+        });
 
-        var response = "this is a response";
-
+        var text = req.body.text;
+        var name = req.body.username;
         //respond
-        res.write(response);
+        res.write(name + "<br><br>" + text);
         res.end();
     })
 };
@@ -795,17 +790,28 @@ module.exports.share=function(req,res) {
 //getProfile
 module.exports.getProfile=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
-        //search the profiles database to the specified profile
-        var ret = db
-            .collection('profiles')
-            .find(
-                { username: req.body.username }
-            );
+        var db = client.db('tailhub_db');
+        var profiles = db.collection('users');
+        var name = "Failsauce";
 
-        res.render(ret);
+        //search the profiles database to the specified profile
+        profiles.find(
+            { username: req.body.username }
+        ).toArray(function (err, results) {
+                if(err)throw err;
+                res.send(results);
+        });
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(name);
+        res.end();
     })
 };
 
