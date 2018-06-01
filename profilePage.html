@@ -188,14 +188,14 @@
   <div class="left-half div2">
     <box>
       <!-- image component -->
-		<img src="img/ottawa.jpg" alt="My Image" height="170" width="170">
+		<img src="pet.jpg" alt="My Image" height="170" width="170">
       <p> <b>Osaki Shi</b> </p>
-      <br> <br> <br> <br> <br>
+      <br> 
       <p>Species: Dog </p>
       <p>Breed: Shiba Inu</p>
       <p>Age: 8</p>
       <p>Country: Kanigawa, Japan</p>
-      <br> <br> <br> <br> <br>
+      <br>
       <a href="petpics.com/photos">Photos</a>
       <br> <br>
       <a href="petpics.com/videos">Videos</a>
@@ -213,8 +213,9 @@
 <section class = "postCreate">
 	<div class = "center">
 		<form action="postProcess.php" method="post">
-    <textarea name="text" rows="5" cols="80"></textarea>
-    <br />
+		<br>
+    		<textarea name="text" rows="5" cols="80"></textarea>
+    		<br />
     <input type="submit" name="submitPost" value="Post">
 	</form>
 	<form action="upload.php" method="post" enctype="multipart/form-data">
@@ -229,6 +230,7 @@
 <section class = "postView">
 	<div class = "center">
 		<div id = "username">
+			<br>
  	 		<p> <b> Osaki Shi </b> </p> 
 		</div>
 
@@ -240,13 +242,13 @@
   			<p> Osaka, Japan </p> 
 		</div>
 
-		<!-- image component -->
+		<!-- image component
 		<img src="pet.jpg" alt="Pet Face" width="320" height="240">
-
+ -->
 		<!-- video component -->
 		<video width="320" height="240" controls>
  	 		<source src="movie.mp4" type="video/mp4">
-  			<source src="movie.ogg" type="video/ogg">
+  		<!--	<source src="movie.ogg" type="video/ogg"> -->
   		Your browser does not support the video tag.
 		</video>
 
