@@ -802,9 +802,13 @@ module.exports.getProfile=function(req,res) {
         var name = "markwatney";
 
         //search the profiles database to the specified profile
-        profiles.findOne({ username: req.body.username },function (err, result) {
-                if(err)throw err;
-                res.write(result);
+        var cursor = profiles.find(
+            { username: req.body.username },
+            { _id: 0 }
+        );
+
+        cursor.each(function(err,result) {
+            res.write(result);
         });
 
         //close connection
