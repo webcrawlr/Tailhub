@@ -808,9 +808,9 @@ module.exports.getProfile=function(req,res) {
 
         var len = cursor.length;
 
-        for( var c = 0; n < len; c++ ){
-            ret = ret + cursor[c].name + "<br>";
-        }
+        cursor.forEach( function(result){
+            ret = ret + result.name + "<br>";
+        });
 
         //close connection
         client.close(function (err) {
