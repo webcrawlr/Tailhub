@@ -804,13 +804,13 @@ module.exports.getProfile=function(req,res) {
         //search the profiles database to the specified profile
         var cursor = profiles.find(
             { username: req.body.username }
-        );
-
-        var len = cursor.length;
-
-        cursor.forEach( function(result){
+        ).forEach(function(result) {
             ret = ret + result.name + "<br>";
-        });
+        }, function(err){});
+
+//        cursor.forEach( function(result){
+//            ret = ret + result.name + "<br>";
+//        });
 
         //close connection
         client.close(function (err) {
