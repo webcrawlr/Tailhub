@@ -806,7 +806,7 @@ module.exports.getProfile=function(req,res) {
             { username: req.body.username }
         );
 
-        var len = cursor.length;
+        //var len = cursor.length;
 
         //for( var c = 0; n < len; c++ ){
           //  ret = ret + cursor[c].name + "<br>";
