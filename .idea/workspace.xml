@@ -20,8 +20,8 @@
       <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="817" column="31" lean-forward="true" selection-start-line="817" selection-start-column="31" selection-end-line="817" selection-end-column="31" />
+            <state relative-caret-position="425">
+              <caret line="812" column="10" lean-forward="false" selection-start-line="812" selection-start-column="10" selection-end-line="812" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -247,21 +247,7 @@
       <workItem from="1527821511887" duration="607000" />
       <workItem from="1527875072530" duration="905000" />
       <workItem from="1527955906483" duration="1975000" />
-      <workItem from="1527957901890" duration="1592000" />
-    </task>
-    <task id="LOCAL-00038" summary="debugging index and route 31">
-      <created>1527795158583</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1527795158583</updated>
-    </task>
-    <task id="LOCAL-00039" summary="debugging index and route 32">
-      <created>1527795672470</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1527795672470</updated>
+      <workItem from="1527957901890" duration="3334000" />
     </task>
     <task id="LOCAL-00040" summary="debugging index and route 33">
       <created>1527795948831</created>
@@ -592,11 +578,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527958175294</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="debugging index and route 78">
+      <created>1527959505138</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1527959505138</updated>
+    </task>
+    <task id="LOCAL-00088" summary="debugging index and route 79">
+      <created>1527961129560</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1527961129560</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87424000" />
+    <option name="totallyTimeSpent" value="89166000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
@@ -631,8 +631,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debugging index and route 54" />
-    <MESSAGE value="debugging index and route 55" />
     <MESSAGE value="debugging index and route 56" />
     <MESSAGE value="debugging index and route 57" />
     <MESSAGE value="debugging index and route 58" />
@@ -656,7 +654,9 @@
     <MESSAGE value="debugging index and route 75" />
     <MESSAGE value="debugging index and route 76" />
     <MESSAGE value="debugging index and route 77" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 77" />
+    <MESSAGE value="debugging index and route 78" />
+    <MESSAGE value="debugging index and route 79" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging index and route 79" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1025,8 +1025,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="817" column="31" lean-forward="true" selection-start-line="817" selection-start-column="31" selection-end-line="817" selection-end-column="31" />
+        <state relative-caret-position="425">
+          <caret line="812" column="10" lean-forward="false" selection-start-line="812" selection-start-column="10" selection-end-line="812" selection-end-column="10" />
           <folding />
         </state>
       </provider>
