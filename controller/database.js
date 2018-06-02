@@ -809,7 +809,7 @@ module.exports.getProfile=function(req,res) {
         cursor.each(function(err, doc){
             if (err) throw err;
             if(doc){
-                ret = ret + doc.username;
+                ret = ret + "looptest";
             }
         });
 
