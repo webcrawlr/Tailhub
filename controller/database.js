@@ -794,7 +794,7 @@ module.exports.share=function(req,res) {
 //getProfile
 module.exports.getProfile=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
@@ -806,12 +806,17 @@ module.exports.getProfile=function(req,res) {
            { username: req.body.username }
         );
 
-        cursor.each(function(err, doc){
-            if (err) throw err;
-            if(doc){
-                ret = ret + "looptest";
-            }
-        });
+        //cursor.each(function(err, doc){
+        //    if (err) throw err;
+        //    if(doc){
+        //        ret = ret + doc.name;
+        //    }
+        //});
+
+        while (await cursor.hasNext()){
+            const doc = await cursor.next();
+            ret = ret + doc.name;
+        }
 
         //var len = cursor.length;
 
