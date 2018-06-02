@@ -803,14 +803,21 @@ module.exports.getProfile=function(req,res) {
 
         //search the profiles database to the specified profile
         var cursor = profiles.find(
-            { username: req.body.username }
-        ).forEach(function(result) {
-            ret = ret + result.name + "<br>";
-        }, function(err){});
+           { username: req.body.username }
+        );
 
-//        cursor.forEach( function(result){
-//            ret = ret + result.name + "<br>";
-//        });
+        cursor.each(function(err, doc){
+            if (err) throw err;
+            if(doc){
+                ret = ret + doc.username;
+            }
+        });
+
+        //var len = cursor.length;
+
+        //for( var c = 0; n < len; c++ ){
+          //  ret = ret + cursor[c].name + "<br>";
+        //}
 
         //close connection
         client.close(function (err) {
