@@ -807,8 +807,8 @@ module.exports.getProfile=function(req,res) {
             { _id: 0 }
         );
 
-        cursor.each(function(err,result) {
-            res.write(result);
+        cursor.forEach(function(err,result) {
+            res.write(result.username);
         });
 
         //close connection
