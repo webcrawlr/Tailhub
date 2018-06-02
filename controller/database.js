@@ -802,11 +802,11 @@ module.exports.getProfile=function(req,res) {
         var ret = "markwatney search yields: ";
 
         //search the profiles database to the specified profile
-        //var cursor = profiles.find(
-        //    { username: req.body.username }
-        //);
+        var cursor = profiles.find(
+            { username: req.body.username }
+        );
 
-        //var len = cursor.length;
+        var len = cursor.length;
 
         //for( var c = 0; n < len; c++ ){
           //  ret = ret + cursor[c].name + "<br>";
