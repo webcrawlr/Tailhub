@@ -799,7 +799,7 @@ module.exports.getProfile=function(req,res) {
 
         var db = client.db('tailhub_db');
         var profiles = db.collection('users');
-        var name = "markwatney";
+        var ret = "markwatney search yields: ";
 
         //search the profiles database to the specified profile
         var cursor = profiles.find(
@@ -808,7 +808,9 @@ module.exports.getProfile=function(req,res) {
         );
 
         cursor.forEach(function(err,result) {
-            res.write(result.username);
+            if(result!=null){
+                ret = ret + result.name + "<br>";
+            };
         });
 
         //close connection
@@ -816,7 +818,7 @@ module.exports.getProfile=function(req,res) {
             if (err) throw err;
         });
 
-        res.write(name);
+        res.write(ret);
         res.end();
     })
 };
