@@ -68,7 +68,7 @@ router.post("/getProfile", controller.getProfile);
 
 router.post("/getPosts", controller.getPosts);
 
-//router.post("/getFriends", controller.getFriends);
+router.post("/getFriends", controller.getFriends);
 
 //router.post("/getFollowers", controller.getFollowers);
 
