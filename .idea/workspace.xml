@@ -20,8 +20,8 @@
       <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="934" column="32" lean-forward="true" selection-start-line="934" selection-start-column="32" selection-end-line="934" selection-end-column="32" />
+            <state relative-caret-position="505">
+              <caret line="942" column="8" lean-forward="false" selection-start-line="942" selection-start-column="8" selection-end-line="942" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -209,14 +209,7 @@
       <workItem from="1527955906483" duration="1975000" />
       <workItem from="1527957901890" duration="8727000" />
       <workItem from="1527986931208" duration="3087000" />
-      <workItem from="1528049507921" duration="8273000" />
-    </task>
-    <task id="LOCAL-00071" summary="debugging index and route 63">
-      <created>1527803293369</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1527803293369</updated>
+      <workItem from="1528049507921" duration="8558000" />
     </task>
     <task id="LOCAL-00072" summary="debugging index and route 64">
       <created>1527804384728</created>
@@ -554,11 +547,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528060183313</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="debug index getFriends 110">
+      <created>1528060354201</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1528060354201</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105919000" />
+    <option name="totallyTimeSpent" value="106204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="960" height="1047" extended-state="0" />
@@ -593,7 +593,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debugging index and route 86" />
     <MESSAGE value="debugging index and route 87" />
     <MESSAGE value="debugging index and route 88" />
     <MESSAGE value="debugging index and route 89" />
@@ -618,7 +617,8 @@
     <MESSAGE value="debug index getFriends 107" />
     <MESSAGE value="debug index getFriends 108" />
     <MESSAGE value="debug index getFriends 109" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug index getFriends 109" />
+    <MESSAGE value="debug index getFriends 110" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug index getFriends 110" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -983,8 +983,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="934" column="32" lean-forward="true" selection-start-line="934" selection-start-column="32" selection-end-line="934" selection-end-column="32" />
+        <state relative-caret-position="505">
+          <caret line="942" column="8" lean-forward="false" selection-start-line="942" selection-start-column="8" selection-end-line="942" selection-end-column="8" />
           <folding />
         </state>
       </provider>
