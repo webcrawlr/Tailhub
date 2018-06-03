@@ -926,27 +926,25 @@ module.exports.getFriends=function(req,res) {
         var ret = "";
 
         //search the profiles database to the specified profile
-/*        var cursor = friends.findOne(
+        var cursor = friends.findOne(
             { username: req.body.username }
         );
-*/
 
-        var arr = friends.distinct(
+
+/*        var arr = friends.distinct(
             "list",
             { username: req.body.username }
         );
-/*
         for(var i = 0; i < arr.values.length; i++){
             ret = ret + arr.values[i] + "<br>";
         }
 */
-        ret = ret + "test<br>";
 
- /*       while (await arr.values.hasNext()){
-            const doc = await arr.values.next();
-            ret = ret + arr.values[i]
+        while (await cursor.hasNext()){
+            const doc = await cursor.next();
+            ret = ret +
+                doc.list + "<br><br>";
         }
-*/
 
         //close connection
         client.close(function (err) {
