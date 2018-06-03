@@ -933,7 +933,7 @@ module.exports.getFriends=function(req,res) {
         var i = 0;
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            while(doc.list[i]) {
+            while(doc.list[i]!=null) {
                 ret = ret + doc.list[i] + "<br>";
                 i++;
             }
