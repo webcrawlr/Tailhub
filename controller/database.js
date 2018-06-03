@@ -31,7 +31,7 @@ var User = require('../models/user');
 
 
 //createProfile
-module.exports.createProfile = function(req,res){
+module.exports.createProfile = function(req,res) {
 
     /********************************************************************************************************
      //                  createProfile has been seized by Steven Phan
@@ -43,8 +43,8 @@ module.exports.createProfile = function(req,res){
     //===================================================================
 
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function(err,client){
-        if(err)throw err;
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
+        if (err) throw err;
 
         //generate current date
         var date = new Date();
@@ -54,32 +54,40 @@ module.exports.createProfile = function(req,res){
         var profiles = db.collection('profiles');
 
         //insert new database entry for the user
-        profiles.insertOne(
-                {
-                    username:   req.body.username,
-                    password:   req.body.password,
-                    species:    req.body.species,
-                    breed:      req.body.breed,
-                    age:        req.body.age,
-                    location:   req.body.location,
-                    email:      req.body.email,
+        profiles.insertOne({
+                username: req.body.username,
+                password: req.body.password,
+                species: req.body.species,
+                breed: req.body.breed,
+                age: req.body.age,
+                location: req.body.location,
+                email: req.body.email,
 
-                    paw5Counter:    0,
-                    paw5List:       {},
-                    emailFlag:      false,
-                    creationDate:   now,
-                    postCount:      0,
-                    messageCount:   0,
-                    friendRequests: {},
-                    blockList:      {}
-                },
-            function(err,res){if(err) throw err;}
-            );
+                paw5Counter: 0,
+                paw5List: {},
+                emailFlag: false,
+                creationDate: now,
+                postCount: 0,
+                messageCount: 0,
+                friendRequests: {},
+                blockList: {}
+            },
+            function (err, res) {
+                if (err) throw err;
+            }
+        );
 
         //close connection
-        client
-            .close(function(err){if(err)throw err;});
+        client.close(function (err) {
+            if (err) throw err;
+        });
+        var response = "profile created";
+
+        //respond
+        res.write(response);
+        res.end();
     });
+};
 /*
     var date = new Date();
     var now = date.toUTCString();
@@ -112,13 +120,6 @@ module.exports.createProfile = function(req,res){
         console.log(user);
     });
 */
-    var response = "profile created";
-
-    //respond
-    res.write(response);
-    res.end();
-
-};
 
 
 //editProfile
