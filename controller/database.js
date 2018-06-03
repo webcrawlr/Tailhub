@@ -859,19 +859,35 @@ module.exports.getPosts=function(req,res) {
 
 
 //getFriends
-/*
 module.exports.getFriends=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
         if (err) throw err;
 
+        var db = client.db('tailhub_db');
+        var friends= db.collection('friends');
+        var ret = "";
 
+        //search the profiles database to the specified profile
+        var cursor = friends.find(
+            { list: req.body.username }
+        );
+
+        var i = 0;
+        while (await cursor.hasNext()){
+            const doc = await cursor.next();
+            ret = ret + doc.username + "<br>";
+        }
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
+        res.end();
     })
-};*/
+};
 
 
 //getFollowers
