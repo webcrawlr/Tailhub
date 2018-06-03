@@ -806,23 +806,10 @@ module.exports.getProfile=function(req,res) {
            { username: req.body.username }
         );
 
-        //cursor.each(function(err, doc){
-        //    if (err) throw err;
-        //    if(doc){
-        //        ret = ret + doc.name;
-        //    }
-        //});
-
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.name;
+            ret = ret + doc.name + "<be><br>" + doc.species + "<be><br>" + doc.breed + "<be><br>" + doc.age + "<be><br>" + doc.location;
         }
-
-        //var len = cursor.length;
-
-        //for( var c = 0; n < len; c++ ){
-          //  ret = ret + cursor[c].name + "<br>";
-        //}
 
         //close connection
         client.close(function (err) {
@@ -841,27 +828,26 @@ module.exports.getPosts=function(req,res) {
     mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
         if (err) throw err;
 
-        //search the posts database for the user's posts
-        var allPosts = db
-            .collection('posts')
-            .find(
-                { username: req.body.username }
-            )
-            .project(
-                { _id: 0 }
-            );
-/*
-        var tenPosts;
-        var post;
-        var count = 0;
-        for(post in allPosts){
-            if(post.creationDate   ?????????   ){
-                tenPosts.push(post);
-            }
+        var db = client.db('tailhub_db');
+        var posts = db.collection('posts');
+
+        //search the profiles database to the specified profile
+        var cursor = posts.find(
+            { username: req.body.username }
+        );
+
+        while (await cursor.hasNext()){
+            const doc = await cursor.next();
+            ret = ret + doc.username + "<br>" + doc.text + "<br>" + doc.;
         }
-        res.render(tenPosts);
-*/
-        res.render(allPosts);
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
+        res.end();
     })
 };
 
