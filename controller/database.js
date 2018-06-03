@@ -820,14 +820,14 @@ module.exports.getProfile=function(req,res) {
 
         res.write(ret);
         res.end();
-    });
+    })
 };
 
 
 //getPosts
 module.exports.getPosts=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
