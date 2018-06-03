@@ -927,12 +927,12 @@ module.exports.getFriends=function(req,res) {
 
         //search the profiles database to the specified profile
         var cursor = friends.find(
-            { list: req.body.username }
+            { username: req.body.username }
         );
 
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.username + "<br>";
+            ret = ret + doc.list[0] + "<br>";
         }
 
         //close connection
