@@ -827,11 +827,12 @@ module.exports.getProfile=function(req,res) {
 //getPosts
 module.exports.getPosts=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
         var posts = db.collection('posts');
+        var ret = "getPosts yields: "
 
         //search the profiles database to the specified profile
         var cursor = posts.find(
