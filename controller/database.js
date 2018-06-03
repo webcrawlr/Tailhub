@@ -82,30 +82,44 @@ module.exports.createProfile = function(req,res) {
         coll.insertOne({
             username: req.body.username,
             list: {}
-        });
+        },
+            function (err, res) {
+            if(err) throw err;
+            }
+        );
 
         //insert new followers database entry for the user
         coll = db.collection('followers');
         coll.insertOne({
             username: req.body.username,
             list: {}
-        });
+        },
+            function (err, res) {
+                if(err) throw err;
+            }
+        );
 
         //insert new following database entry for the user
         coll = db.collection('following');
         coll.insertOne({
             username: req.body.username,
             list: {}
-        });
+        },
+            function (err, res) {
+                if(err) throw err;
+            }
+        );
 
         //close connection
         client.close(function (err) {
             if (err) throw err;
         });
 
+        var response = "success"
+
         //respond
-        //res.write(response);
-        //res.end();
+        res.write(response);
+        res.end();
     });
 
     /*
