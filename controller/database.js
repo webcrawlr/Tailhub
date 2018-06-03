@@ -922,7 +922,7 @@ module.exports.getFriends=function(req,res) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
-        var friends= db.collection('friends');
+        var friends = db.collection('friends');
         var ret = "";
 
         //search the profiles database to the specified profile
@@ -936,21 +936,15 @@ module.exports.getFriends=function(req,res) {
             { username: req.body.username }
         );
 
-        for(var i = 0; i <= arr.length; i++){
-            if(i==arr.length){ret=ret+"test<br>";}
-            else{ret = ret + arr[i] + "<br>";}
+        for(var i = 0; i < arr.values.length; i++){
+            ret = ret + arr.values[i] + "<br>";
         }
 
-        ret = "arr.length: " + arr.length;
+        ret = ret + "test<br>";
 
-
-/*        while (await cursor.hasNext()){
-            const doc = await cursor.next();
-            while(doc.list[i]!=null) {
-                ret = ret + doc.list[i] + "<br>";
-                i++;
-            }
-            i = 0;
+ /*       while (await arr.values.hasNext()){
+            const doc = await arr.values.next();
+            ret = ret + arr.values[i]
         }
 */
 
