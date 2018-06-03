@@ -64,13 +64,13 @@ module.exports.createProfile = function(req,res) {
                 email: req.body.email,
 
                 paw5Counter: 0,
-                paw5List: {},
+                paw5List: [],
                 emailFlag: false,
                 creationDate: now,
                 postCount: 0,
                 messageCount: 0,
-                friendRequests: {},
-                blockList: {}
+                friendRequests: [],
+                blockList: []
             },
             function (err, res) {
                 if (err) throw err;
