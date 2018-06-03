@@ -935,11 +935,11 @@ module.exports.getFriends=function(req,res) {
             "list",
             { username: req.body.username }
         );
-
+/*
         for(var i = 0; i < arr.values.length; i++){
             ret = ret + arr.values[i] + "<br>";
         }
-
+*/
         ret = ret + "test<br>";
 
  /*       while (await arr.values.hasNext()){
