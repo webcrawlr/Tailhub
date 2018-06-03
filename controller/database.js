@@ -926,13 +926,18 @@ module.exports.getFriends=function(req,res) {
         var ret = "";
 
         //search the profiles database to the specified profile
-        var cursor = friends.find(
+        var cursor = friends.findOne(
             { username: req.body.username }
         );
 
+        var i = 0;
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.list[0] + "<br>";
+            while(doc.list[i]) {
+                ret = ret + doc.list[i] + "<br>";
+                i++;
+            }
+            i = 0;
         }
 
         //close connection
