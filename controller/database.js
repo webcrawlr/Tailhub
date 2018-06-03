@@ -918,7 +918,7 @@ module.exports.getPosts=function(req,res) {
 //getFriends
 module.exports.getFriends=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
@@ -932,7 +932,7 @@ module.exports.getFriends=function(req,res) {
 
         var ret = friends.distinct(
             "list",
-            { username: body.req.username }
+            { username: req.body.username }
         );
 
 
