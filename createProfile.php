@@ -1,5 +1,6 @@
 <?php
-
+require_once 'HTTP/Request2.php';
+	
 if(isset($_POST['Register'])){
 	$firstname = $_SESSION['firstname'];
 	$lastname = $_SESSION['lastname']
