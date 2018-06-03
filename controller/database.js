@@ -167,13 +167,13 @@ module.exports.editProfile=function(req,res) {
         var profile = db.collection('Profiles');
 
         //get info from old database entry
-        var profile = db.collection('profiles');
-        profile.findOne({
+        var cursor = db.collection('profiles');
+        cursor.findOne({
                 username: req.body.username
             });
 
         //update database entry
-        profile.replaceOne(
+        cursor.replaceOne(
             { username: req.body.username },
             {
                 username:   req.body.username,
@@ -192,7 +192,22 @@ module.exports.editProfile=function(req,res) {
                 messageCount:   profile.messageCount,
                 friendRequests: profile.friendRequests,
                 blockList:      profile.blockList
+        },
+            function (err, res) {
+                if(err) throw err;
+            }
+        );
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
         });
+
+        var response = "success"
+
+        //respond
+        res.write(response);
+        res.end();
     });
 };
 
@@ -787,10 +802,10 @@ module.exports.newPost=function(req,res) {
             if (err) throw err;
         });
 
-        var text = req.body.text;
-        var name = req.body.username;
+        var ret = "post created";
+
         //respond
-        res.write(name + "<br><br>" + text);
+        res.write(ret);
         res.end();
     })
 };
@@ -836,16 +851,21 @@ module.exports.getProfile=function(req,res) {
 
         var db = client.db('tailhub_db');
         var profiles = db.collection('profiles');
-        var ret = "dank search yields: ";
+        var ret = "";
 
         //search the profiles database to the specified profile
-        var cursor = profiles.find(
+        var cursor = profiles.findOne(
            { username: req.body.username }
         );
 
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.name + "<br><br>" + doc.species + "<br><br>" + doc.breed + "<br><br>" + doc.age + "<br><br>" + doc.location;
+            ret = ret +
+                  doc.name + "<br><br>" +
+                  doc.species + "<br><br>" +
+                  doc.breed + "<br><br>" +
+                  doc.age + "<br><br>" +
+                  doc.location + "<br><br>";
         }
 
         //close connection
@@ -877,7 +897,9 @@ module.exports.getPosts=function(req,res) {
         var i = 0;
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.username + "<br><br>" + doc.text + "<br><br><br>";
+            ret = ret +
+                  doc.username + "<br><br>" +
+                  doc.text + "<br><br><br>";
             i++;
             if(i>=10){break;}
         }
