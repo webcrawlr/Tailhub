@@ -839,9 +839,12 @@ module.exports.getPosts=function(req,res) {
             { username: req.body.username }
         );
 
+        var i = 0;
         while (await cursor.hasNext()){
             const doc = await cursor.next();
             ret = ret + doc.username + "<br>" + doc.text + "<br>";
+            i++;
+            if(i>=10){break;}
         }
 
         //close connection
