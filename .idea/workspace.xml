@@ -20,8 +20,8 @@
       <file leaf-file-name="database.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controller/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="935" column="36" lean-forward="false" selection-start-line="935" selection-start-column="36" selection-end-line="935" selection-end-column="36" />
+            <state relative-caret-position="318">
+              <caret line="932" column="12" lean-forward="false" selection-start-line="932" selection-start-column="12" selection-end-line="932" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -92,7 +92,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="953" />
-    <option name="width" value="974" />
+    <option name="width" value="960" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -209,14 +209,7 @@
       <workItem from="1527955906483" duration="1975000" />
       <workItem from="1527957901890" duration="8727000" />
       <workItem from="1527986931208" duration="3087000" />
-      <workItem from="1528049507921" duration="7217000" />
-    </task>
-    <task id="LOCAL-00069" summary="debugging index and route 61">
-      <created>1527803112587</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1527803112587</updated>
+      <workItem from="1528049507921" duration="8104000" />
     </task>
     <task id="LOCAL-00070" summary="debugging index and route 62">
       <created>1527803225956</created>
@@ -554,17 +547,24 @@
       <option name="project" value="LOCAL" />
       <updated>1528057468399</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="debug index getFriends 108">
+      <created>1528057593326</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1528057593326</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104863000" />
+    <option name="totallyTimeSpent" value="105750000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="953" y="0" width="960" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2275574" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2309322" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.50208336" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -593,7 +593,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debugging index and route 84" />
     <MESSAGE value="debugging index and route 85" />
     <MESSAGE value="debugging index and route 86" />
     <MESSAGE value="debugging index and route 87" />
@@ -618,7 +617,8 @@
     <MESSAGE value="debug index getFriends 105" />
     <MESSAGE value="debug index getFriends 106" />
     <MESSAGE value="debug index getFriends 107" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug index getFriends 107" />
+    <MESSAGE value="debug index getFriends 108" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug index getFriends 108" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -983,8 +983,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="935" column="36" lean-forward="false" selection-start-line="935" selection-start-column="36" selection-end-line="935" selection-end-column="36" />
+        <state relative-caret-position="318">
+          <caret line="932" column="12" lean-forward="false" selection-start-line="932" selection-start-column="12" selection-end-line="932" selection-end-column="12" />
           <folding />
         </state>
       </provider>

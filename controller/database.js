@@ -923,14 +923,20 @@ module.exports.getFriends=function(req,res) {
 
         var db = client.db('tailhub_db');
         var friends= db.collection('friends');
-        var ret = "";
 
         //search the profiles database to the specified profile
-        var cursor = friends.findOne(
+/*        var cursor = friends.findOne(
             { username: req.body.username }
         );
+*/
 
-        var i = 0;
+        var ret = friends.distinct(
+            "list",
+            { username: body.req.username }
+        );
+
+
+/*        var i = 0;
         while (await cursor.hasNext()){
             const doc = await cursor.next();
             while(doc.list[i]!=null) {
@@ -939,6 +945,7 @@ module.exports.getFriends=function(req,res) {
             }
             i = 0;
         }
+*/
 
         //close connection
         client.close(function (err) {
