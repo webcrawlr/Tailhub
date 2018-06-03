@@ -940,10 +940,13 @@ module.exports.getFriends=function(req,res) {
         }
 */
 
+        var i = 0;
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret +
-                doc.list + "<br><br>";
+            for(var i = 0; i < doc.list.length; i++) {
+                ret = ret +
+                      doc.list[i] + "<br><br>";
+            }
         }
 
         //close connection
