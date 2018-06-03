@@ -37,49 +37,50 @@ module.exports.createProfile = function(req,res){
      //                  createProfile has been seized by Steven Phan
      //
      //*******************************************************************************************************/
-    /*
+
+    //===================================================================
+    //re-hijacked by Bryce Baker
+    //===================================================================
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function(err,db){
+    mongodb.MongoClient.connect(mongoDBURI, function(err,client){
         if(err)throw err;
 
         //generate current date
         var date = new Date();
         var now = date.toUTCString();
 
-        //create profile object for database submission
-        var profile = {
-            username:   req.body.username,
-            password:   req.body.password,
-            species:    req.body.species,
-            breed:      req.body.breed,
-            age:        req.body.age,
-            location:   req.body.location,
-            email:      req.body.email,
-
-            paw5Counter:    0,
-            paw5List:       {},
-            emailFlag:      false,
-            creationDate:   now,
-            postCount:      0,
-            messageCount:   0,
-            friendRequests: {},
-            blockList:      {}
-        };
+        var db = client.db('tailhub_db');
+        var profiles = db.collection('profiles');
 
         //insert new database entry for the user
-        db
-            .collection('profiles')
+        profiles
             .insertOne(
-                profile,
-                function(err){if(err)throw err;}
+                {
+                    username:   req.body.username,
+                    password:   req.body.password,
+                    species:    req.body.species,
+                    breed:      req.body.breed,
+                    age:        req.body.age,
+                    location:   req.body.location,
+                    email:      req.body.email,
+
+                    paw5Counter:    0,
+                    paw5List:       {},
+                    emailFlag:      false,
+                    creationDate:   now,
+                    postCount:      0,
+                    messageCount:   0,
+                    friendRequests: {},
+                    blockList:      {}
+                },
+                function(err,res){if(err)throw err;}
             );
 
         //close connection
         db
             .close(function(err){if(err)throw err;});
-    })
-    */
-
+    });
+/*
     var date = new Date();
     var now = date.toUTCString();
 
@@ -112,9 +113,9 @@ module.exports.createProfile = function(req,res){
     });
 
     var response = "this is a response";
-
+*/
     //respond
-    res.write(response);
+    res.write("profile created");
     res.end();
 
 };
@@ -798,8 +799,8 @@ module.exports.getProfile=function(req,res) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
-        var profiles = db.collection('users');
-        var ret = "markwatney search yields: ";
+        var profiles = db.collection('profiles');
+        var ret = "dank search yields: ";
 
         //search the profiles database to the specified profile
         var cursor = profiles.find(
