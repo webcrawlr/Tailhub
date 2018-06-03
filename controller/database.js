@@ -941,6 +941,8 @@ module.exports.getFriends=function(req,res) {
             else{ret = ret + arr[i] + "<br>";}
         }
 
+        ret = "arr.length: " + arr.length;
+
 
 /*        while (await cursor.hasNext()){
             const doc = await cursor.next();
