@@ -832,7 +832,7 @@ module.exports.getPosts=function(req,res) {
 
         var db = client.db('tailhub_db');
         var posts = db.collection('posts');
-        var ret = "getPosts yields: "
+        var ret = "getPosts yields: ";
 
         //search the profiles database to the specified profile
         var cursor = posts.find(
