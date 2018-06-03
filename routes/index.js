@@ -40,11 +40,11 @@ router.post("/sendMessage", controller.sendMessage);
 
 //router.post("/deleteMessage", controller.deleteMessage);
 
-router.post("/friendRequest", controller.friendRequest);
+//router.post("/friendRequest", controller.friendRequest);
 
-router.post("/friendAccept", controller.friendAccept);
+//router.post("/friendAccept", controller.friendAccept);
 
-router.post("/friendDecline", controller.friendDecline);
+//router.post("/friendDecline", controller.friendDecline);
 
 //router.post("/unfriend", controller.unFriend);
 

@@ -16,6 +16,21 @@ wrote:
     post
     getProfile
     getPosts (needs updating)
+5/30-6/3
+updated/written but untested:
+    deleteProfile (does not fulfil all functions)
+    sendMessage
+    editProfile
+rewrote many times, tested, works:
+    createProfile
+    getProfile
+    newPost
+    getPosts
+    getFriends
+    getFollowers
+    getFollowing
+removed deprecated code from functions
+
 RAYMOND MULLER:
 5/31:
     Bugfixes for getProfile.
@@ -26,8 +41,8 @@ RAYMOND MULLER:
 var mongodb;
 mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI||'mongodb://Bryce:1lavalamp@ds231070.mlab.com:31070/tailhub_db';
-var User = require('../models/user');
 
+//var User = require('../models/user');
 
 
 //createProfile
@@ -37,92 +52,11 @@ module.exports.createProfile = function(req,res) {
      //                  createProfile has been seized by Steven Phan
      //
      //*******************************************************************************************************/
-
-    //===================================================================
-    //re-hijacked by Bryce Baker
-    //===================================================================
-
+    /*
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
-        //generate current date
-        var date = new Date();
-        var now = date.toUTCString();
-
-        var db = client.db('tailhub_db');
-
-        //insert new profiles database entry for the user
-        var coll = db.collection('profiles');
-        coll.insertOne({
-                username: req.body.username,
-                password: req.body.password,
-                species: req.body.species,
-                breed: req.body.breed,
-                age: req.body.age,
-                location: req.body.location,
-                email: req.body.email,
-
-                paw5Counter: 0,
-                paw5List: [],
-                emailFlag: false,
-                creationDate: now,
-                postCount: 0,
-                messageCount: 0,
-                friendRequests: [],
-                blockList: []
-            },
-            function (err, res) {
-                if (err) throw err;
-            }
-        );
-
-        //insert new friends database entry for the user
-        coll = db.collection('friends');
-        coll.insertOne({
-            username: req.body.username,
-            list: {}
-        },
-            function (err, res) {
-            if(err) throw err;
-            }
-        );
-
-        //insert new followers database entry for the user
-        coll = db.collection('followers');
-        coll.insertOne({
-            username: req.body.username,
-            list: {}
-        },
-            function (err, res) {
-                if(err) throw err;
-            }
-        );
-
-        //insert new following database entry for the user
-        coll = db.collection('following');
-        coll.insertOne({
-            username: req.body.username,
-            list: {}
-        },
-            function (err, res) {
-                if(err) throw err;
-            }
-        );
-
-        //close connection
-        client.close(function (err) {
-            if (err) throw err;
-        });
-
-        var response = "success"
-
-        //respond
-        res.write(response);
-        res.end();
-    });
-
-    /*
         var date = new Date();
         var now = date.toUTCString();
 
@@ -153,8 +87,94 @@ module.exports.createProfile = function(req,res) {
             if(err) throw err;
             console.log(user);
         });
-    */
+    });
+*/
 
+
+
+    //===================================================================
+    //re-hijacked by Bryce Baker
+    //===================================================================
+
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
+        if (err) throw err;
+
+        //generate current date
+        var date = new Date();
+        var now = date.toUTCString();
+
+        var db = client.db('tailhub_db');
+
+        //insert new profiles database entry for the user
+        var coll = db.collection('profiles');
+        coll.insertOne({
+                username:   req.body.username,
+                password:   req.body.password,
+                species:    req.body.species,
+                breed:      req.body.breed,
+                age:        req.body.age,
+                location:   req.body.location,
+                email:      req.body.email,
+
+                paw5Counter:    0,
+                paw5List:       [],
+                emailFlag:      false,
+                creationDate:   now,
+                postCount:      0,
+                messageCount:   0,
+                friendRequests: [],
+                blockList:      []
+            },
+            function (err, res) {
+                if (err) throw err;
+            }
+        );
+
+        //insert new friends database entry for the user
+        coll = db.collection('friends');
+        coll.insertOne({
+            username: req.body.username,
+            list: []
+            },
+            function (err, res) {
+            if(err) throw err;
+            }
+        );
+
+        //insert new followers database entry for the user
+        coll = db.collection('followers');
+        coll.insertOne({
+            username: req.body.username,
+            list: []
+            },
+            function (err, res) {
+                if(err) throw err;
+            }
+        );
+
+        //insert new following database entry for the user
+        coll = db.collection('following');
+        coll.insertOne({
+            username: req.body.username,
+            list: []
+            },
+            function (err, res) {
+                if(err) throw err;
+            }
+        );
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        var response = "New profile created."
+
+        //respond
+        res.write(response);
+        res.end();
+    });
 };
 
 
@@ -169,8 +189,8 @@ module.exports.editProfile=function(req,res) {
         //get info from old database entry
         var cursor = db.collection('profiles');
         cursor.findOne({
-                username: req.body.username
-            });
+            username: req.body.username
+        });
 
         //update database entry
         cursor.replaceOne(
@@ -203,7 +223,7 @@ module.exports.editProfile=function(req,res) {
             if (err) throw err;
         });
 
-        var response = "success"
+        var response = "Profile edited."
 
         //respond
         res.write(response);
@@ -215,69 +235,55 @@ module.exports.editProfile=function(req,res) {
 //deleteProfile
 module.exports.deleteProfile=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
-
-        //get username to delete
+        var db = client.db('tailhub_db');
         var username = req.body.username;
 
         //search comments database & deletes entries by user
-        db
-            .collection('comments')
-            .deleteMany({
+        var coll = db.collection('comments');
+        coll.deleteMany({
                 username: username
-            });
+        });
 
         //search posts database & delete entries by user
-        db
-            .collection('posts')
-            .deleteMany({
+        coll = db.collection('posts');
+        coll.deleteMany({
                 username: username
-            });
+        });
 
-        //search messages database & delete entries sent to user
-        db
-            .collection('messages')
-            .deleteMany({
-                username: username
-            });
-
-        //search messages database & delete entries sent from user
-        db
-            .collection('messages')
-            .deleteMany({
+        //search messages database & delete entries sent to or from user
+        coll = db.collection('messages');
+        coll.deleteMany({
+                username: username,
                 sender: username
-            });
+        });
 
         //search friends database & delete user entry
-        db
-            .collection('friends')
-            .deleteOne({
+        coll = db.collection('friends');
+        coll.deleteOne({
                 username: username
-            });
+        });
 
         //search followers database and delete user's entry
-        db
-            .collection('followers')
-            .deleteOne({
+        coll = db.collection('followers');
+        coll.deleteOne({
                 username: username
-            });
+        });
 
         //search following database and delete user's entry
-        db
-            .collection('following')
-            .deleteOne({
+        coll = db.collection('following');
+        coll.deleteOne({
                 username: username
-            });
+        });
 
         //search profiles database & delete entry
-        db
-            .collection('profiles')
-            .deleteOne({
+        coll = db.collection('profiles');
+        coll.deleteOne({
                 username: username
-            });
+        });
 
-        //search friends database & delete entry from other user's lists
+ /*       //search friends database & delete entry from other user's lists
         //get users that are friends
         var users = db
             .collection('friends')
@@ -383,6 +389,17 @@ module.exports.deleteProfile=function(req,res) {
                     }
                 );
         }
+*/
+        //close connection
+        client.close(function(err) {
+            if(err)throw err;
+        });
+
+        var response = "User " + req.body.username + " was purged.";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };
 
@@ -390,56 +407,60 @@ module.exports.deleteProfile=function(req,res) {
 //sendMessage
 module.exports.sendMessage=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
         if (err) throw err;
 
-        //get username
         var username = req.body.username;
+        var cou = 999999999;
 
-        //get user message count
-        var count = db
-            .collection('profiles')
-            .find({ username: username })
-            .project({
-                messageCount: 1,
-                _id: 0
-            });
-
-        //increment sender message count
-        count.messageCount++;
-
-        //update sender message count
-        db
-            .collection('profiles')
-            .updateOne(
-                { username: username },
-                { $set:
-                    { messageCount: count.messageCount }
-                }
-            );
-
-        //generate current date
         var date = new Date();
         var now = date.toUTCString();
 
-        //create a message object
-        var message = {
-            username: req.body.otherUser,
-            sender: username,
-            number: username + count,
-            message: req.body.message,
-            creationDate: now,
-            readFlag : false
-        };
+        var db = client.db('tailhub_db');
+        var coll = db.collection("profiles");
+        var cursor = coll.findOne({
+            username: username
+        });
+
+        while (await cursor.hasNext()){
+            const doc = await cursor.next();
+            //store incremented sender message count
+            cou = doc.messageCount++;
+        }
+
+        //update sender message count
+        coll.updateOne(
+            { username: username },
+            { $set:
+                { messageCount: cou }
+            }
+        );
 
         //insert new database entry into messages database
-        db
-            .collection('messages')
-            .insertOne(message,function(err){if(err)throw err;});
+        coll=db.collection("Messages");
+        coll.insertOne({
+            username:       req.body.otherUser,
+            sender:         username,
+            number:         username + cou,
+            message:        req.body.message,
+            creationDate:   now,
+            readFlag :      false
+            },
+            function(err) {
+                if(err)throw err;
+            }
+        );
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err) {
+            if (err) throw err;
+        });
+
+        var response = "Message sent.";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };
 
@@ -448,14 +469,15 @@ module.exports.sendMessage=function(req,res) {
 /*
 module.exports.readMessage=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
     })
 };*/
 
@@ -464,22 +486,23 @@ module.exports.readMessage=function(req,res) {
 /*
 module.exports.deleteMessage=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
     })
 };*/
 
-
+/*
 //friendRequest
 module.exports.friendRequest=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
         //get the other user's friend requests
@@ -504,8 +527,15 @@ module.exports.friendRequest=function(req,res) {
             );
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var response = "Friend request sent."
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };
 
@@ -513,7 +543,7 @@ module.exports.friendRequest=function(req,res) {
 //friendAccept
 module.exports.friendAccept=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
         //get the user's friend requests
@@ -583,8 +613,14 @@ module.exports.friendAccept=function(req,res) {
             );
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+        var response = "Friend request accepted."
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };
 
@@ -592,7 +628,7 @@ module.exports.friendAccept=function(req,res) {
 //friendDecline
 module.exports.friendDecline=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
         //get the user's friend requests
@@ -620,8 +656,15 @@ module.exports.friendDecline=function(req,res) {
             );
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var response = "Friend request declined.";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };
 
@@ -629,7 +672,7 @@ module.exports.friendDecline=function(req,res) {
 //unfriend
 module.exports.unfriend=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
         //get user's friends list
@@ -681,24 +724,38 @@ module.exports.unfriend=function(req,res) {
             );
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var response = "Friend unfriended.";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };
-
+*/
 
 //block
 /*
 module.exports.block=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var response = "User blocked.";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };*/
 
@@ -707,14 +764,21 @@ module.exports.block=function(req,res) {
 /*
 module.exports.unblock=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var response = "User unblocked.";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };*/
 
@@ -723,14 +787,21 @@ module.exports.unblock=function(req,res) {
 /*
 module.exports.paw5=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var response = "Paw5-ed.";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };*/
 
@@ -739,14 +810,21 @@ module.exports.paw5=function(req,res) {
 /*
 module.exports.follow=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var response = req.body.otherUser + "now followed by " + req.body.username + "<br>";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };*/
 
@@ -755,14 +833,21 @@ module.exports.follow=function(req,res) {
 /*
 module.exports.unfollow=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var response = req.body.otherUser + "is no longer followed by " + req.body.username + "<br>";
+
+        //respond
+        res.write(response);
+        res.end();
     })
 };*/
 
@@ -781,28 +866,32 @@ module.exports.newPost=function(req,res) {
 
         //insert new database entry for the user
         posts.insertOne({
-            username: req.body.username,
-            postId: req.body.postId,
-            rePost: req.body.rePost,
-            oPoster: req.body.oPoster,
-            text: req.body.text,
-            media: req.body.media,
+            username:   req.body.username,
+            postId:     req.body.postId,
+            rePost:     req.body.rePost,
+            oPoster:    req.body.oPoster,
+            text:       req.body.text,
+            media:      req.body.media,
 
-            paw5Counter: 0,
-            paw5List: {},
-            emailFlag: false,
-            location: req.body.location,
-            creationDate: now,
-            groomFeedFlag: req.body.groomFeedFlag,
-            shareCount: 0
-        }, function(err,res){if(err) throw err;});
+            paw5Counter:    0,
+            paw5List:       {},
+            emailFlag:      false,
+            location:       req.body.location,
+            creationDate:   now,
+            groomFeedFlag:  req.body.groomFeedFlag,
+            shareCount:     0
+            },
+            function(err,res) {
+                if(err) throw err;
+            }
+        );
 
         //close connection
         client.close(function (err) {
             if (err) throw err;
         });
 
-        var ret = "post created";
+        var ret = "Post created.";
 
         //respond
         res.write(ret);
@@ -815,14 +904,21 @@ module.exports.newPost=function(req,res) {
 /*
 module.exports.comment=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var ret = "Comment created.";
+
+        //respond
+        res.write(ret);
+        res.end();
     })
 };*/
 
@@ -831,14 +927,21 @@ module.exports.comment=function(req,res) {
 /*
 module.exports.share=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err){
+            if(err)throw err;
+        });
+
+        var ret = "Shared post created.";
+
+        //respond
+        res.write(ret);
+        res.end();
     })
 };*/
 
@@ -850,22 +953,27 @@ module.exports.getProfile=function(req,res) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
-        var profiles = db.collection('profiles');
+        var coll = db.collection('profiles');
         var ret = "";
 
         //search the profiles database to the specified profile
-        var cursor = profiles.findOne(
-           { username: req.body.username }
-        );
+        var cursor = coll.findOne({
+            username: req.body.username
+        });
 
-        while (await cursor.hasNext()){
+        while (await cursor.hasNext()) {
             const doc = await cursor.next();
-            ret = ret +
-                  doc.name + "<br><br>" +
-                  doc.species + "<br><br>" +
-                  doc.breed + "<br><br>" +
-                  doc.age + "<br><br>" +
-                  doc.location + "<br><br>";
+            ret = ret
+                + doc.name
+                + "<br><br>"
+                + doc.species
+                + "<br><br>"
+                + doc.breed
+                + "<br><br>"
+                + doc.age
+                + "<br><br>"
+                + doc.location
+                + "<br><br>";
         }
 
         //close connection
@@ -890,18 +998,22 @@ module.exports.getPosts=function(req,res) {
         var ret = "";
 
         //search the profiles database to the specified profile
-        var cursor = posts.find(
-            { username: req.body.username }
-        );
+        var cursor = posts.find({
+            username: req.body.username
+        });
 
         var i = 0;
-        while (await cursor.hasNext()){
+        while (await cursor.hasNext()) {
             const doc = await cursor.next();
-            ret = ret +
-                  doc.username + "<br><br>" +
-                  doc.text + "<br><br><br>";
+            ret = ret
+                + doc.username
+                + "<br><br>"
+                + doc.text
+                + "<br><br><br>";
             i++;
-            if(i>=10){break;}
+            if ( i >= 10){
+                break;
+            }
         }
 
         //close connection
@@ -922,28 +1034,20 @@ module.exports.getFriends=function(req,res) {
         if (err) throw err;
 
         var db = client.db('tailhub_db');
-        var friends = db.collection('friends');
+        var coll = db.collection('friends');
         var ret = "";
 
-        //search the profiles database to the specified profile
-        var cursor = friends.find(
-            { list: req.body.username }
-        );
+        //search for the specified username
+        var cursor = coll.find({
+            list: req.body.username
+        });
 
-
-/*        var arr = friends.distinct(
-            "list",
-            { username: req.body.username }
-        );
-        for(var i = 0; i < arr.values.length; i++){
-            ret = ret + arr.values[i] + "<br>";
-        }
-*/
-
-        while (await cursor.hasNext()){
+        //append the username of each follower to the response
+        while (await cursor.hasNext()) {
             const doc = await cursor.next();
-            ret = ret +
-                  doc.username + "<br>";
+            ret = ret
+                + doc.username
+                + "<br>";
         }
 
         //close connection
@@ -958,48 +1062,89 @@ module.exports.getFriends=function(req,res) {
 
 
 //getFollowers
-/*
 module.exports.getFollowers=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
         if (err) throw err;
 
+        var db = client.db('tailhub_db');
+        var coll = db.collection('followers');
+        var ret = "";
 
+        //search for the specified username
+        var cursor = coll.find({
+            list: req.body.username
+        });
+
+        //append the username of each follower to the response
+        while (await cursor.hasNext()) {
+            const doc = await cursor.next();
+            ret = ret
+                + doc.username
+                + "<br>";
+        }
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
+        res.end();
     })
-};*/
+};
 
 
 //getFollowing
-/*
 module.exports.getFollowing=function(req,res) {
-    //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
         if (err) throw err;
 
+        var db = client.db('tailhub_db');
+        var coll = db.collection('following');
+        var ret = "";
 
+        //search for the specified username
+        var cursor = coll.find({
+            list: req.body.username
+        });
+
+        //append the username of each followed user to the response
+        while (await cursor.hasNext()) {
+            const doc = await cursor.next();
+            ret = ret
+                + doc.username
+                + "<br>";
+        }
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
+        res.end();
     })
-};*/
+};
+
 
 //getMessages
 /*
 module.exports.getMessages=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        db.close(function(err) {
+            if(err)throw err;
+        });
+
+        //respond
+        res.write(ret);
+        res.end();
     })
 };*/
 
@@ -1008,13 +1153,18 @@ module.exports.getMessages=function(req,res) {
 /*
 module.exports.getComments=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
 
 
 
         //close connection
-        db
-            .close(function(err){if(err)throw err;});
+        client.close(function(err) {
+            if(err)throw err;
+        });
+
+        //respond
+        res.write(ret);
+        res.end();
     })
 };*/
