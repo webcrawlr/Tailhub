@@ -51,10 +51,10 @@ module.exports.createProfile = function(req,res) {
         var now = date.toUTCString();
 
         var db = client.db('tailhub_db');
-        var profiles = db.collection('profiles');
 
-        //insert new database entry for the user
-        profiles.insertOne({
+        //insert new profiles database entry for the user
+        var coll = db.collection('profiles');
+        coll.insertOne({
                 username: req.body.username,
                 password: req.body.password,
                 species: req.body.species,
@@ -77,88 +77,109 @@ module.exports.createProfile = function(req,res) {
             }
         );
 
+        //insert new friends database entry for the user
+        coll = db.collection('friends');
+        coll.insertOne({
+            username: req.body.username,
+            list: {}
+        });
+
+        //insert new followers database entry for the user
+        coll = db.collection('followers');
+        coll.insertOne({
+            username: req.body.username,
+            list: {}
+        });
+
+        //insert new following database entry for the user
+        coll = db.collection('following');
+        coll.insertOne({
+            username: req.body.username,
+            list: {}
+        });
+
         //close connection
         client.close(function (err) {
             if (err) throw err;
         });
-        var response = "profile created";
 
         //respond
-        res.write(response);
-        res.end();
+        //res.write(response);
+        //res.end();
     });
+
+    /*
+        var date = new Date();
+        var now = date.toUTCString();
+
+        //(new Date).getTime()
+
+        var newUser = new User({
+
+            username:   req.body.username,
+            password:   req.body.password,
+            species:    req.body.species,
+            breed:      req.body.breed,
+            age:        req.body.age,
+            location:   req.body.location,
+            email:      req.body.email,
+
+            paw5Counter:    0,
+            paw5List:       'n/a',
+            emailFlag:      false,
+            creationDate:   now,
+            postCount:      0,
+            messageCount:   0,
+            friendRequests: 'n/a',
+            blockList:      'n/a'
+        });
+
+        //Uses class function to write to mongoDB
+        User.createUser(newUser, function(err, user){
+            if(err) throw err;
+            console.log(user);
+        });
+    */
+
 };
-/*
-    var date = new Date();
-    var now = date.toUTCString();
-
-    //(new Date).getTime()
-
-    var newUser = new User({
-
-        username:   req.body.username,
-        password:   req.body.password,
-        species:    req.body.species,
-        breed:      req.body.breed,
-        age:        req.body.age,
-        location:   req.body.location,
-        email:      req.body.email,
-
-        paw5Counter:    0,
-        paw5List:       'n/a',
-        emailFlag:      false,
-        creationDate:   now,
-        postCount:      0,
-        messageCount:   0,
-        friendRequests: 'n/a',
-        blockList:      'n/a'
-    });
-
-    //Uses class function to write to mongoDB
-    User.createUser(newUser, function(err, user){
-        if(err) throw err;
-        console.log(user);
-    });
-*/
 
 
 //editProfile
 module.exports.editProfile=function(req,res) {
     //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
+        var db = client.db('tailhub_db');
+        var profile = db.collection('Profiles');
 
         //get info from old database entry
-        var profile = db
-            .collection('profiles')
-            .find({
+        var profile = db.collection('profiles');
+        profile.findOne({
                 username: req.body.username
             });
 
         //update database entry
-        db
-            .collection('Profiles')
-            .replaceOne(
-                { username: req.body.username },
-                {
-                    username:   req.body.username,
-                    password:   req.body.password,
-                    species:    req.body.species,
-                    breed:      req.body.breed,
-                    age:        req.body.age,
-                    location:   req.body.location,
-                    email:      req.body.email,
+        profile.replaceOne(
+            { username: req.body.username },
+            {
+                username:   req.body.username,
+                password:   req.body.password,
+                species:    req.body.species,
+                breed:      req.body.breed,
+                age:        req.body.age,
+                location:   req.body.location,
+                email:      req.body.email,
 
-                    paw5Counter:    profile.paw5Counter,
-                    paw5List:       profile.paw5List,
-                    emailFlag:      profile.emailFlag,
-                    creationDate:   profile.creationDate,
-                    postCount:      profile.postCount,
-                    messageCount:   profile.messageCount,
-                    friendRequests: profile.friendRequests,
-                    blockList:      profile.blockList
-            })
-    })
+                paw5Counter:    profile.paw5Counter,
+                paw5List:       profile.paw5List,
+                emailFlag:      profile.emailFlag,
+                creationDate:   profile.creationDate,
+                postCount:      profile.postCount,
+                messageCount:   profile.messageCount,
+                friendRequests: profile.friendRequests,
+                blockList:      profile.blockList
+        });
+    });
 };
 
 
@@ -832,7 +853,7 @@ module.exports.getPosts=function(req,res) {
 
         var db = client.db('tailhub_db');
         var posts = db.collection('posts');
-        var ret = "getPosts yields: ";
+        var ret = "";
 
         //search the profiles database to the specified profile
         var cursor = posts.find(
@@ -842,7 +863,7 @@ module.exports.getPosts=function(req,res) {
         var i = 0;
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.username + "<br>" + doc.text + "<br>";
+            ret = ret + doc.username + "<br><br>" + doc.text + "<br><br><br>";
             i++;
             if(i>=10){break;}
         }
@@ -873,7 +894,6 @@ module.exports.getFriends=function(req,res) {
             { list: req.body.username }
         );
 
-        var i = 0;
         while (await cursor.hasNext()){
             const doc = await cursor.next();
             ret = ret + doc.username + "<br>";
