@@ -936,11 +936,12 @@ module.exports.getFriends=function(req,res) {
             { username: req.body.username }
         );
 
-        for(var i = 0; i < arr.length; i++){
-            ret = ret + arr[i] + "<br>";
+        for(var i = 0; i <= arr.length; i++){
+            if(i==arr.length){ret=ret+"test<br>";}
+            else{ret = ret + arr[i] + "<br>";}
         }
 
-        
+
 /*        while (await cursor.hasNext()){
             const doc = await cursor.next();
             while(doc.list[i]!=null) {
