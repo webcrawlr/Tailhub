@@ -810,7 +810,7 @@ module.exports.getProfile=function(req,res) {
 
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.name + "<be><br>" + doc.species + "<be><br>" + doc.breed + "<be><br>" + doc.age + "<be><br>" + doc.location;
+            ret = ret + doc.name + "<br><br>" + doc.species + "<br><br>" + doc.breed + "<br><br>" + doc.age + "<br><br>" + doc.location;
         }
 
         //close connection
@@ -820,7 +820,7 @@ module.exports.getProfile=function(req,res) {
 
         res.write(ret);
         res.end();
-    })
+    });
 };
 
 
