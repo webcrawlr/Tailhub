@@ -41,7 +41,7 @@ module.exports.createProfile = function(req,res){
     //===================================================================
     //re-hijacked by Bryce Baker
     //===================================================================
-    
+
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function(err,client){
         if(err)throw err;
@@ -77,7 +77,7 @@ module.exports.createProfile = function(req,res){
             );
 
         //close connection
-        db
+        client
             .close(function(err){if(err)throw err;});
     });
 /*
