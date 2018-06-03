@@ -810,7 +810,7 @@ module.exports.getProfile=function(req,res) {
 
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.name ;//+ "<br><br>" + doc.species + "<br><br>" + doc.breed + "<br><br>" + doc.age + "<br><br>" + doc.location;
+            ret = ret + doc.name + "<br><br>" + doc.species + "<br><br>" + doc.breed + "<br><br>" + doc.age + "<br><br>" + doc.location;
         }
 
         //close connection
@@ -840,7 +840,7 @@ module.exports.getPosts=function(req,res) {
 
         while (await cursor.hasNext()){
             const doc = await cursor.next();
-            ret = ret + doc.username + "<br>" + doc.text + "<br>" + doc.;
+            ret = ret + doc.username + "<br>" + doc.text + "<br>";
         }
 
         //close connection
