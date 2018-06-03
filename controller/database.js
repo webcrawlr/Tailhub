@@ -41,6 +41,7 @@ module.exports.createProfile = function(req,res){
     //===================================================================
     //re-hijacked by Bryce Baker
     //===================================================================
+    
     //connect MongoDB
     mongodb.MongoClient.connect(mongoDBURI, function(err,client){
         if(err)throw err;
@@ -53,8 +54,7 @@ module.exports.createProfile = function(req,res){
         var profiles = db.collection('profiles');
 
         //insert new database entry for the user
-        profiles
-            .insertOne(
+        profiles.insertOne(
                 {
                     username:   req.body.username,
                     password:   req.body.password,
@@ -73,7 +73,7 @@ module.exports.createProfile = function(req,res){
                     friendRequests: {},
                     blockList:      {}
                 },
-                function(err,res){if(err)throw err;}
+            function(err,res){if(err) throw err;}
             );
 
         //close connection
@@ -111,11 +111,11 @@ module.exports.createProfile = function(req,res){
         if(err) throw err;
         console.log(user);
     });
-
-    var response = "this is a response";
 */
+    var response = "profile created";
+
     //respond
-    res.write("profile created");
+    res.write(response);
     res.end();
 
 };
