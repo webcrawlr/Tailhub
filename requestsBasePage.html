@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<?php		
+	session_start();
+
+	 require_once 'HTTP/Request2.php';
+	 
+	$request=new HTTP_Request2('https://tailhub.herokuapp.com/friendRequest', HTTP_Request2::METHOD_POST);
+	
+	$request->addPostParameter('username', kazookid);
+	
+	$request->setConfig(array(
+		'ssl_verify_peer' => FALSE,
+		'ssl_verify_host' => FALSE
+	));
+	
+	$response=$request->send();
+	$friendRequest=$response->getBody();
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -154,7 +171,8 @@
         	<p>Friend Requests</p>
         </div>
         <div class="requests">
-        	
+        	<!-- need to add foreach for each request and append buttons to the end -->
+		<ul <?php echo $friendRequest ?> ul>
         	<form action="acceptRequest.php" method="post">
             	<button class="button accept" type="submit" name="accept">Accept 			 					Request</button>
             </form>
