@@ -3,6 +3,8 @@ var router = express.Router();
 var app = express();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var RequestStrategy = require('passport-request').Strategy;
+
 var multer = require('multer');
 var upload = multer({dest: './uploads'});
 var mongodb = require('mongodb');
@@ -28,29 +30,32 @@ router.get('/contentpost', function(req, res, next) {
     res.render('contentpost', {title:'ContentPost'});
 
 });
+/*
+router.post('/login',
+    passport.authenticate('request', function(err, user, info){
+
+
+
+    }), function(req, res) {
+        //req.flash('success', 'You are now logged in');
+        res.send('you are logged in');
+    });
+*/
 
 router.post('/login', function(req, res, next) {
 
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
 
-    passport.authenticate('local', function(req, res) {
-   //req.flash('success', 'You are now logged in');
-   //res.redirect('/');
-        if (err) { return next(err) }
-        if (!user) {
-            // *** Display message using Express 3 locals
-            //req.session.message = info.message;
-            res.send('Invalid User or Password');
-        }
+        if (!user) { return res.send('wrong password'); }
+
         req.logIn(user, function(err) {
             if (err) { return next(err); }
             return res.send(user.username);
         });
 
-
-   res.send('you are now logged in');
-
-})});
-
+    })(req, res, next);
+});
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -62,15 +67,10 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-passport.use(new LocalStrategy({
-        usernameField: 'username',
-        passwordField: 'password',
-        passReqToCallback : true
-    },
-
-    function(username, password, done){
+passport.use(new LocalStrategy(function(username, password, done){
 
     console.log(username);
+
     User.getUserByUsername(username, function(err, user){
     if(err) throw err;
     if(!user){
@@ -86,6 +86,49 @@ passport.use(new LocalStrategy({
       }
     });
   });
+}));
+
+passport.use(new RequestStrategy(function(req, done) {
+    var username = req.body.username;
+    var password = req.body.password;
+/*
+    User.findOne({username: username}, function (err, user) {
+        if (err) {
+            return done(err);
+
+        } else if (!user) {
+
+            return done(null, false);
+
+        } else if (!user.verifyPassword(password, function(err, user) {
+                if(err) throw err;
+            }) ) {
+
+            return done(null, false);
+
+        } else {
+
+            return done(null, user);
+        }
+    });
+    */
+
+    User.getUserByUsername(username, function(err, user){
+        if(err) throw err;
+        if(!user){
+            return done(null, false, {message: 'Unknown User'});
+        }
+
+        User.comparePassword(password, user.password, function(err, isMatch){
+            if(err) return done(err);
+            if(isMatch){
+                return done(null, user);
+            } else {
+                return done(null, false, {message:'Invalid Password'});
+            }
+        });
+    });
+
 }));
 
 

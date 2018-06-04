@@ -9,7 +9,6 @@ var path = require('path');
 
 var fs = require('fs');
 
-
 // User Schema
 var UserSchema = mongoose.Schema({
 
@@ -93,14 +92,18 @@ module.exports.createUser = function(newUser, callback){
 	bcrypt.genSalt(10, function(err, salt) {
     	bcrypt.hash(newUser.password, salt, function(err, hash) {
 
-    		newUser.password = hash;
+            newUser.password = hash;
 
             //newUser.img.data = fs.readFileSync(path);
             //newUser.img.contentType = 'image/png';
             //newUser.save();
             // fs.unlinkSync(path);
 
-   			newUser.save(callback);
-    	});
+            newUser.save(callback);
+        });
 	});
+};
+
+module.exports.verifyPassword = function(password, callback) {
+    callback(bcrypt.compareSync(password, this.password));
 };
