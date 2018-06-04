@@ -1,4 +1,5 @@
-/*Updates:
+/*
+Updates:
 Bryce Baker:
 5/27
 wrote:
@@ -6,6 +7,8 @@ wrote:
 	control structure for routing post data
 5/29
     added 6 more entries to the control structure
+6/3
+	enabled usable functions, disabled others
  */
 
 
@@ -30,9 +33,21 @@ function ensureAuthenticated(req, res, next){
 //post data routed to controller for processing
 router.post("/createProfile", controller.createProfile);
 
+router.post("/getProfile", controller.getProfile);
+
 router.post("/editProfile", controller.editProfile);
 
 router.post("/deleteProfile", controller.deleteProfile);
+
+router.post("/newPost", controller.newPost);
+
+router.post("/getPosts", controller.getPosts);
+
+router.post("/getFriends", controller.getFriends);
+
+router.post("/getFollowers", controller.getFollowers);
+
+router.post("/getFollowing", controller.getFollowing);
 
 router.post("/sendMessage", controller.sendMessage);
 
@@ -58,21 +73,9 @@ router.post("/sendMessage", controller.sendMessage);
 
 //router.post("/unfollow", controller.unfollow);
 
-router.post("/newPost", controller.newPost);
-
 //router.post("/comment", controller.comment);
 
 //router.post("/share", controller.share);
-
-router.post("/getProfile", controller.getProfile);
-
-router.post("/getPosts", controller.getPosts);
-
-router.post("/getFriends", controller.getFriends);
-
-//router.post("/getFollowers", controller.getFollowers);
-
-//router.post("/getFollowing", controller.getFollowing);
 
 //router.post("/getMessages", controller.getMessages);
 

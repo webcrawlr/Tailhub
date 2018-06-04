@@ -17,10 +17,11 @@ wrote:
     getProfile
     getPosts (needs updating)
 5/30-6/3
+    deleted deprecated code from functions
 updated/written but untested:
+    editProfile
     deleteProfile (does not fulfil all functions)
     sendMessage
-    editProfile
 rewrote many times, tested, works:
     createProfile
     getProfile
@@ -29,7 +30,6 @@ rewrote many times, tested, works:
     getFriends
     getFollowers
     getFollowing
-removed deprecated code from functions
 
 RAYMOND MULLER:
 5/31:
@@ -175,6 +175,47 @@ module.exports.createProfile = function(req,res) {
         res.write(response);
         res.end();
     });
+};
+
+
+//getProfile
+module.exports.getProfile=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
+        if (err) throw err;
+
+        var db = client.db('tailhub_db');
+        var coll = db.collection('profiles');
+        var ret = "";
+
+        //search the profiles database to the specified profile
+        var cursor = coll.findOne({
+            username: req.body.username
+        });
+
+        while (await cursor.hasNext()) {
+            const doc = await cursor.next();
+            ret = ret
+                + doc.name
+                + "<br><br>"
+                + doc.species
+                + "<br><br>"
+                + doc.breed
+                + "<br><br>"
+                + doc.age
+                + "<br><br>"
+                + doc.location
+                + "<br><br>";
+        }
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
+        res.end();
+    })
 };
 
 
@@ -399,6 +440,195 @@ module.exports.deleteProfile=function(req,res) {
 
         //respond
         res.write(response);
+        res.end();
+    })
+};
+
+
+//newPost
+module.exports.newPost=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
+        if (err) throw err;
+        var db = client.db('tailhub_db');
+        var posts = db.collection('posts');
+
+        //generate current date
+        var date = new Date();
+        var now = date.toUTCString();
+
+        //insert new database entry for the user
+        posts.insertOne({
+                username:   req.body.username,
+                postId:     req.body.postId,
+                rePost:     req.body.rePost,
+                oPoster:    req.body.oPoster,
+                text:       req.body.text,
+                media:      req.body.media,
+
+                paw5Counter:    0,
+                paw5List:       {},
+                emailFlag:      false,
+                location:       req.body.location,
+                creationDate:   now,
+                groomFeedFlag:  req.body.groomFeedFlag,
+                shareCount:     0
+            },
+            function(err,res) {
+                if(err) throw err;
+            }
+        );
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        var ret = "Post created.";
+
+        //respond
+        res.write(ret);
+        res.end();
+    })
+};
+
+
+//getPosts
+module.exports.getPosts=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
+        if (err) throw err;
+
+        var db = client.db('tailhub_db');
+        var posts = db.collection('posts');
+        var ret = "";
+
+        //search the profiles database to the specified profile
+        var cursor = posts.find({
+            username: req.body.username
+        });
+
+        var i = 0;
+        while (await cursor.hasNext()) {
+            const doc = await cursor.next();
+            ret = ret
+                + doc.username
+                + "<br><br>"
+                + doc.text
+                + "<br><br><br>";
+            i++;
+            if ( i >= 10){
+                break;
+            }
+        }
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
+        res.end();
+    })
+};
+
+
+//getFriends
+module.exports.getFriends=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
+        if (err) throw err;
+
+        var db = client.db('tailhub_db');
+        var coll = db.collection('friends');
+        var ret = "";
+
+        //search for the specified username
+        var cursor = coll.find({
+            list: req.body.username
+        });
+
+        //append the username of each follower to the response
+        while (await cursor.hasNext()) {
+            const doc = await cursor.next();
+            ret = ret
+                + doc.username
+                + "<br>";
+        }
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
+        res.end();
+    })
+};
+
+
+//getFollowers
+module.exports.getFollowers=function(req,res) {
+    //connect MongoDB
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
+        if (err) throw err;
+
+        var db = client.db('tailhub_db');
+        var coll = db.collection('followers');
+        var ret = "";
+
+        //search for the specified username
+        var cursor = coll.find({
+            list: req.body.username
+        });
+
+        //append the username of each follower to the response
+        while (await cursor.hasNext()) {
+            const doc = await cursor.next();
+            ret = ret
+                + doc.username
+                + "<br>";
+        }
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
+        res.end();
+    })
+};
+
+
+//getFollowing
+module.exports.getFollowing=function(req,res) {
+    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
+        if (err) throw err;
+
+        var db = client.db('tailhub_db');
+        var coll = db.collection('following');
+        var ret = "";
+
+        //search for the specified username
+        var cursor = coll.find({
+            list: req.body.username
+        });
+
+        //append the username of each followed user to the response
+        while (await cursor.hasNext()) {
+            const doc = await cursor.next();
+            ret = ret
+                + doc.username
+                + "<br>";
+        }
+
+        //close connection
+        client.close(function (err) {
+            if (err) throw err;
+        });
+
+        res.write(ret);
         res.end();
     })
 };
@@ -852,52 +1082,7 @@ module.exports.unfollow=function(req,res) {
 };*/
 
 
-//post
-module.exports.newPost=function(req,res) {
-    //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
-        if (err) throw err;
-        var db = client.db('tailhub_db');
-        var posts = db.collection('posts');
 
-        //generate current date
-        var date = new Date();
-        var now = date.toUTCString();
-
-        //insert new database entry for the user
-        posts.insertOne({
-            username:   req.body.username,
-            postId:     req.body.postId,
-            rePost:     req.body.rePost,
-            oPoster:    req.body.oPoster,
-            text:       req.body.text,
-            media:      req.body.media,
-
-            paw5Counter:    0,
-            paw5List:       {},
-            emailFlag:      false,
-            location:       req.body.location,
-            creationDate:   now,
-            groomFeedFlag:  req.body.groomFeedFlag,
-            shareCount:     0
-            },
-            function(err,res) {
-                if(err) throw err;
-            }
-        );
-
-        //close connection
-        client.close(function (err) {
-            if (err) throw err;
-        });
-
-        var ret = "Post created.";
-
-        //respond
-        res.write(ret);
-        res.end();
-    })
-};
 
 
 //comment
@@ -944,188 +1129,6 @@ module.exports.share=function(req,res) {
         res.end();
     })
 };*/
-
-
-//getProfile
-module.exports.getProfile=function(req,res) {
-    //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
-        if (err) throw err;
-
-        var db = client.db('tailhub_db');
-        var coll = db.collection('profiles');
-        var ret = "";
-
-        //search the profiles database to the specified profile
-        var cursor = coll.findOne({
-            username: req.body.username
-        });
-
-        while (await cursor.hasNext()) {
-            const doc = await cursor.next();
-            ret = ret
-                + doc.name
-                + "<br><br>"
-                + doc.species
-                + "<br><br>"
-                + doc.breed
-                + "<br><br>"
-                + doc.age
-                + "<br><br>"
-                + doc.location
-                + "<br><br>";
-        }
-
-        //close connection
-        client.close(function (err) {
-            if (err) throw err;
-        });
-
-        res.write(ret);
-        res.end();
-    })
-};
-
-
-//getPosts
-module.exports.getPosts=function(req,res) {
-    //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
-        if (err) throw err;
-
-        var db = client.db('tailhub_db');
-        var posts = db.collection('posts');
-        var ret = "";
-
-        //search the profiles database to the specified profile
-        var cursor = posts.find({
-            username: req.body.username
-        });
-
-        var i = 0;
-        while (await cursor.hasNext()) {
-            const doc = await cursor.next();
-            ret = ret
-                + doc.username
-                + "<br><br>"
-                + doc.text
-                + "<br><br><br>";
-            i++;
-            if ( i >= 10){
-                break;
-            }
-        }
-
-        //close connection
-        client.close(function (err) {
-            if (err) throw err;
-        });
-
-        res.write(ret);
-        res.end();
-    })
-};
-
-
-//getFriends
-module.exports.getFriends=function(req,res) {
-    //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
-        if (err) throw err;
-
-        var db = client.db('tailhub_db');
-        var coll = db.collection('friends');
-        var ret = "";
-
-        //search for the specified username
-        var cursor = coll.find({
-            list: req.body.username
-        });
-
-        //append the username of each follower to the response
-        while (await cursor.hasNext()) {
-            const doc = await cursor.next();
-            ret = ret
-                + doc.username
-                + "<br>";
-        }
-
-        //close connection
-        client.close(function (err) {
-            if (err) throw err;
-        });
-
-        res.write(ret);
-        res.end();
-    })
-};
-
-
-//getFollowers
-module.exports.getFollowers=function(req,res) {
-    //connect MongoDB
-    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
-        if (err) throw err;
-
-        var db = client.db('tailhub_db');
-        var coll = db.collection('followers');
-        var ret = "";
-
-        //search for the specified username
-        var cursor = coll.find({
-            list: req.body.username
-        });
-
-        //append the username of each follower to the response
-        while (await cursor.hasNext()) {
-            const doc = await cursor.next();
-            ret = ret
-                + doc.username
-                + "<br>";
-        }
-
-        //close connection
-        client.close(function (err) {
-            if (err) throw err;
-        });
-
-        res.write(ret);
-        res.end();
-    })
-};
-
-
-//getFollowing
-module.exports.getFollowing=function(req,res) {
-    mongodb.MongoClient.connect(mongoDBURI, async function (err, client) {
-        if (err) throw err;
-
-        var db = client.db('tailhub_db');
-        var coll = db.collection('following');
-        var ret = "";
-
-        //search for the specified username
-        var cursor = coll.find({
-            list: req.body.username
-        });
-
-        //append the username of each followed user to the response
-        while (await cursor.hasNext()) {
-            const doc = await cursor.next();
-            ret = ret
-                + doc.username
-                + "<br>";
-        }
-
-        //close connection
-        client.close(function (err) {
-            if (err) throw err;
-        });
-
-        res.write(ret);
-        res.end();
-    })
-};
 
 
 //getMessages
