@@ -30,7 +30,7 @@ if(isset($_POST['Register'])){
          'ssl_verify_host'   => FALSE
     ));
 	
-	$response=$request-send();
+	$response=$request->send();
 	//$data = json_decode($response, true);
 	$baseurl = "www.tailhub.com/";
 	$url = $baseurl . $username
