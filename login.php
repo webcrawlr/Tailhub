@@ -6,7 +6,7 @@ if(isset($_POST['Login'])){
     $password = $_SESSION['password'];
 }
 
-    $request=new HTTP_Request2('https://tailhub.herokuapp.com/login', HTTP_Request2::METHOD_POST);
+    $request=new HTTP_Request2('https://tailhub.herokuapp.com/users/login', HTTP_Request2::METHOD_POST);
 	$request->addPostParameter('email', $email);
     $request->addPostParameter('password', $password);
     //fix the SSL issue
