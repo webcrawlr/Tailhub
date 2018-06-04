@@ -44,14 +44,14 @@ router.post('/login',
 
 router.post('/login', function(req, res, next) {
 
-    passport.authenticate('local', function(err, user, info) {
+    passport.authenticate('request', function(err, user, info) {
         if (err) { return next(err); }
 
-        if (!user) { return res.send('wrong password'); }
+        if (!user) { res.send('wrong'); }
 
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            return res.send(user.username);
+            res.send(user.username);
         });
 
     })(req, res, next);

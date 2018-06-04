@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var RequestStrategy = require('passport-request').Strategy;
 var expressValidator = require('express-validator');
 var multer = require('multer');
 var upload = multer({dest: './uploads'});
