@@ -30,11 +30,11 @@ router.get('/contentpost', function(req, res, next) {
 });
 
 router.post('/login',
-  passport.authenticate('local', {failureRedirect:'/users/login', failureFlash: 'Invalid username or password'}),
+  passport.authenticate('local', {failureRedirect:'/users/login'}),
   function(req, res) {
-   req.flash('success', 'You are now logged in');
-   res.redirect('/');
-   res.send(req.user.username);
+   //req.flash('success', 'You are now logged in');
+   //res.redirect('/');
+   res.send('you are now logged in');
 });
 
 passport.serializeUser(function(user, done) {
@@ -47,8 +47,16 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-passport.use(new LocalStrategy(function(username, password, done){
-  User.getUserByUsername(username, function(err, user){
+passport.use(new LocalStrategy({
+        usernameField: 'username',
+        passwordField: 'password',
+        passReqToCallback : true
+    },
+
+    function(username, password, done){
+
+    console.log(username);
+    User.getUserByUsername(username, function(err, user){
     if(err) throw err;
     if(!user){
       return done(null, false, {message: 'Unknown User'});
