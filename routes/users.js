@@ -29,13 +29,28 @@ router.get('/contentpost', function(req, res, next) {
 
 });
 
-router.post('/login',
-  passport.authenticate('local'),
-  function(req, res) {
+router.post('/login', function(req, res, next) {
+
+
+    passport.authenticate('local', function(req, res) {
    //req.flash('success', 'You are now logged in');
    //res.redirect('/');
+        if (err) { return next(err) }
+        if (!user) {
+            // *** Display message using Express 3 locals
+            //req.session.message = info.message;
+            res.send('Invalid User or Password');
+        }
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            return res.send(user.username);
+        });
+
+
    res.send('you are now logged in');
-});
+
+})});
+
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
