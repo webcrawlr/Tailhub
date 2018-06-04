@@ -30,7 +30,7 @@ router.get('/contentpost', function(req, res, next) {
 });
 
 router.post('/login',
-  passport.authenticate('local', {failureRedirect:'/users/login'}),
+  passport.authenticate('local'),
   function(req, res) {
    //req.flash('success', 'You are now logged in');
    //res.redirect('/');
