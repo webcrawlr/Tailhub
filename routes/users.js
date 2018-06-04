@@ -141,8 +141,6 @@ router.post("/newPost", function (req, res) {
 
     });
 });
-*/
-
 
 
 router.post('/register', upload.single('profileImg'), function(req, res, next) {
@@ -164,7 +162,6 @@ router.post('/register', upload.single('profileImg'), function(req, res, next) {
   // Check Errors
   //var errors = req.validationErrors();
 
-    /*
     if(req.file){
         console.log('Uploading File...');
         var path = req.file.path;
@@ -176,7 +173,6 @@ router.post('/register', upload.single('profileImg'), function(req, res, next) {
         var path = 'n/a';
     };
 
-    */
 
   //if(errors){
   	//res.render('register', {
@@ -214,7 +210,6 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
   var text = req.body.text;
   var username = req.body.username;
 
-  /*
     if(req.file){
         console.log('Uploading File...');
         var path = req.file.path;
@@ -242,7 +237,6 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
 
     } else{
 
-*/
         var newPost = new Post({
             username: username,
             text: text,
@@ -273,7 +267,6 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
             res.contentType(callback.img.contentType);
             res.send(callback.img.data);
         });
-*/
 
     //}
 
@@ -282,7 +275,7 @@ router.post('/contentpost', upload.single('media') ,function(req, res, next) {
 
 
 });
-
+*/
 
 router.get('/logout', function(req, res){
   req.logout();
