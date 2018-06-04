@@ -328,40 +328,36 @@
 		</section>
         
         <!-- Ads Sidebar -->
-		<div id = "nav" class = "sideBarTop" style = "top:70px">
-            	<p>Ads</p>
-        	</div>
-        	<div class= "sideBar">
-            	<center> Some random ads... <center>
-        	</div>
+	<div id = "nav" class = "sideBarTop" style = "top:70px">
+            <p>Ads</p>
+        </div>
+        <div class= "sideBar">
+            <center> Some random ads... <center>
+        </div>
         
-					<!-- Friends Sidebar -->
-			
-			        <div id = "nav" class = "sideBarTop" style = "top:226px">
-			            <a href="petpics.com/friends">Friends</a>
-			        </div>
-			        <div class= "sideBar" style = "top:256px">
-			            <ul><?php echo $friends ?></ul>
-			        </div>
+	<!-- Friends Sidebar -->
+	<div id = "nav" class = "sideBarTop" style = "top:226px">
+		<a href="petpics.com/friends">Friends</a>
+	</div>
+	<div class= "sideBar" style = "top:256px">
+		<ul><?php echo $friends ?></ul>
+	</div>
         
-			        <!-- Followers Sidebar -->
-
-			        <div id = "nav" class = "sideBarTop" style = "top:381px">
-			            <a href="petpics.com/followers">Followers</a>
-			        </div>
-			        <div class= "sideBar" style = "top:411px">
-			            <ul><?php echo $followers ?></ul>
-			        </div>
+	<!-- Followers Sidebar -->
+	<div id = "nav" class = "sideBarTop" style = "top:381px">
+		<a href="petpics.com/followers">Followers</a>
+	</div>
+	<div class= "sideBar" style = "top:411px">
+		<ul><?php echo $followers ?></ul>
+	</div>
         
-			        <!-- Following Sidebar -->
-			
-			        <div id = "nav" class = "sideBarTop" style = "top:536px">
-			            <a href="petpics.com/following">Following</a>
-			        </div>
-			        <div class= "sideBar" style = "top:566px">
-			            <ul><?php echo $following ?></ul>
-			        </div>
-			?>
+	<!-- Following Sidebar -->
+	<div id = "nav" class = "sideBarTop" style = "top:536px">
+		<a href="petpics.com/following">Following</a>
+	</div>
+	<div class= "sideBar" style = "top:566px">
+		<ul><?php echo $following ?></ul>
+	</div>
         
         	<!-- Bottom Bar -->
         	<div id = "nav" class="stickyBottom" style = "padding:3px">
