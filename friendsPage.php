@@ -86,7 +86,7 @@
                 	z-index: 2;
             }
             
-            /* Friend Requests Header */
+            /* Friend Header */
             .center{
             	height: 45px;
                 width: 60%;
@@ -153,7 +153,7 @@
         
         	<!-- Requested data box -->
         <div id="nav" class="center">
-        	<p>Friend Requests</p>
+        	<p>Friends</p>
         </div>
         <div class="requests">
         	<ul><?php echo $friends ?></ul>
